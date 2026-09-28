@@ -31,6 +31,18 @@ public class UsuarioRepositoryAdapter implements UsuarioRepositoryPort {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Optional<Usuario> buscarPorEmail(String email) {
+        return repository.findByEmail(email.trim().toLowerCase()).map(UsuarioPersistenceMapper::toDomain);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean existePorEmail(String email) {
+        return repository.existsByEmail(email.trim().toLowerCase());
+    }
+
+    @Override
     public void excluirPorId(UUID id) {
         repository.deleteById(id);
     }

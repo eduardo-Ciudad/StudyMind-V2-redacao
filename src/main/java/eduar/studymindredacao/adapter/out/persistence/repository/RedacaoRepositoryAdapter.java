@@ -6,6 +6,7 @@ import eduar.studymindredacao.domain.port.RedacaoRepositoryPort;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -13,20 +14,24 @@ import java.util.UUID;
 public class RedacaoRepositoryAdapter implements RedacaoRepositoryPort {
     private final RedacaoJpaRepository repository;
     private final UsuarioJpaRepository usuarioRepository;
+    private final TemaJpaRepository temaRepository;
 
     public RedacaoRepositoryAdapter(
             RedacaoJpaRepository repository,
-            UsuarioJpaRepository usuarioRepository
+            UsuarioJpaRepository usuarioRepository,
+            TemaJpaRepository temaRepository
     ) {
         this.repository = repository;
         this.usuarioRepository = usuarioRepository;
+        this.temaRepository = temaRepository;
     }
 
     @Override
     @Transactional
     public Redacao salvar(Redacao redacao) {
         var usuario = usuarioRepository.getReferenceById(redacao.usuarioId());
-        var entity = RedacaoPersistenceMapper.toEntity(redacao, usuario);
+        var tema = temaRepository.getReferenceById(redacao.temaId());
+        var entity = RedacaoPersistenceMapper.toEntity(redacao, usuario, tema);
         return RedacaoPersistenceMapper.toDomain(repository.save(entity));
     }
 
@@ -34,6 +39,14 @@ public class RedacaoRepositoryAdapter implements RedacaoRepositoryPort {
     @Transactional(readOnly = true)
     public Optional<Redacao> buscarPorId(UUID id) {
         return repository.findById(id).map(RedacaoPersistenceMapper::toDomain);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Redacao> listarPorUsuarioId(UUID usuarioId) {
+        return repository.findByUsuario_IdOrderByEnviadaEmDesc(usuarioId).stream()
+                .map(RedacaoPersistenceMapper::toDomain)
+                .toList();
     }
 
     @Override

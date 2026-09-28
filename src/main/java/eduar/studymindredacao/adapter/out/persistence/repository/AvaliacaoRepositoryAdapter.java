@@ -37,6 +37,12 @@ public class AvaliacaoRepositoryAdapter implements AvaliacaoRepositoryPort {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Optional<Avaliacao> buscarPorRedacaoId(UUID redacaoId) {
+        return repository.findByRedacao_Id(redacaoId).map(AvaliacaoPersistenceMapper::toDomain);
+    }
+
+    @Override
     public void excluirPorId(UUID id) {
         repository.deleteById(id);
     }

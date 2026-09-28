@@ -37,6 +37,12 @@ public class PerfilAlunoRepositoryAdapter implements PerfilAlunoRepositoryPort {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Optional<PerfilAluno> buscarPorUsuarioId(UUID usuarioId) {
+        return repository.findByUsuario_Id(usuarioId).map(PerfilAlunoPersistenceMapper::toDomain);
+    }
+
+    @Override
     public void excluirPorId(UUID id) {
         repository.deleteById(id);
     }

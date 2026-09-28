@@ -1,55 +1,48 @@
 package eduar.studymindredacao.adapter.out.persistence.entity;
 
+import eduar.studymindredacao.domain.model.enums.OrigemTema;
 import jakarta.persistence.Column;
-import eduar.studymindredacao.domain.model.enums.NivelExperiencia;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "perfis_aluno")
+@Table(name = "temas")
 @Getter
 @Setter
 @NoArgsConstructor
-public class PerfilAlunoEntity {
+public class TemaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "usuario_id", nullable = false, unique = true)
-    private UsuarioEntity usuario;
+    @Column(nullable = false, length = 255)
+    private String titulo;
 
-    @Column(name = "meta_nota")
-    private Short metaNota;
+    @Column(name = "textos_motivadores", columnDefinition = "TEXT")
+    private String textosMotivadores;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "nivel_experiencia", length = 20)
-    private NivelExperiencia nivelExperiencia;
+    @Column(nullable = false, length = 20)
+    private OrigemTema origem;
 
-    @Column(name = "tempo_disponivel_semanal_min")
-    private Integer tempoDisponivelSemanalMin;
+    private Short ano;
+
+    @Column(nullable = false)
+    private Boolean ativo;
 
     @CreationTimestamp
     @Column(name = "criado_em", nullable = false, updatable = false)
     private OffsetDateTime criadoEm;
-
-    @UpdateTimestamp
-    @Column(name = "atualizado_em", nullable = false)
-    private OffsetDateTime atualizadoEm;
 }

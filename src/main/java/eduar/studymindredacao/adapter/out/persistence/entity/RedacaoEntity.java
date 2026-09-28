@@ -1,7 +1,11 @@
 package eduar.studymindredacao.adapter.out.persistence.entity;
 
 import jakarta.persistence.Column;
+import eduar.studymindredacao.domain.model.enums.StatusRedacao;
+import eduar.studymindredacao.domain.model.enums.TipoRedacao;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +25,10 @@ import java.util.UUID;
 @Entity
 @Table(
         name = "redacoes",
-        indexes = @Index(name = "idx_redacoes_usuario", columnList = "usuario_id, enviada_em")
+        indexes = {
+                @Index(name = "idx_redacoes_usuario", columnList = "usuario_id, enviada_em"),
+                @Index(name = "idx_redacoes_tema", columnList = "tema_id")
+        }
 )
 @Getter
 @Setter
@@ -35,14 +42,20 @@ public class RedacaoEntity {
     @JoinColumn(name = "usuario_id", nullable = false)
     private UsuarioEntity usuario;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "tema_id", nullable = false)
+    private TemaEntity tema;
+
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private String tipo;
+    private TipoRedacao tipo;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String texto;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private String status;
+    private StatusRedacao status;
 
     @CreationTimestamp
     @Column(name = "enviada_em", nullable = false, updatable = false)

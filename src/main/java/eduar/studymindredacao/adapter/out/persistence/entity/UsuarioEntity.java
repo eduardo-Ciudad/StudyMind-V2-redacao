@@ -1,7 +1,10 @@
 package eduar.studymindredacao.adapter.out.persistence.entity;
 
 import jakarta.persistence.Column;
+import eduar.studymindredacao.domain.model.enums.Role;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,8 +36,9 @@ public class UsuarioEntity {
     @Column(name = "senha_hash", nullable = false, length = 255)
     private String senhaHash;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private String role;
+    private Role role;
 
     @CreationTimestamp
     @Column(name = "criado_em", nullable = false, updatable = false)
