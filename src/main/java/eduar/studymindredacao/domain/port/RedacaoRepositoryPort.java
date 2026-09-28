@@ -2,6 +2,7 @@ package eduar.studymindredacao.domain.port;
 
 import eduar.studymindredacao.domain.model.Redacao;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -11,4 +12,6 @@ public interface RedacaoRepositoryPort {
     Optional<Redacao> buscarPorId(UUID id);
 
     void excluirPorId(UUID id);
+
+    List<Redacao> listarPorUsuarioId(UUID usuarioId);
 }

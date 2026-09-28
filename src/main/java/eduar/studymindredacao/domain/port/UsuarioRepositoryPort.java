@@ -11,4 +11,8 @@ public interface UsuarioRepositoryPort {
     Optional<Usuario> buscarPorId(UUID id);
 
     void excluirPorId(UUID id);
+
+    Optional<Usuario> buscarPorEmail(String email);
+
+    boolean existePorEmail(String email);
 }

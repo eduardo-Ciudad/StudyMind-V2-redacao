@@ -11,4 +11,6 @@ public interface AvaliacaoRepositoryPort {
     Optional<Avaliacao> buscarPorId(UUID id);
 
     void excluirPorId(UUID id);
+
+    Optional<Avaliacao> buscarPorRedacaoId(UUID redacaoId);
 }

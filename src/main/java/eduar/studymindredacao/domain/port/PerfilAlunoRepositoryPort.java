@@ -11,4 +11,6 @@ public interface PerfilAlunoRepositoryPort {
     Optional<PerfilAluno> buscarPorId(UUID id);
 
     void excluirPorId(UUID id);
+
+    Optional<PerfilAluno> buscarPorUsuarioId(UUID usuarioId);
 }
