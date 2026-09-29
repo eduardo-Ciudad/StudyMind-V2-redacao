@@ -1,0 +1,1327 @@
+{
+  "info": {
+    "_postman_id": "1f4e0eee-5f35-4cb3-a856-9fd394657c80",
+    "name": "StudyMind Redação — Redações",
+    "description": "Fluxo de correção de redações (Etapa 3).\n\nRode pelo Runner, na ordem. O setup cria dois alunos novos a cada execução, então dá para repetir sem limpar o banco.\n\n⚠️ A pasta 3 chama o Gemini de verdade (1 correção). A pasta 6 é opcional e gasta mais 2 correções para testar o limite diário de 3: desmarque-a no Runner se quiser economizar cota.\n\nPré-requisitos: aplicação rodando com GEMINI_API_KEY e JWT_SECRET definidos. Ajuste `baseUrl` se não estiver em http://localhost:8080.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Texto da redação como string JSON (com aspas e quebras de linha escapadas) para usar nos corpos",
+          "pm.collectionVariables.set(\"textoRedacaoJson\", JSON.stringify(pm.collectionVariables.get(\"textoRedacao\")));"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "0. Setup (alunos A e B)",
+      "item": [
+        {
+          "name": "Cadastro aluno A",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/cadastro",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "cadastro"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Aluno A\",\n  \"email\": \"{{emailA}}\",\n  \"senha\": \"{{senha}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"emailA\", `alunoa.${Date.now()}@teste.com`);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 201\", () => pm.response.to.have.status(201));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login aluno A",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{emailA}}\",\n  \"senha\": \"{{senha}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
+                  "pm.collectionVariables.set(\"tokenA\", pm.response.json().accessToken);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Cadastro aluno B",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/cadastro",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "cadastro"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Aluno B\",\n  \"email\": \"{{emailB}}\",\n  \"senha\": \"{{senha}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"emailB\", `alunob.${Date.now()}@teste.com`);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 201\", () => pm.response.to.have.status(201));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login aluno B",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{emailB}}\",\n  \"senha\": \"{{senha}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
+                  "pm.collectionVariables.set(\"tokenB\", pm.response.json().accessToken);"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1. Temas",
+      "item": [
+        {
+          "name": "Listar temas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/temas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "temas"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
+                  "",
+                  "const temas = pm.response.json();",
+                  "pm.test(\"Traz os 8 temas oficiais do seed\", () => pm.expect(temas.length).to.be.at.least(8));",
+                  "pm.test(\"Ordenados do mais recente para o mais antigo\", () => {",
+                  "    const anos = temas.filter(t => t.ano).map(t => t.ano);",
+                  "    pm.expect(anos).to.eql([...anos].sort((a, b) => b - a));",
+                  "});",
+                  "const cinema = temas.find(t => t.ano === 2019);",
+                  "pm.test(\"Tema de 2019 (cinema) disponível\", () => pm.expect(cinema).to.be.an(\"object\"));",
+                  "pm.collectionVariables.set(\"temaId\", cinema.id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Listar temas sem token (401)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/temas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "temas"
+              ]
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 401\", () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2. Envio — validações (não gastam correção)",
+      "item": [
+        {
+          "name": "Texto vazio (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"temaId\": \"{{temaId}}\",\n  \"tipo\": \"PRATICA\",\n  \"texto\": \"   \"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Corpo é ProblemDetail 400\", () => {",
+                  "    const b = pm.response.json();",
+                  "    pm.expect(b.status).to.eql(400);",
+                  "    pm.expect(b.detail).to.be.a(\"string\");",
+                  "});",
+                  "pm.test(\"Aponta o campo texto\", () => pm.expect(pm.response.json().erros).to.have.property(\"texto\"));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Texto acima de 5000 caracteres (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"temaId\": \"{{temaId}}\",\n  \"tipo\": \"PRATICA\",\n  \"texto\": \"{{textoLongo}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.collectionVariables.set(\"textoLongo\", \"a\".repeat(5001));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Corpo é ProblemDetail 400\", () => {",
+                  "    const b = pm.response.json();",
+                  "    pm.expect(b.status).to.eql(400);",
+                  "    pm.expect(b.detail).to.be.a(\"string\");",
+                  "});",
+                  "pm.test(\"Aponta o campo texto\", () => pm.expect(pm.response.json().erros).to.have.property(\"texto\"));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Sem temaId (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tipo\": \"PRATICA\",\n  \"texto\": {{textoRedacaoJson}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Corpo é ProblemDetail 400\", () => {",
+                  "    const b = pm.response.json();",
+                  "    pm.expect(b.status).to.eql(400);",
+                  "    pm.expect(b.detail).to.be.a(\"string\");",
+                  "});",
+                  "pm.test(\"Aponta o campo temaId\", () => pm.expect(pm.response.json().erros).to.have.property(\"temaId\"));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Tipo inexistente (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"temaId\": \"{{temaId}}\",\n  \"tipo\": \"RASCUNHO\",\n  \"texto\": {{textoRedacaoJson}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Corpo é ProblemDetail 400\", () => {",
+                  "    const b = pm.response.json();",
+                  "    pm.expect(b.status).to.eql(400);",
+                  "    pm.expect(b.detail).to.be.a(\"string\");",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "temaId malformado (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"temaId\": \"nao-e-uuid\",\n  \"tipo\": \"PRATICA\",\n  \"texto\": {{textoRedacaoJson}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Corpo é ProblemDetail 400\", () => {",
+                  "    const b = pm.response.json();",
+                  "    pm.expect(b.status).to.eql(400);",
+                  "    pm.expect(b.detail).to.be.a(\"string\");",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Tema inexistente (404)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"temaId\": \"{{$guid}}\",\n  \"tipo\": \"PRATICA\",\n  \"texto\": {{textoRedacaoJson}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 404\", () => pm.response.to.have.status(404));",
+                  "pm.test(\"Corpo é ProblemDetail 404\", () => {",
+                  "    const b = pm.response.json();",
+                  "    pm.expect(b.status).to.eql(404);",
+                  "    pm.expect(b.detail).to.be.a(\"string\");",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Enviar sem token (401)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"temaId\": \"{{temaId}}\",\n  \"tipo\": \"PRATICA\",\n  \"texto\": {{textoRedacaoJson}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 401\", () => pm.response.to.have.status(401));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3. Correção pelo Gemini (gasta 1 correção)",
+      "item": [
+        {
+          "name": "Enviar redação (201, chama o Gemini)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"temaId\": \"{{temaId}}\",\n  \"tipo\": \"PRATICA\",\n  \"texto\": {{textoRedacaoJson}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "description": "Chama o Gemini de verdade e gasta 1 das 3 correções do dia do aluno A. Pode levar de 10 a 30 segundos."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 201\", () => pm.response.to.have.status(201));",
+                  "",
+                  "const b = pm.response.json();",
+                  "pm.test(\"Redação avaliada com o tema escolhido\", () => {",
+                  "    pm.expect(b.status).to.eql(\"AVALIADA\");",
+                  "    pm.expect(b.tema.id).to.eql(pm.collectionVariables.get(\"temaId\"));",
+                  "    pm.expect(b.avaliacao).to.be.an(\"object\");",
+                  "});",
+                  "pm.test(\"5 competências, C1 a C5, só com notas oficiais\", () => {",
+                  "    const c = b.avaliacao.competencias;",
+                  "    pm.expect(c.map(x => x.numero)).to.eql([1, 2, 3, 4, 5]);",
+                  "    c.forEach(x => pm.expect([0, 40, 80, 120, 160, 200]).to.include(x.nota));",
+                  "    c.forEach(x => pm.expect(x.resumo).to.be.a(\"string\").and.not.empty);",
+                  "});",
+                  "pm.test(\"notaTotal é a soma das competências\", () => {",
+                  "    const soma = b.avaliacao.competencias.reduce((s, x) => s + x.nota, 0);",
+                  "    pm.expect(b.avaliacao.notaTotal).to.eql(soma);",
+                  "});",
+                  "pm.test(\"Não expõe dados internos da IA\", () => {",
+                  "    pm.expect(b.avaliacao).to.not.have.any.keys(\"modeloIa\", \"tokensEntrada\", \"tokensSaida\", \"respostaBrutaJson\");",
+                  "});",
+                  "",
+                  "pm.collectionVariables.set(\"redacaoId\", b.id);",
+                  "pm.collectionVariables.set(\"notaTotal\", b.avaliacao.notaTotal);",
+                  "console.log(\"Nota:\", b.avaliacao.notaTotal, \"| Diagnóstico:\", b.avaliacao.diagnostico);"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4. Consultas",
+      "item": [
+        {
+          "name": "Histórico do aluno (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
+                  "",
+                  "const lista = pm.response.json();",
+                  "pm.test(\"A redação enviada está no topo, com a nota\", () => {",
+                  "    pm.expect(lista[0].id).to.eql(pm.collectionVariables.get(\"redacaoId\"));",
+                  "    pm.expect(lista[0].notaTotal).to.eql(Number(pm.collectionVariables.get(\"notaTotal\")));",
+                  "    pm.expect(lista[0].temaTitulo).to.be.a(\"string\").and.not.empty;",
+                  "    pm.expect(lista[0].status).to.eql(\"AVALIADA\");",
+                  "});",
+                  "pm.test(\"Resumo não traz o texto inteiro\", () => pm.expect(lista[0]).to.not.have.property(\"texto\"));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Detalhe da redação (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes/{{redacaoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes",
+                "{{redacaoId}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
+                  "",
+                  "const b = pm.response.json();",
+                  "pm.test(\"Redação avaliada com o tema escolhido\", () => {",
+                  "    pm.expect(b.status).to.eql(\"AVALIADA\");",
+                  "    pm.expect(b.tema.id).to.eql(pm.collectionVariables.get(\"temaId\"));",
+                  "    pm.expect(b.avaliacao).to.be.an(\"object\");",
+                  "});",
+                  "pm.test(\"5 competências, C1 a C5, só com notas oficiais\", () => {",
+                  "    const c = b.avaliacao.competencias;",
+                  "    pm.expect(c.map(x => x.numero)).to.eql([1, 2, 3, 4, 5]);",
+                  "    c.forEach(x => pm.expect([0, 40, 80, 120, 160, 200]).to.include(x.nota));",
+                  "    c.forEach(x => pm.expect(x.resumo).to.be.a(\"string\").and.not.empty);",
+                  "});",
+                  "pm.test(\"notaTotal é a soma das competências\", () => {",
+                  "    const soma = b.avaliacao.competencias.reduce((s, x) => s + x.nota, 0);",
+                  "    pm.expect(b.avaliacao.notaTotal).to.eql(soma);",
+                  "});",
+                  "pm.test(\"Não expõe dados internos da IA\", () => {",
+                  "    pm.expect(b.avaliacao).to.not.have.any.keys(\"modeloIa\", \"tokensEntrada\", \"tokensSaida\", \"respostaBrutaJson\");",
+                  "});",
+                  "",
+                  "pm.test(\"Traz o texto enviado\", () => pm.expect(b.texto).to.eql(pm.collectionVariables.get(\"textoRedacao\")));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Redação inexistente (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes/{{$guid}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes",
+                "{{$guid}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 404\", () => pm.response.to.have.status(404));",
+                  "pm.test(\"Corpo é ProblemDetail 404\", () => {",
+                  "    const b = pm.response.json();",
+                  "    pm.expect(b.status).to.eql(404);",
+                  "    pm.expect(b.detail).to.be.a(\"string\");",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "ID malformado (400)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes/abc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes",
+                "abc"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 400\", () => pm.response.to.have.status(400));",
+                  "pm.test(\"Corpo é ProblemDetail 400\", () => {",
+                  "    const b = pm.response.json();",
+                  "    pm.expect(b.status).to.eql(400);",
+                  "    pm.expect(b.detail).to.be.a(\"string\");",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "5. Isolamento entre alunos",
+      "item": [
+        {
+          "name": "Aluno B não vê redação do A (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes/{{redacaoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes",
+                "{{redacaoId}}"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 404\", () => pm.response.to.have.status(404));",
+                  "pm.test(\"Corpo é ProblemDetail 404\", () => {",
+                  "    const b = pm.response.json();",
+                  "    pm.expect(b.status).to.eql(404);",
+                  "    pm.expect(b.detail).to.be.a(\"string\");",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Histórico do aluno B vazio (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenB}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Lista vazia\", () => pm.expect(pm.response.json()).to.eql([]));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "6. Limite diário (opcional, gasta 2 correções)",
+      "item": [
+        {
+          "name": "Segunda correção do dia (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"temaId\": \"{{temaId}}\",\n  \"tipo\": \"PRATICA\",\n  \"texto\": {{textoRedacaoJson}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 201\", () => pm.response.to.have.status(201));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Terceira correção do dia (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"temaId\": \"{{temaId}}\",\n  \"tipo\": \"PRATICA\",\n  \"texto\": {{textoRedacaoJson}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 201\", () => pm.response.to.have.status(201));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Quarta correção bloqueada (429)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"temaId\": \"{{temaId}}\",\n  \"tipo\": \"PRATICA\",\n  \"texto\": {{textoRedacaoJson}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 429\", () => pm.response.to.have.status(429));",
+                  "pm.test(\"Corpo é ProblemDetail 429\", () => {",
+                  "    const b = pm.response.json();",
+                  "    pm.expect(b.status).to.eql(429);",
+                  "    pm.expect(b.detail).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(\"Informa o limite\", () => pm.expect(pm.response.json().limite).to.eql(3));",
+                  "pm.test(\"Retry-After com os segundos até meia-noite\", () => {",
+                  "    const s = Number(pm.response.headers.get(\"Retry-After\"));",
+                  "    pm.expect(s).to.be.within(1, 86400);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Histórico com as 3 redações (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/redacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "redacoes"
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenA}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"3 redações, nenhuma a mais\", () => pm.expect(pm.response.json().length).to.eql(3));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "senha",
+      "value": "senhaSegura123"
+    },
+    {
+      "key": "textoRedacao",
+      "value": "No filme \"Cinema Paradiso\", a sala de projeção de uma pequena cidade italiana é o espaço onde toda a comunidade se encontra, ri e se emociona junta. Essa imagem, porém, está distante da realidade de grande parte dos brasileiros, já que o acesso ao cinema no país continua concentrado em poucas regiões e em determinadas classes sociais. Diante disso, é necessário discutir a desigual distribuição das salas pelo território e o alto custo dos ingressos, fatores que impedem a democratização dessa forma de arte.\n\nEm primeiro lugar, a concentração geográfica das salas de exibição limita o contato da população com o cinema. Grande parte dos municípios brasileiros não possui nenhuma sala, e as existentes estão, em sua maioria, dentro de shoppings localizados em bairros centrais das capitais. Dessa forma, moradores de cidades pequenas e de periferias precisam percorrer longas distâncias para assistir a um filme, o que transforma uma atividade cultural em um privilégio. Como defendia o sociólogo Pierre Bourdieu, o capital cultural é distribuído de maneira desigual, e a ausência de equipamentos culturais próximos aprofunda essa diferença entre os grupos sociais.\n\nAlém disso, o preço elevado dos ingressos afasta as famílias de baixa renda. Somando o valor da entrada, do transporte e da alimentação, uma ida ao cinema pode comprometer uma parte significativa do orçamento de quem ganha um salário mínimo. Nesse contexto, muitos jovens crescem sem nunca ter frequentado uma sala de exibição, perdendo não apenas o lazer, mas também o contato com produções nacionais que retratam a própria realidade brasileira e estimulam o pensamento crítico.\n\nPortanto, cabe ao Ministério da Cultura, em parceria com as prefeituras, ampliar o número de salas públicas em cidades pequenas e bairros periféricos, por meio de editais que financiem a reforma de espaços já existentes, como escolas e centros comunitários, para que funcionem como cinemas de bairro. Ademais, o Governo Federal deve criar um programa de meia-entrada ampliada para estudantes da rede pública e famílias inscritas em programas sociais, com o objetivo de reduzir o custo das sessões. Assim, o cinema poderá cumprir, no Brasil, o papel de encontro coletivo representado em \"Cinema Paradiso\"."
+    },
+    {
+      "key": "textoRedacaoJson",
+      "value": ""
+    },
+    {
+      "key": "emailA",
+      "value": ""
+    },
+    {
+      "key": "emailB",
+      "value": ""
+    },
+    {
+      "key": "tokenA",
+      "value": ""
+    },
+    {
+      "key": "tokenB",
+      "value": ""
+    },
+    {
+      "key": "temaId",
+      "value": ""
+    },
+    {
+      "key": "redacaoId",
+      "value": ""
+    },
+    {
+      "key": "notaTotal",
+      "value": ""
+    },
+    {
+      "key": "textoLongo",
+      "value": ""
+    }
+  ]
+}
