@@ -48,4 +48,25 @@ public class UsoIADiarioRepositoryAdapter implements UsoIADiarioRepositoryPort {
     public void excluirPorId(UUID id) {
         repository.deleteById(id);
     }
+
+    @Override
+    @Transactional
+    public boolean reservarCorrecao(UUID usuarioId, LocalDate data, int limite) {
+        if (limite <= 0) {
+            return false;
+        }
+        return repository.reservarCorrecao(usuarioId, data, limite) == 1;
+    }
+
+    @Override
+    @Transactional
+    public void liberarCorrecao(UUID usuarioId, LocalDate data) {
+        repository.liberarCorrecao(usuarioId, data);
+    }
+
+    @Override
+    @Transactional
+    public void registrarTokens(UUID usuarioId, LocalDate data, int tokensEntrada, int tokensSaida) {
+        repository.registrarTokens(usuarioId, data, tokensEntrada, tokensSaida);
+    }
 }
