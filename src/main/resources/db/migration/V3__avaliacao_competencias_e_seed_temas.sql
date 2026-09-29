@@ -31,4 +31,4 @@ INSERT INTO temas (titulo, origem, ano) VALUES
     ('O estigma associado às doenças mentais na sociedade brasileira', 'ENEM_OFICIAL', 2020),
     ('Democratização do acesso ao cinema no Brasil', 'ENEM_OFICIAL', 2019),
     ('Manipulação do comportamento do usuário pelo controle de dados na internet', 'ENEM_OFICIAL', 2018),
-    ('Desafios para a formação educacional de surdos no Brasil', 'ENEM_OFICIAL', 2017);ad
+    ('Desafios para a formação educacional de surdos no Brasil', 'ENEM_OFICIAL', 2017);
