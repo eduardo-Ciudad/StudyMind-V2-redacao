@@ -4,6 +4,7 @@ import eduar.studymindredacao.domain.model.Avaliacao;
 import eduar.studymindredacao.domain.port.AvaliacaoRepositoryPort;
 
 import java.time.OffsetDateTime;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,11 @@ class AvaliacaoRepositoryEmMemoria implements AvaliacaoRepositoryPort {
     @Override
     public Optional<Avaliacao> buscarPorRedacaoId(UUID redacaoId) {
         return avaliacoes.values().stream().filter(a -> a.redacaoId().equals(redacaoId)).findFirst();
+    }
+
+    @Override
+    public List<Avaliacao> buscarPorRedacaoIds(Collection<UUID> redacaoIds) {
+        return avaliacoes.values().stream().filter(a -> redacaoIds.contains(a.redacaoId())).toList();
     }
 
     @Override
