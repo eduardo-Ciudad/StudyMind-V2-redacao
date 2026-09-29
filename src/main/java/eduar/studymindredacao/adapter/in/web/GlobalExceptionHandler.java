@@ -1,20 +1,36 @@
 package eduar.studymindredacao.adapter.in.web;
 
+import eduar.studymindredacao.domain.exception.AvaliacaoIAException;
 import eduar.studymindredacao.domain.exception.CredenciaisInvalidasException;
 import eduar.studymindredacao.domain.exception.EmailJaCadastradoException;
+import eduar.studymindredacao.domain.exception.LimiteDiarioAtingidoException;
+import eduar.studymindredacao.domain.exception.RedacaoNaoEncontradaException;
+import eduar.studymindredacao.domain.exception.TemaNaoEncontradoException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+import java.time.Clock;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    private final Clock clock;
+
+    public GlobalExceptionHandler(Clock clock) {
+        this.clock = clock;
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ProblemDetail validacao(MethodArgumentNotValidException ex) {
@@ -51,5 +67,42 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ProblemDetail conflitoDeDados(DataIntegrityViolationException ex) {
         return ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, "Os dados conflitam com um registro existente");
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ProblemDetail parametroInvalido(MethodArgumentTypeMismatchException ex) {
+        return ProblemDetail.forStatusAndDetail(
+                HttpStatus.BAD_REQUEST, "Parâmetro '" + ex.getName() + "' com formato inválido"
+        );
+    }
+
+    @ExceptionHandler({TemaNaoEncontradoException.class, RedacaoNaoEncontradaException.class})
+    public ProblemDetail naoEncontrado(RuntimeException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+
+    // 429 + Retry-After com os segundos até a meia-noite (no fuso da aplicação), quando o limite zera
+    @ExceptionHandler(LimiteDiarioAtingidoException.class)
+    public ResponseEntity<ProblemDetail> limiteDiario(LimiteDiarioAtingidoException ex) {
+        var problema = ProblemDetail.forStatusAndDetail(HttpStatus.TOO_MANY_REQUESTS, ex.getMessage());
+        problema.setProperty("limite", ex.getLimite());
+        return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
+                .header(HttpHeaders.RETRY_AFTER, String.valueOf(segundosAteAmanha()))
+                .body(problema);
+    }
+
+    // A causa real vai para o log (adapter/caso de uso); o aluno recebe uma mensagem neutra
+    @ExceptionHandler(AvaliacaoIAException.class)
+    public ProblemDetail falhaNaCorrecao(AvaliacaoIAException ex) {
+        return ProblemDetail.forStatusAndDetail(
+                HttpStatus.BAD_GATEWAY,
+                "Não foi possível corrigir a redação agora. Tente novamente em alguns minutos; esta tentativa não foi descontada do seu limite."
+        );
+    }
+
+    long segundosAteAmanha() {
+        ZonedDateTime agora = ZonedDateTime.now(clock);
+        ZonedDateTime meiaNoite = LocalDate.now(clock).plusDays(1).atStartOfDay(clock.getZone());
+        return Math.max(1, Duration.between(agora, meiaNoite).toSeconds());
     }
 }
