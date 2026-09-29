@@ -1,5 +1,7 @@
 package eduar.studymindredacao.adapter.out.persistence.entity;
 
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -7,16 +9,21 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -51,10 +58,18 @@ public class AvaliacaoEntity {
     @Column(name = "nota_total", nullable = false)
     private Short notaTotal;
 
-    @Column(name = "pontos_fortes", columnDefinition = "TEXT")
+    @Column(nullable = false)
+    private Boolean anulada = false;
+
+    @Column(name = "motivo_anulacao", columnDefinition = "TEXT")
+    private String motivoAnulacao;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "pontos_fortes", columnDefinition = "jsonb")
     private String pontosFortes;
 
-    @Column(name = "pontos_desenvolvimento", columnDefinition = "TEXT")
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "pontos_desenvolvimento", columnDefinition = "jsonb")
     private String pontosDesenvolvimento;
 
     @Column(columnDefinition = "TEXT")
@@ -76,4 +91,14 @@ public class AvaliacaoEntity {
     @CreationTimestamp
     @Column(name = "avaliado_em", nullable = false, updatable = false)
     private OffsetDateTime avaliadoEm;
+
+    @OneToMany(mappedBy = "avaliacao", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("numero ASC")
+    @BatchSize(size = 25)
+    private List<AvaliacaoCompetenciaEntity> competencias = new ArrayList<>();
+
+    public void adicionarCompetencia(AvaliacaoCompetenciaEntity competencia) {
+        competencia.setAvaliacao(this);
+        competencias.add(competencia);
+    }
 }
