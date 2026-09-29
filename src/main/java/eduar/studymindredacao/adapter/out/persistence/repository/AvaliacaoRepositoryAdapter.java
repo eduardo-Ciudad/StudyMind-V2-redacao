@@ -6,6 +6,8 @@ import eduar.studymindredacao.domain.port.AvaliacaoRepositoryPort;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -45,5 +47,16 @@ public class AvaliacaoRepositoryAdapter implements AvaliacaoRepositoryPort {
     @Override
     public void excluirPorId(UUID id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Avaliacao> buscarPorRedacaoIds(Collection<UUID> redacaoIds) {
+        if (redacaoIds == null || redacaoIds.isEmpty()) {
+            return List.of();
+        }
+        return repository.findByRedacao_IdIn(redacaoIds).stream()
+                .map(AvaliacaoPersistenceMapper::toDomain)
+                .toList();
     }
 }
