@@ -14,4 +14,10 @@ public interface UsoIADiarioRepositoryPort {
     Optional<UsoIADiario> buscarPorUsuarioIdEData(UUID usuarioId, LocalDate data);
 
     void excluirPorId(UUID id);
+
+    boolean reservarCorrecao(UUID usuarioId, LocalDate data, int limite);
+
+    void liberarCorrecao(UUID usuarioId, LocalDate data);
+
+    void registrarTokens(UUID usuarioId, LocalDate data, int tokensEntrada, int tokensSaida);
 }
