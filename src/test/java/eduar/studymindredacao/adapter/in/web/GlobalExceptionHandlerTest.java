@@ -1,0 +1,52 @@
+package eduar.studymindredacao.adapter.in.web;
+
+import eduar.studymindredacao.domain.exception.AvaliacaoIAException;
+import eduar.studymindredacao.domain.exception.LimiteDiarioAtingidoException;
+import eduar.studymindredacao.domain.exception.RedacaoNaoEncontradaException;
+import eduar.studymindredacao.domain.exception.TemaNaoEncontradoException;
+import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+
+import java.time.Clock;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.util.UUID;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+class GlobalExceptionHandlerTest {
+    // 22:30 em São Paulo (01:30 UTC do dia seguinte): faltam 1h30 = 5400s para a meia-noite local
+    private final Clock relogio = Clock.fixed(Instant.parse("2026-09-29T01:30:00Z"), ZoneId.of("America/Sao_Paulo"));
+    private final GlobalExceptionHandler handler = new GlobalExceptionHandler(relogio);
+
+    @Test
+    void limiteDiarioResponde429ComLimiteERetryAfterAteMeiaNoiteLocal() {
+        var resposta = handler.limiteDiario(new LimiteDiarioAtingidoException(3));
+
+        assertThat(resposta.getStatusCode()).isEqualTo(HttpStatus.TOO_MANY_REQUESTS);
+        assertThat(resposta.getHeaders().getFirst(HttpHeaders.RETRY_AFTER)).isEqualTo("5400");
+        assertThat(resposta.getBody().getProperties()).containsEntry("limite", 3);
+    }
+
+    @Test
+    void falhaDaIAResponde502SemVazarDetalheInterno() {
+        var problema = handler.falhaNaCorrecao(new AvaliacaoIAException("Gemini recusou a requisição (HTTP 403) chave=xyz"));
+
+        assertThat(problema.getStatus()).isEqualTo(502);
+        assertThat(problema.getDetail()).doesNotContain("Gemini").doesNotContain("403").doesNotContain("xyz");
+    }
+
+    @Test
+    void temaERedacaoInexistentesRespondem404() {
+        assertThat(handler.naoEncontrado(new TemaNaoEncontradoException(UUID.randomUUID())).getStatus()).isEqualTo(404);
+        assertThat(handler.naoEncontrado(new RedacaoNaoEncontradaException(UUID.randomUUID())).getStatus()).isEqualTo(404);
+    }
+
+    @Test
+    void retryAfterNuncaEZero() {
+        var quaseMeiaNoite = Clock.fixed(Instant.parse("2026-09-29T02:59:59.900Z"), ZoneId.of("America/Sao_Paulo"));
+
+        assertThat(new GlobalExceptionHandler(quaseMeiaNoite).segundosAteAmanha()).isEqualTo(1);
+    }
+}
