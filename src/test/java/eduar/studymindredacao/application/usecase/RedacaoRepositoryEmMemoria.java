@@ -1,6 +1,7 @@
 package eduar.studymindredacao.application.usecase;
 
 import eduar.studymindredacao.domain.model.Redacao;
+import eduar.studymindredacao.domain.model.enums.StatusRedacao;
 import eduar.studymindredacao.domain.port.RedacaoRepositoryPort;
 
 import java.time.OffsetDateTime;
@@ -43,5 +44,12 @@ class RedacaoRepositoryEmMemoria implements RedacaoRepositoryPort {
 
     List<Redacao> todas() {
         return List.copyOf(redacoes.values());
+    }
+
+    @Override
+    public List<Redacao> listarPorStatusEnviadasAntesDe(StatusRedacao status, OffsetDateTime limite) {
+        return redacoes.values().stream()
+                .filter(r -> r.status() == status && r.enviadaEm().isBefore(limite))
+                .toList();
     }
 }
