@@ -30,6 +30,14 @@ class GeminiRespostaParserTest {
     }
 
     @Test
+    void somaTokensDeRaciocinioNaSaida() {
+        var resultado = parser.interpretar(envelope(AVALIACAO_VALIDA, 900), "modelo-config");
+
+        assertThat(resultado.tokensEntrada()).isEqualTo(2100);
+        assertThat(resultado.tokensSaida()).isEqualTo(650 + 900);
+    }
+
+    @Test
     void agrupaProblemasPorCompetencia() {
         var resultado = parser.interpretar(envelope(AVALIACAO_VALIDA), "modelo-config");
 
