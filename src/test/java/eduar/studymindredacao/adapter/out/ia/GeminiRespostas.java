@@ -52,13 +52,21 @@ final class GeminiRespostas {
 
     /** Embrulha o texto gerado no envelope HTTP do Gemini. */
     static String envelope(String textoGerado) {
+        return envelope(textoGerado, 0);
+    }
+
+    /** Mesmo envelope, informando também os tokens de raciocínio (0 = campo ausente). */
+    static String envelope(String textoGerado, int tokensRaciocinio) {
         ObjectNode raiz = JSON.createObjectNode();
         ObjectNode candidato = raiz.putArray("candidates").addObject();
         candidato.putObject("content").put("role", "model").putArray("parts").addObject().put("text", textoGerado);
         candidato.put("finishReason", "STOP");
-        raiz.putObject("usageMetadata")
-                .put("promptTokenCount", 2100)
-                .put("candidatesTokenCount", 650);
+        ObjectNode uso = raiz.putObject("usageMetadata");
+        uso.put("promptTokenCount", 2100);
+        uso.put("candidatesTokenCount", 650);
+        if (tokensRaciocinio > 0) {
+            uso.put("thoughtsTokenCount", tokensRaciocinio);
+        }
         raiz.put("modelVersion", "gemini-teste-001");
         return JSON.writeValueAsString(raiz);
     }
