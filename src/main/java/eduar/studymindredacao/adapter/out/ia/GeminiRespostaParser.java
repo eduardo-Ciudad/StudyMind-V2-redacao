@@ -62,7 +62,8 @@ public class GeminiRespostaParser {
                     texto(avaliacao.path("diagnostico")),
                     modelo(raiz, modeloConfigurado),
                     uso.path("promptTokenCount").asInt(0),
-                    uso.path("candidatesTokenCount").asInt(0),
+                    // tokens de raciocínio são cobrados como saída, então entram na conta
+                    uso.path("candidatesTokenCount").asInt(0) + uso.path("thoughtsTokenCount").asInt(0),
                     json.writeValueAsString(avaliacao)
             );
         } catch (IllegalArgumentException e) {
