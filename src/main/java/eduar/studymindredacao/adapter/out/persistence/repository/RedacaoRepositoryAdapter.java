@@ -2,10 +2,12 @@ package eduar.studymindredacao.adapter.out.persistence.repository;
 
 import eduar.studymindredacao.adapter.out.persistence.mapper.RedacaoPersistenceMapper;
 import eduar.studymindredacao.domain.model.Redacao;
+import eduar.studymindredacao.domain.model.enums.StatusRedacao;
 import eduar.studymindredacao.domain.port.RedacaoRepositoryPort;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -52,5 +54,13 @@ public class RedacaoRepositoryAdapter implements RedacaoRepositoryPort {
     @Override
     public void excluirPorId(UUID id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Redacao> listarPorStatusEnviadasAntesDe(StatusRedacao status, OffsetDateTime limite) {
+        return repository.findByStatusAndEnviadaEmBefore(status, limite).stream()
+                .map(RedacaoPersistenceMapper::toDomain)
+                .toList();
     }
 }
