@@ -56,6 +56,11 @@ class UsoIADiarioEmMemoria implements UsoIADiarioRepositoryPort {
     }
 
     @Override
+    public int somarCorrecoesDoDia(LocalDate data) {
+        return usos.values().stream().filter(u -> data.equals(u.data())).mapToInt(UsoIADiario::qtdCorrecoes).sum();
+    }
+
+    @Override
     public void registrarTokens(UUID usuarioId, LocalDate data, int tokensEntrada, int tokensSaida) {
         var atual = usoDoDia(usuarioId, data);
         salvar(new UsoIADiario(atual.id(), usuarioId, data, atual.tokensEntrada() + tokensEntrada,
