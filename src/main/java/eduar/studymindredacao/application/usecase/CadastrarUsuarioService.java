@@ -1,5 +1,6 @@
 package eduar.studymindredacao.application.usecase;
 
+import eduar.studymindredacao.domain.exception.CadastroFechadoException;
 import eduar.studymindredacao.domain.exception.EmailJaCadastradoException;
 import eduar.studymindredacao.domain.model.Usuario;
 import eduar.studymindredacao.domain.model.enums.Role;
@@ -15,10 +16,16 @@ public class CadastrarUsuarioService {
 
     private final UsuarioRepositoryPort usuarioRepository;
     private final SenhaEncoderPort senhaEncoder;
+    private final PoliticaCadastro politica;
 
-    public CadastrarUsuarioService(UsuarioRepositoryPort usuarioRepository, SenhaEncoderPort senhaEncoder) {
+    public CadastrarUsuarioService(
+            UsuarioRepositoryPort usuarioRepository,
+            SenhaEncoderPort senhaEncoder,
+            PoliticaCadastro politica
+    ) {
         this.usuarioRepository = usuarioRepository;
         this.senhaEncoder = senhaEncoder;
+        this.politica = politica;
     }
 
     @Transactional
@@ -29,6 +36,10 @@ public class CadastrarUsuarioService {
         }
 
         String emailNormalizado = email.trim().toLowerCase();
+        // Antes de consultar o banco: com o cadastro fechado, ninguém de fora descobre quais e-mails existem
+        if (!politica.permite(emailNormalizado)) {
+            throw new CadastroFechadoException();
+        }
         if (usuarioRepository.existePorEmail(emailNormalizado)) {
             throw new EmailJaCadastradoException(emailNormalizado);
         }
