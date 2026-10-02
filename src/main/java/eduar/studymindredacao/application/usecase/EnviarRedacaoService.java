@@ -1,6 +1,7 @@
 package eduar.studymindredacao.application.usecase;
 
 import eduar.studymindredacao.domain.exception.LimiteDiarioAtingidoException;
+import eduar.studymindredacao.domain.exception.LimiteGlobalAtingidoException;
 import eduar.studymindredacao.domain.exception.TemaNaoEncontradoException;
 import eduar.studymindredacao.domain.model.Redacao;
 import eduar.studymindredacao.domain.model.SolicitacaoAvaliacao;
@@ -37,6 +38,7 @@ public class EnviarRedacaoService {
     private final ConcluirAvaliacaoService concluirAvaliacao;
     private final Clock clock;
     private final int limiteDiario;
+    private final int limiteGlobal;
 
     public EnviarRedacaoService(
             TemaRepositoryPort temaRepository,
@@ -45,7 +47,8 @@ public class EnviarRedacaoService {
             AvaliacaoIAPort avaliacaoIA,
             ConcluirAvaliacaoService concluirAvaliacao,
             Clock clock,
-            @Value("${app.limites.correcoes-diarias-free}") int limiteDiario
+            @Value("${app.limites.correcoes-diarias-free}") int limiteDiario,
+            @Value("${app.limites.correcoes-diarias-globais}") int limiteGlobal
     ) {
         this.temaRepository = temaRepository;
         this.redacaoRepository = redacaoRepository;
@@ -54,6 +57,7 @@ public class EnviarRedacaoService {
         this.concluirAvaliacao = concluirAvaliacao;
         this.clock = clock;
         this.limiteDiario = limiteDiario;
+        this.limiteGlobal = limiteGlobal;
     }
 
     public RedacaoDetalhada enviar(UUID usuarioId, UUID temaId, TipoRedacao tipo, String texto) {
@@ -63,6 +67,11 @@ public class EnviarRedacaoService {
                 .orElseThrow(() -> new TemaNaoEncontradoException(temaId));
 
         LocalDate hoje = LocalDate.now(clock);
+        // Teto de custo do sistema: checado antes da reserva do aluno. Aproximado sob concorrência
+        // (dois envios simultâneos podem passar do teto em 1), o que basta para limitar o gasto.
+        if (usoRepository.somarCorrecoesDoDia(hoje) >= limiteGlobal) {
+            throw new LimiteGlobalAtingidoException();
+        }
         if (!usoRepository.reservarCorrecao(usuarioId, hoje, limiteDiario)) {
             throw new LimiteDiarioAtingidoException(limiteDiario);
         }
@@ -81,7 +90,7 @@ public class EnviarRedacaoService {
             var resultado = avaliacaoIA.avaliar(new SolicitacaoAvaliacao(tema.titulo(), texto));
             return concluirAvaliacao.concluir(redacao, tema, resultado, hoje);
         } catch (RuntimeException e) {
-            log.warn("Correção da redação {} falhou: {}", redacao.id(), e.getMessage());
+            log.warn("Correção da redação {} falhou: {}", redacao.id(), LogSeguro.limpar(e.getMessage()));
             marcarComoErro(redacao, e);
             usoRepository.liberarCorrecao(usuarioId, hoje);
             throw e;
