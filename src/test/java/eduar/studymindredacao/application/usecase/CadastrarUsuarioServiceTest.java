@@ -1,5 +1,6 @@
 package eduar.studymindredacao.application.usecase;
 
+import eduar.studymindredacao.domain.exception.CadastroFechadoException;
 import eduar.studymindredacao.domain.exception.EmailJaCadastradoException;
 import eduar.studymindredacao.domain.model.enums.Role;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +16,7 @@ class CadastrarUsuarioServiceTest {
     @BeforeEach
     void setUp() {
         repository = new UsuarioRepositoryEmMemoria();
-        service = new CadastrarUsuarioService(repository, new SenhaEncoderFake());
+        service = new CadastrarUsuarioService(repository, new SenhaEncoderFake(), PoliticaCadastro.aberta());
     }
 
     @Test
@@ -50,5 +51,25 @@ class CadastrarUsuarioServiceTest {
 
         assertThatThrownBy(() -> service.cadastrar("Eduardo", "edu@exemplo.com", senhaLonga))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void cadastroFechadoRecusaEmailForaDaListaSemGravarNada() {
+        var fechado = new CadastrarUsuarioService(repository, new SenhaEncoderFake(),
+                PoliticaCadastro.de(false, "amigo@exemplo.com"));
+
+        assertThatThrownBy(() -> fechado.cadastrar("Estranho", "estranho@exemplo.com", "senhaSegura123"))
+                .isInstanceOf(CadastroFechadoException.class);
+        assertThat(repository.existePorEmail("estranho@exemplo.com")).isFalse();
+    }
+
+    @Test
+    void cadastroFechadoAceitaEmailDaListaIgnorandoMaiusculasEEspacos() {
+        var fechado = new CadastrarUsuarioService(repository, new SenhaEncoderFake(),
+                PoliticaCadastro.de(false, " Amigo@Exemplo.com , outra@exemplo.com"));
+
+        var usuario = fechado.cadastrar("Amigo", "  AMIGO@exemplo.COM ", "senhaSegura123");
+
+        assertThat(usuario.email()).isEqualTo("amigo@exemplo.com");
     }
 }
