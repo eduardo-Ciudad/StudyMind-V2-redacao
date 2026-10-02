@@ -19,5 +19,8 @@ public interface UsoIADiarioRepositoryPort {
 
     void liberarCorrecao(UUID usuarioId, LocalDate data);
 
+    /** Soma das correções reservadas no dia, de todos os usuários (teto global de custo). */
+    int somarCorrecoesDoDia(LocalDate data);
+
     void registrarTokens(UUID usuarioId, LocalDate data, int tokensEntrada, int tokensSaida);
 }
