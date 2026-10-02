@@ -32,6 +32,9 @@ interface UsoIADiarioJpaRepository extends JpaRepository<UsoIADiarioEntity, UUID
             """, nativeQuery = true)
     int liberarCorrecao(@Param("usuarioId") UUID usuarioId, @Param("data") LocalDate data);
 
+    @Query(value = "SELECT COALESCE(SUM(qtd_correcoes), 0) FROM uso_ia_diario WHERE data = :data", nativeQuery = true)
+    int somarCorrecoesDoDia(@Param("data") LocalDate data);
+
     @Modifying
     @Query(value = """
             UPDATE uso_ia_diario
