@@ -33,7 +33,7 @@ class AutenticarUsuarioServiceTest {
     void setUp() {
         var repository = new UsuarioRepositoryEmMemoria();
         var encoder = new SenhaEncoderFake();
-        new CadastrarUsuarioService(repository, encoder).cadastrar("Eduardo", "edu@exemplo.com", "senhaSegura123");
+        new CadastrarUsuarioService(repository, encoder, PoliticaCadastro.aberta()).cadastrar("Eduardo", "edu@exemplo.com", "senhaSegura123");
         service = new AutenticarUsuarioService(repository, encoder, tokenFake);
     }
 
