@@ -2,6 +2,7 @@ package eduar.studymindredacao.application.usecase;
 
 import eduar.studymindredacao.domain.exception.AvaliacaoIAException;
 import eduar.studymindredacao.domain.exception.LimiteDiarioAtingidoException;
+import eduar.studymindredacao.domain.exception.LimiteGlobalAtingidoException;
 import eduar.studymindredacao.domain.exception.TemaNaoEncontradoException;
 import eduar.studymindredacao.domain.model.CompetenciaAvaliada;
 import eduar.studymindredacao.domain.model.ResultadoAvaliacaoIA;
@@ -27,6 +28,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class EnviarRedacaoServiceTest {
     private static final int LIMITE = 3;
+    private static final int LIMITE_GLOBAL = 30;
     // 01:30 UTC do dia 29 = 22:30 do dia 28 em São Paulo
     private static final Clock RELOGIO = Clock.fixed(Instant.parse("2026-09-29T01:30:00Z"), ZoneId.of("America/Sao_Paulo"));
     private static final LocalDate HOJE_EM_SP = LocalDate.of(2026, 9, 28);
@@ -66,7 +68,7 @@ class EnviarRedacaoServiceTest {
     void setUp() {
         tema = temas.salvar(new Tema(null, "Democratização do acesso ao cinema no Brasil", null, OrigemTema.ENEM_OFICIAL, (short) 2019, true, null));
         var concluir = new ConcluirAvaliacaoService(avaliacoes, redacoes, uso);
-        service = new EnviarRedacaoService(temas, redacoes, uso, iaFake, concluir, RELOGIO, LIMITE);
+        service = new EnviarRedacaoService(temas, redacoes, uso, iaFake, concluir, RELOGIO, LIMITE, LIMITE_GLOBAL);
     }
 
     @Test
@@ -162,5 +164,21 @@ class EnviarRedacaoServiceTest {
     void rejeitaTextoVazio() {
         assertThatThrownBy(() -> service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, "   "))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void tetoGlobalBloqueiaSemReservarVagaNemChamarAIA() {
+        var concluir = new ConcluirAvaliacaoService(avaliacoes, redacoes, uso);
+        var comTetoDeDois = new EnviarRedacaoService(temas, redacoes, uso, iaFake, concluir, RELOGIO, LIMITE, 2);
+        UUID outroAluno = UUID.randomUUID();
+        comTetoDeDois.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO);
+        comTetoDeDois.enviar(outroAluno, tema.id(), TipoRedacao.PRATICA, TEXTO);
+
+        UUID terceiro = UUID.randomUUID();
+        assertThatThrownBy(() -> comTetoDeDois.enviar(terceiro, tema.id(), TipoRedacao.PRATICA, TEXTO))
+                .isInstanceOf(LimiteGlobalAtingidoException.class);
+
+        assertThat(chamadasIA).hasSize(2);
+        assertThat(uso.usoDoDia(terceiro, HOJE_EM_SP).qtdCorrecoes()).isZero();
     }
 }
