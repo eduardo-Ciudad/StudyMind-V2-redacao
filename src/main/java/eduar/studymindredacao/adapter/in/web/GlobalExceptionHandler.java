@@ -1,9 +1,12 @@
 package eduar.studymindredacao.adapter.in.web;
 
+import eduar.studymindredacao.adapter.in.web.security.TentativasExcedidasException;
 import eduar.studymindredacao.domain.exception.AvaliacaoIAException;
+import eduar.studymindredacao.domain.exception.CadastroFechadoException;
 import eduar.studymindredacao.domain.exception.CredenciaisInvalidasException;
 import eduar.studymindredacao.domain.exception.EmailJaCadastradoException;
 import eduar.studymindredacao.domain.exception.LimiteDiarioAtingidoException;
+import eduar.studymindredacao.domain.exception.LimiteGlobalAtingidoException;
 import eduar.studymindredacao.domain.exception.RedacaoNaoEncontradaException;
 import eduar.studymindredacao.domain.exception.TemaNaoAdicionavelException;
 import eduar.studymindredacao.domain.exception.TemaNaoEncontradoException;
@@ -95,6 +98,26 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
                 .header(HttpHeaders.RETRY_AFTER, String.valueOf(segundosAteAmanha()))
                 .body(problema);
+    }
+
+    // Teto do sistema: 503 (indisponível hoje para todos), não 429, que o front trata como limite do aluno
+    @ExceptionHandler(LimiteGlobalAtingidoException.class)
+    public ResponseEntity<ProblemDetail> limiteGlobal(LimiteGlobalAtingidoException ex) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                .header(HttpHeaders.RETRY_AFTER, String.valueOf(segundosAteAmanha()))
+                .body(ProblemDetail.forStatusAndDetail(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage()));
+    }
+
+    @ExceptionHandler(TentativasExcedidasException.class)
+    public ResponseEntity<ProblemDetail> tentativasExcedidas(TentativasExcedidasException ex) {
+        return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
+                .header(HttpHeaders.RETRY_AFTER, String.valueOf(ex.getSegundosParaTentarDeNovo()))
+                .body(ProblemDetail.forStatusAndDetail(HttpStatus.TOO_MANY_REQUESTS, ex.getMessage()));
+    }
+
+    @ExceptionHandler(CadastroFechadoException.class)
+    public ProblemDetail cadastroFechado(CadastroFechadoException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.FORBIDDEN, ex.getMessage());
     }
 
     // A causa real vai para o log (adapter/caso de uso); o aluno recebe uma mensagem neutra
