@@ -1,6 +1,9 @@
 package eduar.studymindredacao.adapter.in.web;
 
+import eduar.studymindredacao.adapter.in.web.security.TentativasExcedidasException;
 import eduar.studymindredacao.domain.exception.AvaliacaoIAException;
+import eduar.studymindredacao.domain.exception.CadastroFechadoException;
+import eduar.studymindredacao.domain.exception.LimiteGlobalAtingidoException;
 import eduar.studymindredacao.domain.exception.LimiteDiarioAtingidoException;
 import eduar.studymindredacao.domain.exception.RedacaoNaoEncontradaException;
 import eduar.studymindredacao.domain.exception.TemaNaoAdicionavelException;
@@ -47,6 +50,27 @@ class GlobalExceptionHandlerTest {
     @Test
     void temaNaoAdicionavelResponde400() {
         assertThat(handler.temaNaoAdicionavel(new TemaNaoAdicionavelException(UUID.randomUUID())).getStatus()).isEqualTo(400);
+    }
+
+    @Test
+    void tetoGlobalResponde503ComRetryAfter() {
+        var resposta = handler.limiteGlobal(new LimiteGlobalAtingidoException());
+
+        assertThat(resposta.getStatusCode().value()).isEqualTo(503);
+        assertThat(resposta.getHeaders().getFirst("Retry-After")).isNotBlank();
+    }
+
+    @Test
+    void tentativasExcedidasResponde429ComOsSegundosDaJanela() {
+        var resposta = handler.tentativasExcedidas(new TentativasExcedidasException(42));
+
+        assertThat(resposta.getStatusCode().value()).isEqualTo(429);
+        assertThat(resposta.getHeaders().getFirst("Retry-After")).isEqualTo("42");
+    }
+
+    @Test
+    void cadastroFechadoResponde403() {
+        assertThat(handler.cadastroFechado(new CadastroFechadoException()).getStatus()).isEqualTo(403);
     }
 
     @Test
