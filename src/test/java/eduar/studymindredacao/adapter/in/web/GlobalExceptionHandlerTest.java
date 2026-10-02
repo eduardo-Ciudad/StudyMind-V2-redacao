@@ -3,6 +3,7 @@ package eduar.studymindredacao.adapter.in.web;
 import eduar.studymindredacao.domain.exception.AvaliacaoIAException;
 import eduar.studymindredacao.domain.exception.LimiteDiarioAtingidoException;
 import eduar.studymindredacao.domain.exception.RedacaoNaoEncontradaException;
+import eduar.studymindredacao.domain.exception.TemaNaoAdicionavelException;
 import eduar.studymindredacao.domain.exception.TemaNaoEncontradoException;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
@@ -41,6 +42,11 @@ class GlobalExceptionHandlerTest {
     void temaERedacaoInexistentesRespondem404() {
         assertThat(handler.naoEncontrado(new TemaNaoEncontradoException(UUID.randomUUID())).getStatus()).isEqualTo(404);
         assertThat(handler.naoEncontrado(new RedacaoNaoEncontradaException(UUID.randomUUID())).getStatus()).isEqualTo(404);
+    }
+
+    @Test
+    void temaNaoAdicionavelResponde400() {
+        assertThat(handler.temaNaoAdicionavel(new TemaNaoAdicionavelException(UUID.randomUUID())).getStatus()).isEqualTo(400);
     }
 
     @Test
