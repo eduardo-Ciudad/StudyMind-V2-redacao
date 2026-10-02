@@ -65,6 +65,12 @@ public class UsoIADiarioRepositoryAdapter implements UsoIADiarioRepositoryPort {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public int somarCorrecoesDoDia(LocalDate data) {
+        return repository.somarCorrecoesDoDia(data);
+    }
+
+    @Override
     @Transactional
     public void registrarTokens(UUID usuarioId, LocalDate data, int tokensEntrada, int tokensSaida) {
         repository.registrarTokens(usuarioId, data, tokensEntrada, tokensSaida);
