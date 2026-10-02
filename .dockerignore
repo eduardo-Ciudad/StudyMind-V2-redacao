@@ -1,0 +1,14 @@
+# Só o necessário para o build vai para o contexto do Docker
+.git
+.gitignore
+.gitattributes
+.idea
+.vscode
+target
+docs
+postman
+HELP.md
+*.bundle
+.env
+.env.*
+*.iml
