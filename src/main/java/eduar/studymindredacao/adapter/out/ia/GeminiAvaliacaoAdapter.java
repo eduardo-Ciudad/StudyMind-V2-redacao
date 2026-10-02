@@ -1,5 +1,6 @@
 package eduar.studymindredacao.adapter.out.ia;
 
+import eduar.studymindredacao.application.usecase.LogSeguro;
 import eduar.studymindredacao.domain.exception.AvaliacaoIAException;
 import eduar.studymindredacao.domain.model.ResultadoAvaliacaoIA;
 import eduar.studymindredacao.domain.model.SolicitacaoAvaliacao;
@@ -84,7 +85,7 @@ public class GeminiAvaliacaoAdapter implements AvaliacaoIAPort {
                 ultimaFalha = e;
             }
             log.warn("Falha ao avaliar redação no Gemini (tentativa {}/{}): {}",
-                    tentativa, MAX_TENTATIVAS, ultimaFalha.getMessage());
+                    tentativa, MAX_TENTATIVAS, LogSeguro.limpar(ultimaFalha.getMessage()));
         }
         throw ultimaFalha;
     }
