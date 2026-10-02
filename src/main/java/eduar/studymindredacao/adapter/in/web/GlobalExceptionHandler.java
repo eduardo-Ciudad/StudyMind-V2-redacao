@@ -5,6 +5,7 @@ import eduar.studymindredacao.domain.exception.CredenciaisInvalidasException;
 import eduar.studymindredacao.domain.exception.EmailJaCadastradoException;
 import eduar.studymindredacao.domain.exception.LimiteDiarioAtingidoException;
 import eduar.studymindredacao.domain.exception.RedacaoNaoEncontradaException;
+import eduar.studymindredacao.domain.exception.TemaNaoAdicionavelException;
 import eduar.studymindredacao.domain.exception.TemaNaoEncontradoException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
@@ -50,6 +51,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ProblemDetail argumentoInvalido(IllegalArgumentException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
+    }
+
+    @ExceptionHandler(TemaNaoAdicionavelException.class)
+    public ProblemDetail temaNaoAdicionavel(TemaNaoAdicionavelException ex) {
         return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
     }
 
