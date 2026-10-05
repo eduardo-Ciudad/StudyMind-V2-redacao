@@ -45,7 +45,8 @@ jobs:
       CADASTRO_EMAILS_PERMITIDOS: ""
       LIMITE_CORRECOES_DIARIAS: 3
       LIMITE_CORRECOES_GLOBAL: 30
-      FORWARD_HEADERS: "false"
+      # server.forward-headers-strategy é enum: NONE | NATIVE | FRAMEWORK
+      FORWARD_HEADERS: NONE
       TZ: America/Sao_Paulo
 
     steps:
