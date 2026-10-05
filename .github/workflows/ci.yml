@@ -1,0 +1,98 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build e testes
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    # Postgres para os testes que sobem o contexto do Spring + Flyway
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: studymind_redacao_test
+          POSTGRES_USER: ci
+          POSTGRES_PASSWORD: ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ci -d studymind_redacao_test"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+
+    # Valores falsos, só para o contexto subir no CI (nenhum segredo real aqui)
+    env:
+      DB_URL: jdbc:postgresql://localhost:5432/studymind_redacao_test
+      DB_USERNAME: ci
+      DB_PASSWORD: ci
+      JWT_SECRET: ci-segredo-falso-com-pelo-menos-32-bytes-para-hs256
+      JWT_EXPIRACAO_MINUTOS: 60
+      GEMINI_API_KEY: chave-falsa-ci
+      CORS_ORIGENS: http://localhost:5173
+      CADASTRO_ABERTO: "true"
+      CADASTRO_EMAILS_PERMITIDOS: ""
+      LIMITE_CORRECOES_DIARIAS: 3
+      LIMITE_CORRECOES_GLOBAL: 30
+      FORWARD_HEADERS: "false"
+      TZ: America/Sao_Paulo
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+
+      # Commits feitos no Windows costumam perder a permissão de execução do mvnw
+      - name: Permissão do Maven Wrapper
+        run: chmod +x mvnw
+
+      - name: Build e testes
+        run: ./mvnw -B verify
+
+      - name: Relatórios de teste (se falhar)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorios-de-teste
+          path: target/surefire-reports/
+          retention-days: 7
+
+  docker:
+    name: Build da imagem Docker
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Só valida que o Dockerfile builda; não publica a imagem
+      - name: Build da imagem
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          tags: studymind-redacao:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
