@@ -1,0 +1,5516 @@
+{
+  "meta": {
+    "source": "StudyMind_Repertorios_ENEM_V3_Correcao_Pontual_Lacunas.docx",
+    "researchVersion": "V3",
+    "verifiedAt": "2026-10-07",
+    "generatedBy": "montar_curadoria.py",
+    "notes": [
+      "Bauman e Durkheim excluídos por decisão da pesquisa (saturação).",
+      "REP-001 a REP-024 só existem resumidos na V2/V3 — entram com active=false.",
+      "Itens com origin='curadoria' e códigos PAC-11/PAC-12 são propostas da conversão, não da pesquisa."
+    ]
+  },
+  "macroThemes": [
+    {
+      "slug": "saude",
+      "name": "Saúde",
+      "order": 1,
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "educacao",
+      "name": "Educação",
+      "order": 2,
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "infancia-adolescencia",
+      "name": "Infância e adolescência",
+      "order": 3,
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "juventude",
+      "name": "Juventude",
+      "order": 4,
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "tecnologia-sociedade",
+      "name": "Tecnologia e sociedade",
+      "order": 5,
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "trabalho-cuidado",
+      "name": "Trabalho e cuidado",
+      "order": 6,
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "pcd-neurodiversidade",
+      "name": "PcD e neurodiversidade",
+      "order": 7,
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "invisibilidade-social",
+      "name": "Invisibilidade social",
+      "order": 8,
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "raca-genero",
+      "name": "Raça e gênero",
+      "order": 9,
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "cidades-clima",
+      "name": "Cidades e clima",
+      "order": 10,
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "envelhecimento",
+      "name": "Envelhecimento",
+      "order": 11,
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "violencia-seguranca",
+      "name": "Violência e segurança",
+      "order": 12,
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "povos-indigenas",
+      "name": "Povos indígenas e comunidades tradicionais",
+      "order": 13,
+      "origin": "curadoria"
+    }
+  ],
+  "socialProblems": [
+    {
+      "slug": "desigualdade-saude",
+      "name": "Desigualdade em saúde",
+      "macroTheme": "saude",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "sus-acesso-saude",
+      "name": "SUS e acesso à saúde",
+      "macroTheme": "saude",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "saude-mental",
+      "name": "Saúde mental",
+      "macroTheme": "saude",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "prevencao-saude",
+      "name": "Prevenção em saúde",
+      "macroTheme": "saude",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "alfabetizacao",
+      "name": "Alfabetização e letramento",
+      "macroTheme": "educacao",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "eja",
+      "name": "EJA e educação de adultos",
+      "macroTheme": "educacao",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "evasao-escolar",
+      "name": "Evasão e permanência escolar",
+      "macroTheme": "educacao",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "inclusao-educacional",
+      "name": "Inclusão e desigualdade educacional",
+      "macroTheme": "educacao",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "neurodiversidade-escola",
+      "name": "Neurodiversidade na escola",
+      "macroTheme": "educacao",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "protecao-integral",
+      "name": "Proteção integral da infância",
+      "macroTheme": "infancia-adolescencia",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "infancia-digital",
+      "name": "Infância no ambiente digital",
+      "macroTheme": "infancia-adolescencia",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "trabalho-infantil",
+      "name": "Trabalho infantil",
+      "macroTheme": "infancia-adolescencia",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "violencia-juventude",
+      "name": "Violência contra a juventude",
+      "macroTheme": "juventude",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "trabalho-juventude",
+      "name": "Juventude e trabalho",
+      "macroTheme": "juventude",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "participacao-juventude",
+      "name": "Participação juvenil",
+      "macroTheme": "juventude",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "perspectiva-futuro",
+      "name": "Perspectiva de futuro",
+      "macroTheme": "juventude",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "plataformas-digitais",
+      "name": "Plataformas digitais",
+      "macroTheme": "tecnologia-sociedade",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "dados-privacidade",
+      "name": "Dados e privacidade",
+      "macroTheme": "tecnologia-sociedade",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "algoritmos",
+      "name": "Algoritmos e IA",
+      "macroTheme": "tecnologia-sociedade",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "inclusao-digital",
+      "name": "Inclusão digital",
+      "macroTheme": "tecnologia-sociedade",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "precarizacao-trabalho",
+      "name": "Precarização do trabalho",
+      "macroTheme": "trabalho-cuidado",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "plataformizacao-trabalho",
+      "name": "Plataformização do trabalho",
+      "macroTheme": "trabalho-cuidado",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "trabalho-domestico",
+      "name": "Trabalho doméstico",
+      "macroTheme": "trabalho-cuidado",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "trabalho-cuidado",
+      "name": "Trabalho de cuidado",
+      "macroTheme": "trabalho-cuidado",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "acessibilidade",
+      "name": "Acessibilidade",
+      "macroTheme": "pcd-neurodiversidade",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "inclusao-escolar-pcd",
+      "name": "Inclusão escolar de PcD",
+      "macroTheme": "pcd-neurodiversidade",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "trabalho-pcd",
+      "name": "PcD e trabalho",
+      "macroTheme": "pcd-neurodiversidade",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "populacao-rua",
+      "name": "População em situação de rua",
+      "macroTheme": "invisibilidade-social",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "trabalhos-invisibilizados",
+      "name": "Trabalhos invisibilizados",
+      "macroTheme": "invisibilidade-social",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "pobreza",
+      "name": "Pobreza",
+      "macroTheme": "invisibilidade-social",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "racismo",
+      "name": "Racismo",
+      "macroTheme": "raca-genero",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "sexismo",
+      "name": "Sexismo e desigualdade de gênero",
+      "macroTheme": "raca-genero",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "identidade",
+      "name": "Identidade e representação",
+      "macroTheme": "raca-genero",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "discriminacao",
+      "name": "Discriminação",
+      "macroTheme": "raca-genero",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "moradia",
+      "name": "Moradia",
+      "macroTheme": "cidades-clima",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "segregacao-urbana",
+      "name": "Segregação urbana e direito à cidade",
+      "macroTheme": "cidades-clima",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "seca",
+      "name": "Seca e deslocamento",
+      "macroTheme": "cidades-clima",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "calor-extremo",
+      "name": "Calor extremo e eventos climáticos",
+      "macroTheme": "cidades-clima",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "justica-climatica",
+      "name": "Justiça climática e ambiental",
+      "macroTheme": "cidades-clima",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "meio-ambiente",
+      "name": "Meio ambiente, resíduos e saneamento",
+      "macroTheme": "cidades-clima",
+      "origin": "curadoria"
+    },
+    {
+      "slug": "etarismo",
+      "name": "Etarismo",
+      "macroTheme": "envelhecimento",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "cuidado-pessoa-idosa",
+      "name": "Cuidado da pessoa idosa",
+      "macroTheme": "envelhecimento",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "autonomia-pessoa-idosa",
+      "name": "Autonomia da pessoa idosa",
+      "macroTheme": "envelhecimento",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "inclusao-pessoa-idosa",
+      "name": "Inclusão da pessoa idosa",
+      "macroTheme": "envelhecimento",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "violencia-urbana",
+      "name": "Violência urbana",
+      "macroTheme": "violencia-seguranca",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "violencia-racial",
+      "name": "Violência racial",
+      "macroTheme": "violencia-seguranca",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "violencia-institucional",
+      "name": "Violência institucional",
+      "macroTheme": "violencia-seguranca",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "violencia-escolar",
+      "name": "Violência escolar",
+      "macroTheme": "violencia-seguranca",
+      "origin": "V3-taxonomia"
+    },
+    {
+      "slug": "territorio-indigena",
+      "name": "Território indígena",
+      "macroTheme": "povos-indigenas",
+      "origin": "curadoria"
+    },
+    {
+      "slug": "cultura-memoria-indigena",
+      "name": "Cultura e memória indígena",
+      "macroTheme": "povos-indigenas",
+      "origin": "curadoria"
+    },
+    {
+      "slug": "direitos-indigenas",
+      "name": "Direitos indígenas",
+      "macroTheme": "povos-indigenas",
+      "origin": "curadoria"
+    },
+    {
+      "slug": "saude-indigena",
+      "name": "Saúde indígena",
+      "macroTheme": "povos-indigenas",
+      "origin": "curadoria"
+    }
+  ],
+  "repertoires": [
+    {
+      "code": "CF-001",
+      "name": "Constituição Federal, Art. 1º",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "CONSTITUIÇÃO FEDERAL",
+      "country": "Brasil",
+      "field": "Direito constitucional",
+      "gapResolved": null,
+      "centralIdea": "Dignidade da pessoa humana entre os fundamentos da República",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Fundamenta a centralidade da pessoa, mas não substitui norma específica.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "LEGAL_GAP"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "trabalhos-invisibilizados",
+        "discriminacao"
+      ],
+      "tags": [
+        "dignidade",
+        "invisibilidade",
+        "violência",
+        "discriminação"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Constituição da República Federativa do Brasil de 1988 — Portal Planalto",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "UNCHANGED",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "CF-002",
+      "name": "Constituição Federal, Art. 3º",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "CONSTITUIÇÃO FEDERAL",
+      "country": "Brasil",
+      "field": "Direito constitucional",
+      "gapResolved": null,
+      "centralIdea": "Objetivos fundamentais incluem reduzir desigualdades e promover o bem de todos sem discriminação",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Bom para LEGAL_GAP e dever estatal de redução de desigualdades.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "LEGAL_GAP"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "racismo",
+        "sexismo"
+      ],
+      "tags": [
+        "desigualdade",
+        "racismo",
+        "gênero",
+        "território"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Constituição da República Federativa do Brasil de 1988 — Portal Planalto",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "UNCHANGED",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "CF-003",
+      "name": "Constituição Federal, Art. 5º",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "CONSTITUIÇÃO FEDERAL",
+      "country": "Brasil",
+      "field": "Direito constitucional",
+      "gapResolved": null,
+      "centralIdea": "Igualdade e direitos fundamentais",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Evitar dizer apenas 'todos são iguais'; explicar a violação concreta.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "LEGAL_GAP"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "discriminacao",
+        "violencia-urbana",
+        "dados-privacidade"
+      ],
+      "tags": [
+        "discriminação",
+        "liberdade",
+        "segurança",
+        "privacidade"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Constituição da República Federativa do Brasil de 1988 — Portal Planalto",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "UNCHANGED",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "CF-004",
+      "name": "Constituição Federal, Art. 6º",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "CONSTITUIÇÃO FEDERAL",
+      "country": "Brasil",
+      "field": "Direito constitucional",
+      "gapResolved": null,
+      "centralIdea": "Direitos sociais",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Excelente para mostrar distância entre direito social e acesso efetivo.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "LEGAL_GAP"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "prevencao-saude",
+        "moradia",
+        "segregacao-urbana"
+      ],
+      "tags": [
+        "educação",
+        "saúde",
+        "alimentação",
+        "trabalho",
+        "moradia",
+        "transporte"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Constituição da República Federativa do Brasil de 1988 — Portal Planalto",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "UNCHANGED",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "CF-005",
+      "name": "Constituição Federal, Art. 7º",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "CONSTITUIÇÃO FEDERAL",
+      "country": "Brasil",
+      "field": "Direito constitucional",
+      "gapResolved": null,
+      "centralIdea": "Direitos dos trabalhadores",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Aplicar com cuidado a relações de plataforma conforme enquadramento jurídico.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "LEGAL_GAP"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "precarizacao-trabalho"
+      ],
+      "tags": [
+        "precarização",
+        "jornada",
+        "proteção do trabalho"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Constituição da República Federativa do Brasil de 1988 — Portal Planalto",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "UNCHANGED",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "CF-006",
+      "name": "Constituição Federal, Art. 196",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "CONSTITUIÇÃO FEDERAL",
+      "country": "Brasil",
+      "field": "Direito constitucional",
+      "gapResolved": null,
+      "centralIdea": "Saúde como direito de todos e dever do Estado",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não implica que toda prestação de saúde seja ilimitada ou automática.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "LEGAL_GAP"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "sus-acesso-saude",
+        "prevencao-saude",
+        "desigualdade-saude"
+      ],
+      "tags": [
+        "SUS",
+        "acesso",
+        "prevenção",
+        "desigualdade em saúde"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Constituição da República Federativa do Brasil de 1988 — Portal Planalto",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "UNCHANGED",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "CF-007",
+      "name": "Constituição Federal, Art. 205",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "CONSTITUIÇÃO FEDERAL",
+      "country": "Brasil",
+      "field": "Direito constitucional",
+      "gapResolved": null,
+      "centralIdea": "Educação como direito de todos e dever do Estado e da família",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Conectar direito à educação a acesso, permanência e desenvolvimento.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "LEGAL_GAP"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "evasao-escolar",
+        "alfabetizacao",
+        "inclusao-educacional",
+        "eja"
+      ],
+      "tags": [
+        "evasão",
+        "alfabetização",
+        "inclusão",
+        "EJA"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Constituição da República Federativa do Brasil de 1988 — Portal Planalto",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "UNCHANGED",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "CF-008",
+      "name": "Constituição Federal, Art. 215",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "CONSTITUIÇÃO FEDERAL",
+      "country": "Brasil",
+      "field": "Direito constitucional",
+      "gapResolved": null,
+      "centralIdea": "Direitos culturais e acesso às fontes da cultura nacional",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Útil para acesso e valorização cultural.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "LEGAL_GAP"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "identidade",
+        "racismo",
+        "direitos-indigenas"
+      ],
+      "tags": [
+        "patrimônio",
+        "cultura afro-brasileira",
+        "povos tradicionais"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Constituição da República Federativa do Brasil de 1988 — Portal Planalto",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "UNCHANGED",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "CF-009",
+      "name": "Constituição Federal, Art. 225",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "CONSTITUIÇÃO FEDERAL",
+      "country": "Brasil",
+      "field": "Direito constitucional",
+      "gapResolved": null,
+      "centralIdea": "Direito ao meio ambiente ecologicamente equilibrado",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Conectar ambiente a qualidade de vida e deveres coletivos/estatais.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "LEGAL_GAP"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "justica-climatica",
+        "meio-ambiente"
+      ],
+      "tags": [
+        "clima",
+        "resíduos",
+        "saneamento",
+        "justiça ambiental"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Constituição da República Federativa do Brasil de 1988 — Portal Planalto",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "UNCHANGED",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "CF-010",
+      "name": "Constituição Federal, Art. 227",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "CONSTITUIÇÃO FEDERAL",
+      "country": "Brasil",
+      "field": "Direito constitucional",
+      "gapResolved": null,
+      "centralIdea": "Dever de assegurar com absoluta prioridade direitos de crianças e adolescentes",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Um dos dispositivos mais fortes para proteção integral da infância.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "LEGAL_GAP"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "trabalho-infantil",
+        "infancia-digital",
+        "protecao-integral"
+      ],
+      "tags": [
+        "violência",
+        "trabalho infantil",
+        "exploração online",
+        "educação"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Constituição da República Federativa do Brasil de 1988 — Portal Planalto",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "UNCHANGED",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "CF-011",
+      "name": "Constituição Federal, Art. 231",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "CONSTITUIÇÃO FEDERAL",
+      "country": "Brasil",
+      "field": "Direito constitucional",
+      "gapResolved": null,
+      "centralIdea": "Reconhece aos povos indígenas organização social, costumes, línguas, crenças, tradições e direitos originários sobre terras tradicionalmente ocupadas.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": null,
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "LEGAL_GAP"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "territorio-indigena",
+        "direitos-indigenas",
+        "cultura-memoria-indigena",
+        "identidade",
+        "meio-ambiente"
+      ],
+      "tags": [
+        "território",
+        "cultura",
+        "identidade",
+        "meio ambiente",
+        "autodeterminação"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Constituição da República Federativa do Brasil de 1988 — Portal Planalto",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "CF-012",
+      "name": "Constituição Federal, Art. 232",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "CONSTITUIÇÃO FEDERAL",
+      "country": "Brasil",
+      "field": "Direito constitucional",
+      "gapResolved": null,
+      "centralIdea": "Reconhece legitimidade de indígenas, comunidades e organizações para ingressar em juízo na defesa de direitos e interesses.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": null,
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "LEGAL_GAP"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "direitos-indigenas",
+        "participacao-juventude"
+      ],
+      "tags": [
+        "acesso à justiça",
+        "direitos coletivos",
+        "participação"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Constituição da República Federativa do Brasil de 1988 — Portal Planalto",
+          "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "EVD-001",
+      "name": "PNAD Contínua Educação 2025",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": false,
+      "role": "EVIDENCE",
+      "evidenceTypes": [
+        "OFFICIAL_STATISTICS",
+        "NATIONAL_SURVEY"
+      ],
+      "typeLabel": "OFFICIAL_STATISTICS / NATIONAL_SURVEY",
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "A taxa de analfabetismo das pessoas de 15 anos ou mais foi 4,9% em 2025, ante 5,3% em 2024.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Use como evidência temporal; atualizar anualmente.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "alfabetizacao",
+        "eja"
+      ],
+      "tags": [
+        "Analfabetismo",
+        "desigualdade regional",
+        "EJA"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "IBGE",
+          "url": "https://www.ibge.gov.br/indicadores/indicadores-conjunturais/pnad-c.html"
+        }
+      ],
+      "population": null,
+      "evidenceYear": 2025,
+      "evidenceYearRaw": "2025",
+      "updateNeeded": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "EVD-002",
+      "name": "Revisão de escopo: racismo como determinante social da saúde",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": false,
+      "role": "EVIDENCE",
+      "evidenceTypes": [
+        "SCOPING_REVIEW"
+      ],
+      "typeLabel": "SYSTEMATIC/SCOPING_REVIEW",
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "A revisão identifica mecanismos pelos quais racismo estrutural, institucional, vicário e antinegro afetam condições de saúde no Brasil.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não converter a revisão em causalidade individual automática.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "desigualdade-saude",
+        "racismo",
+        "sus-acesso-saude"
+      ],
+      "tags": [
+        "Saúde da população negra",
+        "racismo",
+        "acesso à saúde"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Fiocruz Minas / Ciência & Saúde Coletiva",
+          "url": "https://www.scielo.br/j/csc/a/3zd6rgkP7RxMnYzPvhp3t3v/"
+        }
+      ],
+      "population": null,
+      "evidenceYear": 2026,
+      "evidenceYearRaw": "2026",
+      "updateNeeded": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "EVD-003",
+      "name": "Vigitel",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": false,
+      "role": "EVIDENCE",
+      "evidenceTypes": [
+        "NATIONAL_SURVEY",
+        "OFFICIAL_HEALTH_SURVEILLANCE"
+      ],
+      "typeLabel": "NATIONAL_SURVEY / OFFICIAL_HEALTH_SURVEILLANCE",
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Monitora fatores de risco e proteção para DCNT, incluindo tabagismo, alimentação, atividade física, excesso de peso, sono e outros indicadores.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Sempre indicar ano/edição do dado específico usado.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "prevencao-saude"
+      ],
+      "tags": [
+        "Saúde preventiva",
+        "DCNT",
+        "políticas públicas"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Ministério da Saúde",
+          "url": "https://www.gov.br/saude/pt-br/composicao/svsa/inqueritos-de-saude/vigitel"
+        }
+      ],
+      "population": null,
+      "evidenceYear": null,
+      "evidenceYearRaw": "Atualização contínua",
+      "updateNeeded": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "EVD-004",
+      "name": "PNAD Trabalho de Crianças e Adolescentes",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": false,
+      "role": "EVIDENCE",
+      "evidenceTypes": [
+        "OFFICIAL_STATISTICS",
+        "NATIONAL_SURVEY"
+      ],
+      "typeLabel": "OFFICIAL_STATISTICS / NATIONAL_SURVEY",
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Em 2023, 1,607 milhão de crianças e adolescentes de 5 a 17 anos estavam em situação de trabalho infantil, menor contingente da série iniciada em 2016.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "O recuo não significa erradicação; contextualizar faixa etária e definição.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "trabalho-infantil",
+        "protecao-integral",
+        "pobreza"
+      ],
+      "tags": [
+        "Trabalho infantil",
+        "infância",
+        "pobreza"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "IBGE",
+          "url": "https://www.gov.br/mds/pt-br/noticias-e-conteudos/desenvolvimento-social/noticias-desenvolvimento-social/trabalho-infantil-recua-ao-menor-nivel-desde-2016-aponta-ibge"
+        }
+      ],
+      "population": null,
+      "evidenceYear": 2023,
+      "evidenceYearRaw": "2023",
+      "updateNeeded": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "EVD-005",
+      "name": "Desigualdades de saúde por raça/cor",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": false,
+      "role": "EVIDENCE",
+      "evidenceTypes": [
+        "ACADEMIC_RESEARCH"
+      ],
+      "typeLabel": "ACADEMIC_RESEARCH",
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Estudo com dados da PNAD encontrou diferenças raciais no estado de saúde e na frequência de consultas, mesmo após ajustes socioeconômicos em parte das análises.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Estudo usa PNAD 1998; bom para mecanismo histórico, não como dado atual.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "racismo"
+      ],
+      "tags": [
+        "Saúde",
+        "raça",
+        "desigualdade de acesso"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Rita Barradas Barata et al. / Cadernos de Saúde Pública",
+          "url": "https://cadernos.ensp.fiocruz.br/ojs/index.php/csp/article/view/3145"
+        }
+      ],
+      "population": null,
+      "evidenceYear": 2007,
+      "evidenceYearRaw": "2007",
+      "updateNeeded": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "EVD-006",
+      "name": "PeNSE 2024 — saúde mental de adolescentes",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": false,
+      "role": "EVIDENCE",
+      "evidenceTypes": [
+        "NATIONAL_SURVEY",
+        "OFFICIAL_STATISTICS"
+      ],
+      "typeLabel": "NATIONAL_SURVEY / OFFICIAL_STATISTICS",
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "A quinta edição incorpora módulo de saúde mental e permite analisar amizade, ansiedade, tristeza, autoagressão e outros indicadores por sexo/idade.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Usar tabelas específicas e não converter indicadores autorreferidos em diagnóstico clínico.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "saude-mental"
+      ],
+      "tags": [
+        "saúde mental juvenil"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "IBGE + Ministério da Saúde",
+          "url": null
+        }
+      ],
+      "population": "Escolares de 13 a 17 anos, amostra nacional",
+      "evidenceYear": 2024,
+      "evidenceYearRaw": "2024",
+      "updateNeeded": true,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "EVD-007",
+      "name": "Atlas da Violência 2025",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": false,
+      "role": "EVIDENCE",
+      "evidenceTypes": [
+        "INSTITUTIONAL_REPORT",
+        "OFFICIAL_STATISTICS"
+      ],
+      "typeLabel": "INSTITUTIONAL_REPORT / OFFICIAL_STATISTICS",
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Em 2023, uma pessoa negra tinha 2,7 vezes mais chance de ser vítima de homicídio do que uma pessoa não negra, segundo o Atlas.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Indicador é risco relativo em violência letal; não generalizar para toda forma de violência.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "violencia-racial",
+        "violencia-urbana"
+      ],
+      "tags": [
+        "violência racial",
+        "juventude",
+        "segurança"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Ipea + FBSP",
+          "url": null
+        }
+      ],
+      "population": "População brasileira; homicídios e recortes sociodemográficos",
+      "evidenceYear": 2023,
+      "evidenceYearRaw": "dados até 2023",
+      "updateNeeded": true,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "EVD-008",
+      "name": "OBPopRua/UFMG — população em situação de rua 2025",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": false,
+      "role": "EVIDENCE",
+      "evidenceTypes": [
+        "INSTITUTIONAL_REPORT",
+        "ADMINISTRATIVE_DATA"
+      ],
+      "typeLabel": "INSTITUTIONAL_REPORT / ADMINISTRATIVE_DATA",
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "O observatório reportou crescimento de cerca de 328 mil pessoas em dezembro de 2024 para mais de 365 mil em dezembro de 2025; cerca de 70% eram negras.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "CadÚnico não é censo completo; há subregistro e diferenças metodológicas.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "populacao-rua",
+        "racismo"
+      ],
+      "tags": [
+        "população em situação de rua",
+        "raça",
+        "políticas públicas"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "OBPopRua/Polos de Cidadania-UFMG",
+          "url": null
+        }
+      ],
+      "population": "Registros de pessoas em situação de rua no CadÚnico",
+      "evidenceYear": 2025,
+      "evidenceYearRaw": "2025",
+      "updateNeeded": true,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "EVD-009",
+      "name": "Ondas de calor extremo e mortalidade cardiovascular no Sudeste",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": false,
+      "role": "EVIDENCE",
+      "evidenceTypes": [
+        "SCIENTIFIC_STUDY",
+        "TIME_SERIES"
+      ],
+      "typeLabel": "SCIENTIFIC_STUDY / TIME_SERIES",
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Estudo de séries temporais estimou excesso de mortalidade cardiovascular associado a ondas de calor extremo.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Associação populacional; não atribuir causa individual específica.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "calor-extremo",
+        "justica-climatica"
+      ],
+      "tags": [
+        "calor extremo",
+        "saúde",
+        "clima"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Cadernos de Saúde Pública",
+          "url": null
+        }
+      ],
+      "population": "Mortalidade cardiovascular agregada no Sudeste, 2014-2023",
+      "evidenceYear": 2026,
+      "evidenceYearRaw": "2026",
+      "updateNeeded": true,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "EVD-010",
+      "name": "Desastres hidrológicos e desigualdades em saúde",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": false,
+      "role": "EVIDENCE",
+      "evidenceTypes": [
+        "SCIENTIFIC_STUDY",
+        "INSTITUTIONAL_SUMMARY"
+      ],
+      "typeLabel": "SCIENTIFIC_STUDY / INSTITUTIONAL_SUMMARY",
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Impactos humanos e danos à infraestrutura de saúde não se distribuíram uniformemente, com maior vulnerabilidade indicada em municípios pequenos e na região Norte.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Índices e recortes devem ser apresentados conforme o estudo original.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "calor-extremo",
+        "justica-climatica"
+      ],
+      "tags": [
+        "enchentes",
+        "vulnerabilidade territorial",
+        "saúde"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Cidacs/Fiocruz Bahia",
+          "url": null
+        }
+      ],
+      "population": "Desastres hidrológicos no Brasil, 2000-2023",
+      "evidenceYear": 2026,
+      "evidenceYearRaw": "2026",
+      "updateNeeded": true,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "EVD-011",
+      "name": "Revisão sobre assistência à saúde indígena no Brasil",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": false,
+      "role": "EVIDENCE",
+      "evidenceTypes": [
+        "INTEGRATIVE_REVIEW"
+      ],
+      "typeLabel": "INTEGRATIVE_REVIEW",
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Revisão identificou desafios e iniquidades persistentes na assistência à saúde indígena e necessidade de respostas adaptadas às especificidades socioculturais.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Revisão incluiu número limitado de estudos elegíveis; não generalizar todas as realidades indígenas.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "saude-indigena"
+      ],
+      "tags": [
+        "saúde indígena",
+        "acesso",
+        "equidade"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Saúde e Sociedade / SciELO",
+          "url": null
+        }
+      ],
+      "population": "Artigos sobre assistência à saúde indígena no Brasil, 2013-2023",
+      "evidenceYear": 2025,
+      "evidenceYearRaw": "2025",
+      "updateNeeded": false,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "EVD-012",
+      "name": "Publicidade de alimentos em canais infantis no YouTube",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": false,
+      "role": "EVIDENCE",
+      "evidenceTypes": [
+        "SCIENTIFIC_STUDY",
+        "CONTENT_ANALYSIS"
+      ],
+      "typeLabel": "SCIENTIFIC_STUDY / CONTENT_ANALYSIS",
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Publicidade geral apareceu em 45,6% dos vídeos analisados; publicidade de alimentos foi majoritariamente de ultraprocessados.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Recorte de canais e período específicos; não é estimativa de toda exposição infantil à internet.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "infancia-digital",
+        "plataformas-digitais",
+        "prevencao-saude"
+      ],
+      "tags": [
+        "publicidade infantil",
+        "plataformas",
+        "alimentação"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "Revista de Saúde Pública",
+          "url": null
+        }
+      ],
+      "population": "250 vídeos de 25 canais infantis mais assistidos no Brasil, universo de 2018",
+      "evidenceYear": 2023,
+      "evidenceYearRaw": "2023",
+      "updateNeeded": false,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "EVD-013",
+      "name": "Uso de serviços de saúde por população em situação de rua em Belo Horizonte",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": false,
+      "role": "EVIDENCE",
+      "evidenceTypes": [
+        "SCIENTIFIC_STUDY",
+        "CROSS_SECTIONAL"
+      ],
+      "typeLabel": "SCIENTIFIC_STUDY / CROSS_SECTIONAL",
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Estudo analisou associação entre condições sociodemográficas, econômicas, de vida e utilização de serviços de saúde.",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Amostra local; não generalizar prevalências para todo o Brasil.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "populacao-rua",
+        "sus-acesso-saude"
+      ],
+      "tags": [
+        "rua",
+        "saúde",
+        "barreiras de acesso"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "description": "UFMG",
+          "url": null
+        }
+      ],
+      "population": "390 pessoas em situação de rua na região central de Belo Horizonte",
+      "evidenceYear": 2024,
+      "evidenceYearRaw": "2024",
+      "updateNeeded": false,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-001",
+      "name": "ECA",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Proteção integral da infância",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Evitar apenas dizer que 'a lei garante' sem mostrar a lacuna de efetivação",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "REVISED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-002",
+      "name": "Lei Brasileira de Inclusão",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Barreiras sociais e acessibilidade",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não reduzir deficiência à condição individual",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-003",
+      "name": "Lei 12.764/2012 - TEA",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Direitos e resposta intersetorial",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não usar como diagnóstico clínico ou explicação de todo TEA",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "REVISED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-004",
+      "name": "Lei 14.254/2021",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Acompanhamento de transtornos de aprendizagem",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não confundir igualdade com tratamento idêntico",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-005",
+      "name": "Estatuto da Juventude",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Juventude como sujeito de direitos",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não tratar juventude apenas como faixa etária",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "UNCHANGED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-006",
+      "name": "Estatuto da Cidade",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Função social e direito à cidade",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não resumir a lei a moradia",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-007",
+      "name": "Raquel Rolnik",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Segregação territorial e direito à cidade",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não atribuir a ela qualquer crítica urbana genérica",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-008",
+      "name": "Marco Civil da Internet",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Cidadania, direitos e deveres online",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não confundir Marco Civil, LGPD e regulação de IA: são camadas jurídicas distintas.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": "Passa a se relacionar explicitamente a Bruno Bioni (proteção de dados), Fernanda Bruno (vigilância) e Sérgio Amadeu (governança algorítmica).",
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "REVISED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-009",
+      "name": "Disrupting Harm Brasil 2026",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": true,
+      "role": "EVIDENCE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Violência sexual facilitada por tecnologia",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Dado institucional não substitui explicação sobre mecanismos de risco, proteção e desenho de plataformas.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": "Mantido como EVIDENCE e conectado a estudos de infância digital, privacidade e exploração online, sem duplicação.",
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-010",
+      "name": "TIC Kids Online Brasil 2025",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": true,
+      "role": "EVIDENCE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Qualidade e desigualdade do acesso digital",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não usar conectividade como sinônimo de qualidade de acesso.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": "Mantido como EVIDENCE e ligado à desigualdade de acesso qualificado, infância digital e dependência de dispositivos.",
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-011",
+      "name": "Lei Maria da Penha",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Proteção e lacuna de efetivação",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não limitar a 'existe uma lei'",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-012",
+      "name": "Sueli Carneiro",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Racismo, sexismo, cidadania",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não transformar sua obra em frase coringa",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-013",
+      "name": "Estatuto da Igualdade Racial",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Igualdade material e políticas específicas",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não confundir igualdade formal com resultado igual",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "REVISED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-014",
+      "name": "Lei 7.716/1989",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Criminalização de discriminação",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não substituir análise estrutural por resposta penal",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "REVISED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-015",
+      "name": "Racismo estrutural - Silvio Almeida",
+      "headingSubtitle": null,
+      "entityType": "CONCEPT",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Racismo como estrutura social/institucional",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não usar como sinônimo de preconceito individual",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-016",
+      "name": "Quarto de Despejo",
+      "headingSubtitle": null,
+      "entityType": "CULTURAL_WORK",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Fome, pobreza, favela, invisibilidade",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não citar apenas como 'livro sobre pobreza'",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-017",
+      "name": "Vidas Secas",
+      "headingSubtitle": null,
+      "entityType": "CULTURAL_WORK",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Seca, deslocamento e vulnerabilidade",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não tratar a seca como causa social única",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-018",
+      "name": "O Cortiço",
+      "headingSubtitle": null,
+      "entityType": "CULTURAL_WORK",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Habitação precária e desigualdade urbana",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não transportar mecanicamente o Naturalismo para o presente",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "REVISED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-019",
+      "name": "Lei 10.216/2001",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Direitos e modelo assistencial em saúde mental",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não afirmar que a lei aboliu qualquer internação.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": "Relacionada a Nise da Silveira e Paulo Amarante, separando antecedente histórico, reforma psiquiátrica e marco jurídico.",
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-020",
+      "name": "Bicho de Sete Cabeças",
+      "headingSubtitle": null,
+      "entityType": "CULTURAL_WORK",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Violência institucional e saúde mental",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Filme é repertório cultural, não evidência epidemiológica.",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": "Preservado; agora compõe pacote com Nise, Paulo Amarante, Lei 10.216 e PeNSE 2024.",
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "REVISED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-021",
+      "name": "Estatuto da Pessoa Idosa",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Envelhecimento como cidadania",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não reduzir envelhecimento a dependência",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "REVISED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-022",
+      "name": "Política Nacional de Resíduos Sólidos",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Resíduos, responsabilidade e inclusão de catadores",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não usar apenas como 'lei ambiental'",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-023",
+      "name": "MDS/OIT - trabalhadoras domésticas",
+      "headingSubtitle": null,
+      "entityType": "EVIDENCE",
+      "entityTypeInferred": true,
+      "role": "EVIDENCE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Gênero, raça e informalidade",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não transformar associação estatística em causa única",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-024",
+      "name": "Lei 10.639/2003",
+      "headingSubtitle": null,
+      "entityType": "LEGAL_SOURCE",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": null,
+      "country": "Brasil",
+      "field": null,
+      "gapResolved": null,
+      "centralIdea": "Currículo, memória e educação antirracista",
+      "rememberForExam": null,
+      "howToUse": null,
+      "applicationExample": null,
+      "commonMisuse": "Não reduzir à comemoração de datas",
+      "misuseRisk": null,
+      "difficulty": null,
+      "saturation": null,
+      "scores": null,
+      "argumentativeFunctions": [],
+      "argumentTypes": [],
+      "socialProblems": [],
+      "tags": [],
+      "conceptRelationsRaw": null,
+      "sources": [],
+      "evidenceYear": null,
+      "verificationStatus": "PARTIAL",
+      "verificationDate": null,
+      "changeStatus": "EXPANDED",
+      "summaryOnly": true,
+      "active": false
+    },
+    {
+      "code": "REP-025",
+      "name": "Rita Barradas Barata",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "PESQUISADORA / EPIDEMIOLOGISTA",
+      "country": "Brasil",
+      "field": "Epidemiologia social e desigualdades em saúde",
+      "gapResolved": null,
+      "centralIdea": "Estuda como posição social, renda, gênero e raça se relacionam com diferenças de saúde e acesso a serviços. Sua obra é especialmente útil para explicar que desigualdades em saúde são socialmente produzidas, e não apenas resultado de escolhas individuais.",
+      "rememberForExam": "Epidemiologista brasileira: desigualdades sociais moldam adoecimento, acesso e condições de saúde; renda, classe, gênero e raça influenciam oportunidades de viver com saúde.",
+      "howToUse": "Use para deslocar a explicação da saúde do comportamento individual para condições sociais e estruturais.",
+      "applicationExample": "Os estudos de Rita Barradas Barata permitem compreender que diferenças de saúde entre grupos sociais não se explicam apenas por escolhas pessoais, pois renda, território e relações raciais também condicionam exposição a riscos e acesso ao cuidado.",
+      "commonMisuse": "Não afirmar que desigualdade social determina automaticamente a doença de cada indivíduo.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 5,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "EXPLAIN_CAUSE",
+        "SHOW_INEQUALITY",
+        "DEFINE_CONCEPT"
+      ],
+      "argumentTypes": [
+        "desigualdade estrutural",
+        "barreiras de acesso",
+        "determinantes sociais"
+      ],
+      "socialProblems": [
+        "desigualdade-saude",
+        "sus-acesso-saude",
+        "racismo",
+        "segregacao-urbana",
+        "prevencao-saude"
+      ],
+      "tags": [
+        "desigualdade no acesso à saúde",
+        "saúde da população negra",
+        "desigualdade territorial",
+        "prevenção"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://arca.fiocruz.br/items/7be8d6e6-0126-46c4-b09b-5e5e1383ef47",
+          "description": "Fiocruz/Editora Fiocruz — Como e por que as desigualdades sociais fazem mal à saúde (2009)"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-026",
+      "name": "Jairnilson Paim e Naomar de Almeida Filho",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "PESQUISADORES / SANITARISTAS",
+      "country": "Brasil",
+      "field": "Saúde coletiva",
+      "gapResolved": null,
+      "centralIdea": "Autores centrais na formulação conceitual da saúde coletiva brasileira. A abordagem considera o processo saúde-doença-cuidado em sua historicidade e integralidade, articulando dimensões sociais, políticas e institucionais.",
+      "rememberForExam": "Saúde coletiva não é apenas assistência médica: analisa saúde-doença-cuidado como fenômeno histórico e social, ligado a políticas, condições de vida e organização do sistema.",
+      "howToUse": "Use quando o tema exigir mostrar que saúde pública depende de condições sociais e organização coletiva do cuidado.",
+      "applicationExample": "A perspectiva da saúde coletiva desenvolvida por Paim e Almeida Filho ajuda a superar uma visão exclusivamente biomédica, pois entende o cuidado como fenômeno também social, histórico e político.",
+      "commonMisuse": "Não atribuir aos autores a ideia de que fatores biológicos são irrelevantes.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 3,
+        "applicability": 4,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "DEFINE_CONCEPT",
+        "EXPLAIN_CAUSE",
+        "HISTORICAL_CONTEXT"
+      ],
+      "argumentTypes": [
+        "necessidade de políticas públicas integradas",
+        "limites do modelo puramente biomédico"
+      ],
+      "socialProblems": [
+        "sus-acesso-saude",
+        "prevencao-saude",
+        "desigualdade-saude"
+      ],
+      "tags": [
+        "SUS",
+        "acesso à saúde",
+        "prevenção",
+        "determinantes sociais",
+        "políticas de saúde"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://revistas.usp.br/rsp/pt_BR/article/view/24383",
+          "description": "Revista de Saúde Pública — Saúde coletiva: uma nova saúde pública ou campo aberto a novos paradigmas?"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-027",
+      "name": "Magda Soares",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "EDUCADORA / PESQUISADORA",
+      "country": "Brasil",
+      "field": "Alfabetização, leitura e letramento",
+      "gapResolved": null,
+      "centralIdea": "Distinguiu e articulou alfabetização e letramento: dominar o sistema de escrita não equivale, por si só, a participar competentemente das práticas sociais de leitura e escrita.",
+      "rememberForExam": "Alfabetizar é ensinar o sistema de escrita; letrar envolve usar leitura e escrita em práticas sociais. Uma política educacional de qualidade precisa articular as duas dimensões.",
+      "howToUse": "Use para discutir por que acesso formal à escola ou decodificação de palavras não garantem plena participação na cultura escrita.",
+      "applicationExample": "A distinção proposta por Magda Soares entre alfabetização e letramento mostra que aprender o código escrito não basta quando o estudante não desenvolve condições de utilizar leitura e escrita em situações sociais concretas.",
+      "commonMisuse": "Não tratar alfabetização e letramento como opostos; na autora, são processos distintos, porém articulados.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "BASIC",
+      "saturation": "MEDIUM",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 5,
+        "applicability": 5,
+        "specificity": 5,
+        "originality": 4
+      },
+      "argumentativeFunctions": [
+        "DEFINE_CONCEPT",
+        "EXPLAIN_CAUSE",
+        "SUPPORT_INTERVENTION"
+      ],
+      "argumentTypes": [
+        "falha educacional",
+        "ensino descontextualizado",
+        "formação docente"
+      ],
+      "socialProblems": [
+        "alfabetizacao",
+        "inclusao-educacional"
+      ],
+      "tags": [
+        "alfabetização",
+        "analfabetismo funcional",
+        "desigualdade educacional",
+        "formação docente"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://ceale.fae.ufmg.br/magda-soares/",
+          "description": "CEALE/UFMG — Magda Soares"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-028",
+      "name": "Miguel Arroyo",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "EDUCADOR / PESQUISADOR",
+      "country": "Brasil",
+      "field": "Direito à educação, sujeitos populares e movimentos sociais",
+      "gapResolved": null,
+      "centralIdea": "Sua produção enfatiza que grupos historicamente excluídos são sujeitos de direitos e de conhecimentos; a escola deve reconhecer trajetórias, identidades e saberes dos setores populares.",
+      "rememberForExam": "Arroyo ajuda a pensar educação como direito de sujeitos historicamente excluídos, e não como favor ou simples adaptação desses grupos a um padrão escolar dominante.",
+      "howToUse": "Use em temas de acesso/permanência quando o problema envolve grupos cujas experiências são pouco reconhecidas pela escola.",
+      "applicationExample": "A perspectiva de Miguel Arroyo evidencia que assegurar o direito à educação também exige reconhecer como legítimos os saberes e trajetórias de grupos historicamente afastados da escola.",
+      "commonMisuse": "Não reduzir sua obra a uma defesa genérica de inclusão sem mencionar sujeitos, direitos e reconhecimento.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 4,
+        "specificity": 4,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "SOCIAL_CRITIQUE",
+        "SHOW_INVISIBILITY",
+        "SUPPORT_INTERVENTION"
+      ],
+      "argumentTypes": [
+        "invisibilidade de sujeitos",
+        "barreiras institucionais",
+        "reconhecimento de saberes"
+      ],
+      "socialProblems": [
+        "eja",
+        "inclusao-educacional",
+        "direitos-indigenas"
+      ],
+      "tags": [
+        "EJA",
+        "educação do campo",
+        "desigualdade educacional",
+        "exclusão",
+        "povos tradicionais"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://www3.ufmg.br/comunicacao/noticias/90-anos-de-historias-direito-a-educacao",
+          "description": "UFMG — Miguel Arroyo fala sobre o direito à educação"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-029",
+      "name": "Maria Teresa Eglér Mantoan",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "PESQUISADORA / EDUCADORA",
+      "country": "Brasil",
+      "field": "Educação inclusiva",
+      "gapResolved": null,
+      "centralIdea": "Defende a escola comum inclusiva e a eliminação de barreiras educacionais, com base no direito à diferença e nos direitos humanos.",
+      "rememberForExam": "Inclusão escolar não é apenas matricular estudantes com deficiência; é reorganizar a escola para eliminar barreiras e garantir participação e aprendizagem no ensino comum.",
+      "howToUse": "Use para defender que a dificuldade de inclusão não deve ser atribuída apenas ao aluno, mas também à organização escolar.",
+      "applicationExample": "Os estudos de Maria Teresa Mantoan permitem compreender a inclusão como transformação da própria escola, e não como mera inserção física do estudante em uma estrutura que permanece excludente.",
+      "commonMisuse": "Não afirmar que inclusão significa ausência de qualquer suporte especializado.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 5,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "DEFINE_CONCEPT",
+        "EXPLAIN_CAUSE",
+        "SUPPORT_INTERVENTION"
+      ],
+      "argumentTypes": [
+        "barreiras institucionais",
+        "desenho excludente",
+        "formação docente"
+      ],
+      "socialProblems": [
+        "inclusao-escolar-pcd",
+        "inclusao-educacional",
+        "acessibilidade",
+        "discriminacao"
+      ],
+      "tags": [
+        "educação inclusiva",
+        "capacitismo",
+        "AEE",
+        "formação docente",
+        "barreiras escolares"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://www.leped.fe.unicamp.br/menu/o-leped",
+          "description": "LEPED/Unicamp — área temática e pesquisas"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-030",
+      "name": "Ricardo Antunes",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "SOCIÓLOGO / PESQUISADOR",
+      "country": "Brasil",
+      "field": "Sociologia do trabalho",
+      "gapResolved": null,
+      "centralIdea": "Analisa transformações do trabalho contemporâneo, terceirização, precarização, jornadas e novas formas de exploração, incluindo a plataformização.",
+      "rememberForExam": "Antunes ajuda a interpretar como mudanças tecnológicas e empresariais podem gerar novas formas de precarização, intensificação e insegurança do trabalho.",
+      "howToUse": "Use para explicar que inovação tecnológica não produz automaticamente melhoria das condições de trabalho.",
+      "applicationExample": "A análise de Ricardo Antunes sobre as transformações do trabalho ajuda a compreender que plataformas digitais podem combinar inovação tecnológica com jornadas intensas e menor proteção social.",
+      "commonMisuse": "Não apresentar toda tecnologia como necessariamente precarizante; o argumento deve tratar das relações de trabalho concretas.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "MEDIUM",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 5,
+        "specificity": 4,
+        "originality": 4
+      },
+      "argumentativeFunctions": [
+        "EXPLAIN_CAUSE",
+        "SOCIAL_CRITIQUE",
+        "SHOW_INEQUALITY"
+      ],
+      "argumentTypes": [
+        "precarização",
+        "assimetria entre empresa e trabalhador",
+        "desproteção"
+      ],
+      "socialProblems": [
+        "plataformizacao-trabalho",
+        "precarizacao-trabalho"
+      ],
+      "tags": [
+        "uberização",
+        "terceirização",
+        "jornada",
+        "precarização",
+        "automação"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://jornal.unicamp.br/autoria/ricardo-antunes/",
+          "description": "Jornal da Unicamp — perfil de Ricardo Antunes"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-031",
+      "name": "Ludmila Costhek Abílio",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "SOCIOLOGA / PESQUISADORA",
+      "country": "Brasil",
+      "field": "Trabalho por plataformas e uberização",
+      "gapResolved": null,
+      "centralIdea": "Pesquisa a uberização e processos de informalização, destacando formas de gestão e controle do trabalho mediadas por plataformas e a transferência de riscos para trabalhadores.",
+      "rememberForExam": "Na uberização, o trabalhador parece autônomo, mas pode continuar submetido a formas de controle, avaliação e gestão algorítmica, assumindo custos e riscos da atividade.",
+      "howToUse": "Use em temas de trabalho algorítmico para ir além da oposição simplista entre emprego formal e autonomia.",
+      "applicationExample": "As pesquisas de Ludmila Abílio mostram que a aparente autonomia do trabalho por plataformas pode coexistir com formas intensas de controle e com a transferência de custos e riscos para o próprio trabalhador.",
+      "commonMisuse": "Não usar uberização como sinônimo de qualquer trabalho informal.",
+      "misuseRisk": "HIGH",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 3,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 5,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "DEFINE_CONCEPT",
+        "EXPLAIN_CAUSE",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [
+        "autonomia subordinada",
+        "transferência de riscos",
+        "precarização"
+      ],
+      "socialProblems": [
+        "plataformizacao-trabalho",
+        "precarizacao-trabalho",
+        "algoritmos"
+      ],
+      "tags": [
+        "trabalho por aplicativos",
+        "entregadores",
+        "informalidade",
+        "gestão algorítmica"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://www.ifch.unicamp.br/pessoas/ludmila-costhek-abilio",
+          "description": "IFCH/Unicamp — perfil e produção de Ludmila Abílio"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-032",
+      "name": "Helena Hirata",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "SOCIÓLOGA / PESQUISADORA",
+      "country": "Brasil/França",
+      "field": "Trabalho, gênero e cuidado",
+      "gapResolved": null,
+      "centralIdea": "Analisa divisão sexual do trabalho e relações de cuidado, mostrando como gênero, raça e classe se articulam nas trajetórias de cuidadoras.",
+      "rememberForExam": "O trabalho de cuidado é indispensável, mas recai de forma desigual sobre mulheres; gênero, raça e classe estruturam quem cuida, em quais condições e com qual reconhecimento.",
+      "howToUse": "Use para mostrar que cuidado não é apenas uma escolha familiar privada, mas uma relação social com distribuição desigual.",
+      "applicationExample": "Os estudos de Helena Hirata evidenciam que o cuidado, embora essencial à vida social, é distribuído de forma desigual e permanece fortemente associado ao trabalho feminino e às hierarquias de classe e raça.",
+      "commonMisuse": "Não afirmar que todo trabalho de cuidado é necessariamente não remunerado.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 5,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "EXPLAIN_CAUSE",
+        "SHOW_INEQUALITY",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [
+        "divisão sexual do trabalho",
+        "desvalorização do cuidado",
+        "interseccionalidade"
+      ],
+      "socialProblems": [
+        "trabalho-cuidado",
+        "inclusao-pessoa-idosa",
+        "trabalho-domestico",
+        "sexismo"
+      ],
+      "tags": [
+        "trabalho de cuidado",
+        "envelhecimento",
+        "trabalho doméstico",
+        "desigualdade de gênero"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://revistas.usp.br/eav/pt_BR/article/view/170421",
+          "description": "Estudos Avançados/USP — Comparando relações de cuidado: Brasil, França, Japão"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-033",
+      "name": "Fernando Braga da Costa",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "PSICÓLOGO SOCIAL / PESQUISADOR",
+      "country": "Brasil",
+      "field": "Invisibilidade pública e trabalho",
+      "gapResolved": null,
+      "centralIdea": "Investigou a invisibilidade pública por meio de pesquisa etnográfica com garis, trabalhando como gari semanalmente durante anos. O conceito descreve uma forma de apagamento social de pessoas em posições subalternizadas.",
+      "rememberForExam": "Invisibilidade pública: certos trabalhadores são fisicamente vistos, mas socialmente ignorados; a posição ocupada pode produzir apagamento e falta de reconhecimento.",
+      "howToUse": "Use quando o problema envolver grupos presentes no cotidiano, mas pouco reconhecidos como sujeitos sociais.",
+      "applicationExample": "A pesquisa de Fernando Braga da Costa com garis mostra que a exclusão pode assumir a forma de invisibilidade pública, quando determinados trabalhadores são percebidos apenas por sua função e deixam de ser reconhecidos como sujeitos.",
+      "commonMisuse": "Não afirmar que sua pesquisa original foi sobre população em situação de rua.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "BASIC",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 5,
+        "applicability": 5,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "SHOW_INVISIBILITY",
+        "DEFINE_CONCEPT",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [
+        "invisibilidade social",
+        "desrespeito",
+        "hierarquização do trabalho"
+      ],
+      "socialProblems": [
+        "trabalhos-invisibilizados",
+        "populacao-rua",
+        "discriminacao"
+      ],
+      "tags": [
+        "trabalhadores invisibilizados",
+        "população em situação de rua",
+        "estigma",
+        "desigualdade"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://repositorio.usp.br/item/001298332",
+          "description": "Repositório USP — Garis: um estudo de psicologia sobre invisibilidade pública"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true,
+      "v3Expansion": "Conectado ao bloco população em situação de rua sem redefinir seu objeto original de estudo."
+    },
+    {
+      "code": "REP-034",
+      "name": "Kabengele Munanga",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "ANTROPÓLOGO / PESQUISADOR",
+      "country": "Brasil / RD Congo",
+      "field": "Racismo, identidade negra e relações étnico-raciais",
+      "gapResolved": null,
+      "centralIdea": "Estuda racismo, negritude, identidade negra, multiculturalismo e educação das relações étnico-raciais, discutindo como categorias raciais foram historicamente construídas e podem operar socialmente.",
+      "rememberForExam": "Munanga ajuda a explicar que raça não tem fundamento biológico como hierarquia humana, mas continua produzindo efeitos sociais por meio do racismo, da identidade e das relações históricas.",
+      "howToUse": "Use para diferenciar a inexistência de raças biológicas humanas da existência social do racismo.",
+      "applicationExample": "A produção de Kabengele Munanga permite compreender que, embora hierarquias raciais não possuam base biológica, a ideia de raça foi historicamente construída e continua produzindo consequências sociais concretas.",
+      "commonMisuse": "Não dizer que o autor defende raça como categoria biológica.",
+      "misuseRisk": "HIGH",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "MEDIUM",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 5,
+        "specificity": 5,
+        "originality": 4
+      },
+      "argumentativeFunctions": [
+        "HISTORICAL_CONTEXT",
+        "DEFINE_CONCEPT",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [
+        "construção social da raça",
+        "racismo",
+        "reconhecimento identitário"
+      ],
+      "socialProblems": [
+        "racismo",
+        "identidade",
+        "inclusao-educacional"
+      ],
+      "tags": [
+        "racismo",
+        "identidade",
+        "educação antirracista",
+        "ações afirmativas"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://www.ea.fflch.usp.br/autor/kabengele-munanga",
+          "description": "Enciclopédia de Antropologia/USP — Kabengele Munanga"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-035",
+      "name": "Nilma Lino Gomes",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "EDUCADORA / ANTROPÓLOGA",
+      "country": "Brasil",
+      "field": "Educação, relações étnico-raciais e identidade",
+      "gapResolved": null,
+      "centralIdea": "Pesquisa educação, diversidade, relações raciais, formação docente, políticas educacionais e movimento negro, mostrando como identidade e desigualdade racial também são produzidas e contestadas em espaços educativos.",
+      "rememberForExam": "Nilma Lino Gomes conecta educação, identidade negra, formação docente, movimentos sociais e políticas de igualdade racial.",
+      "howToUse": "Use quando a escola aparece não apenas como solução, mas também como espaço que pode reproduzir ou enfrentar desigualdades raciais.",
+      "applicationExample": "As pesquisas de Nilma Lino Gomes mostram que a educação participa da construção de identidades e pode tanto reproduzir discriminações quanto criar práticas de reconhecimento e valorização da diversidade racial.",
+      "commonMisuse": "Não reduzir sua obra exclusivamente a cotas universitárias.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 5,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 5,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "SHOW_INEQUALITY",
+        "SOCIAL_CRITIQUE",
+        "SUPPORT_INTERVENTION"
+      ],
+      "argumentTypes": [
+        "racismo institucional",
+        "invisibilidade curricular",
+        "reconhecimento"
+      ],
+      "socialProblems": [
+        "racismo",
+        "violencia-escolar",
+        "identidade",
+        "inclusao-educacional"
+      ],
+      "tags": [
+        "racismo escolar",
+        "identidade negra",
+        "formação docente",
+        "currículo",
+        "ações afirmativas"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://www.iea.usp.br/pessoas/pasta-pessoan/nilma-lino-gomes/",
+          "description": "IEA-USP — Nilma Lino Gomes"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-036",
+      "name": "Débora Diniz e o modelo social da deficiência",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "PESQUISADORA / CONCEITO",
+      "country": "Brasil",
+      "field": "Deficiência, bioética e direitos humanos",
+      "gapResolved": null,
+      "centralIdea": "No campo dos estudos da deficiência, a abordagem social desloca o foco exclusivo do corpo individual para as barreiras sociais, políticas e ambientais que produzem exclusão.",
+      "rememberForExam": "Deficiência não pode ser compreendida apenas como lesão ou diagnóstico; barreiras sociais e institucionais participam da produção da desvantagem.",
+      "howToUse": "Use para explicar por que remover barreiras pode ser tão importante quanto oferecer tratamento individual.",
+      "applicationExample": "A abordagem social da deficiência presente nos estudos de Débora Diniz ajuda a mostrar que a exclusão surge também da maneira como instituições e ambientes são organizados.",
+      "commonMisuse": "Não negar a existência de dimensões corporais ou necessidades de saúde; o modelo social critica sua transformação em explicação exclusiva da exclusão.",
+      "misuseRisk": "HIGH",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 5,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "DEFINE_CONCEPT",
+        "EXPLAIN_CAUSE",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [
+        "barreiras sociais",
+        "igualdade material",
+        "justiça social"
+      ],
+      "socialProblems": [
+        "acessibilidade",
+        "discriminacao",
+        "inclusao-educacional"
+      ],
+      "tags": [
+        "capacitismo",
+        "acessibilidade",
+        "BPC",
+        "inclusão",
+        "políticas sociais"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://www.repositorio.unb.br/handle/10482/46499",
+          "description": "Repositório UnB — Deficiência e igualdade"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-037",
+      "name": "Izabel Maior",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "MÉDICA FISIATRA / ESPECIALISTA",
+      "country": "Brasil",
+      "field": "Direitos da pessoa com deficiência e acessibilidade",
+      "gapResolved": null,
+      "centralIdea": "Especialista e ativista histórica em políticas de acessibilidade e direitos da pessoa com deficiência, participou da implementação da abordagem biopsicossocial e da Convenção da ONU no Brasil.",
+      "rememberForExam": "Izabel Maior ajuda a conectar acessibilidade, direitos e modelo biopsicossocial: a deficiência deve ser avaliada em interação com barreiras e condições de participação.",
+      "howToUse": "Use para dar concretude brasileira a temas de políticas de inclusão e avaliação da deficiência.",
+      "applicationExample": "A trajetória de Izabel Maior evidencia como a inclusão depende de políticas que reconheçam a interação entre impedimentos pessoais e barreiras sociais, e não apenas de diagnósticos médicos isolados.",
+      "commonMisuse": "Não apresentar a avaliação biopsicossocial como simples substituição do médico por outro profissional.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 3,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 4,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "SUPPORT_INTERVENTION",
+        "DEFINE_CONCEPT",
+        "HISTORICAL_CONTEXT"
+      ],
+      "argumentTypes": [
+        "barreiras institucionais",
+        "implementação de direitos",
+        "acessibilidade"
+      ],
+      "socialProblems": [
+        "acessibilidade",
+        "participacao-juventude"
+      ],
+      "tags": [
+        "acessibilidade",
+        "avaliação biopsicossocial",
+        "políticas de deficiência",
+        "participação"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://acessibilidade.ufrj.br/eventos/roda-de-conversa-com-izabel-maior-avaliacao-biopsicossocial-da-deficiencia/",
+          "description": "UFRJ Acessibilidade — perfil de Izabel Maior"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-038",
+      "name": "Alexandre Kalache",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "EPIDEMIOLOGISTA / ESPECIALISTA",
+      "country": "Brasil",
+      "field": "Envelhecimento e longevidade",
+      "gapResolved": null,
+      "centralIdea": "Referência internacional em envelhecimento, chama atenção para a velocidade da transição demográfica brasileira e para a necessidade de políticas que garantam envelhecimento ativo, saúde e participação.",
+      "rememberForExam": "O Brasil envelhece rapidamente; longevidade precisa ser acompanhada de saúde, autonomia, proteção social, cidades e serviços preparados para uma população mais velha.",
+      "howToUse": "Use para transformar 'envelhecimento populacional' em debate sobre cidadania e preparação social.",
+      "applicationExample": "Alexandre Kalache destaca que o rápido envelhecimento brasileiro exige adaptação de sistemas de saúde, cuidado e cidades, pois viver mais não garante, sozinho, autonomia e qualidade de vida.",
+      "commonMisuse": "Não tratar projeções demográficas antigas como números atuais sem verificar o ano.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "BASIC",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 5,
+        "applicability": 5,
+        "specificity": 4,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM",
+        "HISTORICAL_CONTEXT",
+        "SUPPORT_INTERVENTION"
+      ],
+      "argumentTypes": [
+        "despreparo institucional",
+        "transição demográfica",
+        "necessidade de políticas intersetoriais"
+      ],
+      "socialProblems": [
+        "etarismo",
+        "trabalho-cuidado",
+        "cuidado-pessoa-idosa",
+        "precarizacao-trabalho",
+        "inclusao-pessoa-idosa"
+      ],
+      "tags": [
+        "etarismo",
+        "cuidado",
+        "saúde da pessoa idosa",
+        "previdência",
+        "cidades amigáveis"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://cee.fiocruz.br/Alexandre-Kalache-A-melhor-coisa-que-pode-nos-acontecer-e-envelhecer/",
+          "description": "CEE-Fiocruz — entrevista com Alexandre Kalache"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-039",
+      "name": "Carlos Nobre",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "CLIMATOLOGISTA / PESQUISADOR",
+      "country": "Brasil",
+      "field": "Mudanças climáticas e Amazônia",
+      "gapResolved": null,
+      "centralIdea": "Pesquisador brasileiro de referência em mudanças climáticas. Seu trabalho é útil para fundamentar a dimensão científica da crise climática e discutir riscos sistêmicos.",
+      "rememberForExam": "Mudanças climáticas têm fundamento científico robusto; seus impactos tornam-se sociais quando atingem de forma desigual territórios, infraestrutura, saúde e meios de vida.",
+      "howToUse": "Use para estabelecer a base científica do fenômeno e depois conectá-la à desigualdade social.",
+      "applicationExample": "A produção científica de Carlos Nobre fornece base para compreender a crise climática como fenômeno mensurável, cujos impactos sociais dependem da capacidade desigual de prevenção e adaptação dos territórios.",
+      "commonMisuse": "Não atribuir previsão de desastre específico sem fonte.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "MEDIUM",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 5,
+        "specificity": 5,
+        "originality": 4
+      },
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM",
+        "EXPLAIN_CONSEQUENCE",
+        "SUPPORT_INTERVENTION"
+      ],
+      "argumentTypes": [
+        "risco climático",
+        "necessidade de adaptação",
+        "prevenção"
+      ],
+      "socialProblems": [
+        "calor-extremo",
+        "justica-climatica"
+      ],
+      "tags": [
+        "eventos extremos",
+        "Amazônia",
+        "adaptação",
+        "justiça climática"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://www.inpe.br/noticias/noticia.php?Cod_Noticia=3085",
+          "description": "INPE — Fundamentos Científicos das Mudanças Climáticas"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true,
+      "v3Expansion": "Complementado por evidências específicas de calor extremo e desastres hidrológicos; não recebe novo conceito redundante."
+    },
+    {
+      "code": "REP-040",
+      "name": "Jacqueline Sinhoretto",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "SOCIÓLOGA / PESQUISADORA",
+      "country": "Brasil",
+      "field": "Violência, policiamento e justiça criminal",
+      "gapResolved": null,
+      "centralIdea": "Pesquisa sociologia da violência, punição, segurança pública, policiamento, justiça criminal e prisões, permitindo discutir como instituições administram conflitos e como desigualdades podem aparecer no sistema de segurança.",
+      "rememberForExam": "Violência e segurança não são apenas questões de crime individual; também envolvem instituições, policiamento, justiça, punição e desigualdades na administração de conflitos.",
+      "howToUse": "Use para analisar segurança pública além do senso comum punitivista.",
+      "applicationExample": "As pesquisas de Jacqueline Sinhoretto ajudam a compreender que políticas de segurança devem ser avaliadas também pela forma como policiamento e justiça distribuem proteção, controle e punição entre diferentes grupos sociais.",
+      "commonMisuse": "Não transformar análise sociológica em defesa de uma política penal específica.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 4,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "EXPLAIN_CAUSE",
+        "SHOW_INEQUALITY",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [
+        "seletividade institucional",
+        "falha de políticas",
+        "desigualdade racial"
+      ],
+      "socialProblems": [
+        "violencia-urbana",
+        "violencia-institucional"
+      ],
+      "tags": [
+        "violência urbana",
+        "policiamento",
+        "prisões",
+        "seletividade institucional"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://www.sociais.ufscar.br/pt-br/docentes/jacqueline-sinhoretto",
+          "description": "UFSCar — perfil de Jacqueline Sinhoretto"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true,
+      "v3Expansion": "Complementada pelo Atlas da Violência 2025; preservado foco institucional da pesquisadora."
+    },
+    {
+      "code": "REP-041",
+      "name": "Axel Honneth",
+      "headingSubtitle": "reconhecimento e invisibilidade social",
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "FILÓSOFO / CONCEITO",
+      "country": "Alemanha",
+      "field": "Teoria do reconhecimento",
+      "gapResolved": null,
+      "centralIdea": "A invisibilidade social pode ser compreendida como forma simbólica de desrespeito: alguém é fisicamente percebido, mas não reconhecido como sujeito moral e social válido.",
+      "rememberForExam": "Para Honneth, invisibilidade social não significa ser literalmente invisível; significa não receber reconhecimento social e moral suficiente para ser tratado como sujeito plenamente válido.",
+      "howToUse": "Use quando o problema envolve apagamento social e dignidade, combinando bem com Fernando Braga da Costa.",
+      "applicationExample": "A teoria do reconhecimento de Axel Honneth ajuda a interpretar a invisibilidade social como forma de desrespeito, pois determinados indivíduos podem estar presentes no espaço público sem serem efetivamente reconhecidos como sujeitos de igual valor.",
+      "commonMisuse": "Não usar 'reconhecimento' como sinônimo genérico de fama, atenção ou visibilidade midiática.",
+      "misuseRisk": "HIGH",
+      "difficulty": "ADVANCED",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 3,
+        "applicability": 4,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "DEFINE_CONCEPT",
+        "SHOW_INVISIBILITY",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [
+        "falta de reconhecimento",
+        "desrespeito",
+        "exclusão simbólica"
+      ],
+      "socialProblems": [
+        "trabalhos-invisibilizados",
+        "discriminacao",
+        "racismo",
+        "acessibilidade"
+      ],
+      "tags": [
+        "invisibilidade",
+        "estigma",
+        "trabalhadores subalternizados",
+        "racismo",
+        "PcD"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://www.scielo.br/j/ea/a/qf6pqFqKDBt5csH6NbZvGdQ/",
+          "description": "Estudos Avançados/SciELO — A invisibilidade social como desrespeito na teoria do reconhecimento de Axel Honneth (2026)"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-042",
+      "name": "Pierre Bourdieu",
+      "headingSubtitle": "capital cultural e reprodução das desigualdades",
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "SOCIÓLOGO / CONCEITO",
+      "country": "França",
+      "field": "Educação e desigualdade social",
+      "gapResolved": null,
+      "centralIdea": "O conceito de capital cultural ajuda a explicar por que recursos culturais valorizados pela escola são distribuídos de maneira desigual entre famílias e classes sociais, influenciando trajetórias escolares.",
+      "rememberForExam": "A escola não recebe alunos com os mesmos recursos culturais prévios; quando trata como natural a cultura dos grupos privilegiados, pode transformar desigualdades sociais em desigualdades escolares.",
+      "howToUse": "Use para contestar explicações que atribuem sucesso escolar somente ao esforço individual.",
+      "applicationExample": "O conceito de capital cultural de Bourdieu ajuda a compreender por que estudantes chegam à escola com recursos desigualmente valorizados, o que torna insuficiente explicar resultados educacionais apenas pelo mérito individual.",
+      "commonMisuse": "Não afirmar que a escola sempre reproduz mecanicamente a estrutura social ou que mobilidade é impossível.",
+      "misuseRisk": "HIGH",
+      "difficulty": "ADVANCED",
+      "saturation": "HIGH",
+      "scores": {
+        "versatility": 5,
+        "authority": 5,
+        "comprehension": 3,
+        "applicability": 5,
+        "specificity": 5,
+        "originality": 2
+      },
+      "argumentativeFunctions": [
+        "EXPLAIN_CAUSE",
+        "SHOW_INEQUALITY",
+        "DEFINE_CONCEPT"
+      ],
+      "argumentTypes": [
+        "reprodução de desigualdades",
+        "capital cultural",
+        "meritocracia"
+      ],
+      "socialProblems": [
+        "inclusao-educacional",
+        "evasao-escolar"
+      ],
+      "tags": [
+        "desigualdade educacional",
+        "acesso ao ensino superior",
+        "sucesso/fracasso escolar"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://ensinosociologia.fflch.usp.br/reproducao-das-diferencas-sociais-na-perspectiva-de-pierre-bourdieu",
+          "description": "FFLCH-USP — A Reprodução das diferenças sociais na perspectiva de Pierre Bourdieu"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-043",
+      "name": "Paulo Freire",
+      "headingSubtitle": "educação dialógica e autonomia",
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "EDUCADOR / PENSADOR",
+      "country": "Brasil",
+      "field": "Educação",
+      "gapResolved": null,
+      "centralIdea": "A educação deve formar sujeitos capazes de compreender criticamente a realidade e participar do processo educativo, em oposição a práticas meramente transmissivas.",
+      "rememberForExam": "Freire é mais útil quando ligado a autonomia, diálogo, leitura crítica do mundo e participação do estudante — não como citação genérica sobre educação.",
+      "howToUse": "Use quando a proposta argumentativa envolve formação crítica e participação ativa do estudante.",
+      "applicationExample": "A pedagogia de Paulo Freire contribui para compreender que a educação cidadã não se limita à transmissão de conteúdos, pois exige diálogo e participação do estudante na construção do conhecimento.",
+      "commonMisuse": "Não atribuir frases populares sem fonte; evitar 'educação muda o mundo' como citação automática.",
+      "misuseRisk": "HIGH",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "HIGH",
+      "scores": {
+        "versatility": 5,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 5,
+        "specificity": 4,
+        "originality": 1
+      },
+      "argumentativeFunctions": [
+        "DEFINE_CONCEPT",
+        "SUPPORT_INTERVENTION",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [
+        "falha educacional",
+        "ausência de participação",
+        "educação emancipatória"
+      ],
+      "socialProblems": [
+        "participacao-juventude",
+        "alfabetizacao",
+        "eja",
+        "inclusao-educacional"
+      ],
+      "tags": [
+        "formação cidadã",
+        "alfabetização",
+        "educação de adultos",
+        "ensino autoritário"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://revistas.usp.br/revistaec/pt_BR/article/view/170632",
+          "description": "Revista de Estudos Culturais/USP — leitura de Pedagogia da Autonomia"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-044",
+      "name": "Simone de Beauvoir",
+      "headingSubtitle": "gênero como construção social",
+      "entityType": "PERSON",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "FILÓSOFA / CONCEITO",
+      "country": "França",
+      "field": "Filosofia e estudos de gênero",
+      "gapResolved": null,
+      "centralIdea": "O Segundo Sexo abriu caminho para pensar a condição feminina como construída social e historicamente, e não explicada apenas pela biologia.",
+      "rememberForExam": "Beauvoir ajuda a argumentar que expectativas e papéis atribuídos às mulheres são socialmente construídos e podem sustentar desigualdades.",
+      "howToUse": "Use quando o argumento precisa mostrar que expectativas sociais sobre mulheres não são inevitáveis nem puramente biológicas.",
+      "applicationExample": "A reflexão de Simone de Beauvoir sobre a construção social da condição feminina permite questionar a naturalização de papéis de cuidado e dependência atribuídos às mulheres.",
+      "commonMisuse": "Não transformar a famosa frase da autora em slogan sem contexto; priorize a ideia conceitual.",
+      "misuseRisk": "HIGH",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "HIGH",
+      "scores": {
+        "versatility": 4,
+        "authority": 5,
+        "comprehension": 4,
+        "applicability": 4,
+        "specificity": 4,
+        "originality": 2
+      },
+      "argumentativeFunctions": [
+        "DEFINE_CONCEPT",
+        "HISTORICAL_CONTEXT",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [
+        "papéis de gênero",
+        "desigualdade estrutural",
+        "naturalização"
+      ],
+      "socialProblems": [
+        "sexismo",
+        "trabalho-cuidado",
+        "participacao-juventude",
+        "inclusao-educacional"
+      ],
+      "tags": [
+        "desigualdade de gênero",
+        "maternidade",
+        "trabalho",
+        "participação política",
+        "violência simbólica"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://www.scielo.br/j/cpa/a/mwW6jT5nfRpwPHMJwsgYQDJ/",
+          "description": "Cadernos Pagu/SciELO — discussão histórica sobre O Segundo Sexo e gênero"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-045",
+      "name": "Que Horas Ela Volta?",
+      "headingSubtitle": "Anna Muylaert",
+      "entityType": "CULTURAL_WORK",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "FILME",
+      "country": "Brasil",
+      "field": "Cinema, trabalho doméstico e desigualdade de classe",
+      "gapResolved": null,
+      "centralIdea": "O filme acompanha uma trabalhadora doméstica e a chegada de sua filha à casa dos patrões, tensionando fronteiras de classe, trabalho de cuidado, acesso à universidade e desigualdades naturalizadas.",
+      "rememberForExam": "Use o filme para discutir fronteiras de classe e trabalho doméstico: quem cuida dos filhos de outras famílias muitas vezes precisa se afastar dos próprios filhos e enfrenta limites sociais considerados 'naturais'.",
+      "howToUse": "Use como exemplo cultural para humanizar argumentos sobre trabalho doméstico e reprodução de desigualdades.",
+      "applicationExample": "Em Que Horas Ela Volta?, a relação entre Val, sua filha e a família empregadora expõe fronteiras de classe que ultrapassam o salário e organizam também espaços, expectativas e oportunidades.",
+      "commonMisuse": "Não apresentar o filme como retrato estatístico de todas as trabalhadoras domésticas.",
+      "misuseRisk": "LOW",
+      "difficulty": "BASIC",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 4,
+        "authority": 4,
+        "comprehension": 5,
+        "applicability": 5,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "EXAMPLE",
+        "SOCIAL_CRITIQUE",
+        "COMPARE_REALITY"
+      ],
+      "argumentTypes": [
+        "desigualdade estrutural",
+        "trabalho de cuidado",
+        "hierarquias sociais"
+      ],
+      "socialProblems": [
+        "trabalho-domestico",
+        "pobreza",
+        "trabalho-cuidado",
+        "inclusao-educacional"
+      ],
+      "tags": [
+        "trabalho doméstico",
+        "desigualdade de classe",
+        "cuidado",
+        "acesso ao ensino superior"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://ims.com.br/filme/que-horas-ela-volta/",
+          "description": "Instituto Moreira Salles — Que Horas Ela Volta?"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-046",
+      "name": "O Homem Invisível",
+      "headingSubtitle": "Ralph Ellison",
+      "entityType": "CULTURAL_WORK",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "OBRA LITERÁRIA",
+      "country": "Estados Unidos",
+      "field": "Literatura, racismo e invisibilidade social",
+      "gapResolved": null,
+      "centralIdea": "O romance é usado pelo próprio Axel Honneth para pensar invisibilidade social como negação simbólica de reconhecimento, especialmente em contexto racial.",
+      "rememberForExam": "O personagem é fisicamente visível, mas socialmente 'atravessado' pelo olhar dos outros; a obra ajuda a discutir racismo, desumanização e falta de reconhecimento.",
+      "howToUse": "Use junto a Honneth ou Fernando Braga da Costa para dar forma cultural ao conceito de invisibilidade.",
+      "applicationExample": "A metáfora de O Homem Invisível ajuda a demonstrar que exclusão não exige ausência física: um indivíduo pode estar presente e, ainda assim, ser socialmente ignorado e desumanizado.",
+      "commonMisuse": "Não confundir o romance de Ralph Ellison com O Homem Invisível de H. G. Wells.",
+      "misuseRisk": "LOW",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 3,
+        "authority": 4,
+        "comprehension": 4,
+        "applicability": 4,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "EXAMPLE",
+        "SHOW_INVISIBILITY",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [
+        "desumanização",
+        "racismo",
+        "falta de reconhecimento"
+      ],
+      "socialProblems": [
+        "racismo",
+        "trabalhos-invisibilizados",
+        "discriminacao"
+      ],
+      "tags": [
+        "racismo",
+        "invisibilidade social",
+        "estigma",
+        "reconhecimento"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://www.scielo.br/j/ea/a/qf6pqFqKDBt5csH6NbZvGdQ/",
+          "description": "Estudos Avançados/SciELO — Honneth analisa o romance de Ralph Ellison"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-047",
+      "name": "Um Defeito de Cor",
+      "headingSubtitle": "Ana Maria Gonçalves",
+      "entityType": "CULTURAL_WORK",
+      "entityTypeInferred": true,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "OBRA LITERÁRIA",
+      "country": "Brasil",
+      "field": "Literatura, escravidão, memória e identidade negra",
+      "gapResolved": null,
+      "centralIdea": "Romance histórico brasileiro que permite abordar escravidão, diáspora, violência, memória e protagonismo negro a partir de perspectiva centrada em uma mulher negra.",
+      "rememberForExam": "Obra útil para discutir memória da escravidão, protagonismo negro e apagamentos históricos; oferece uma perspectiva que desloca o olhar tradicional sobre a formação do Brasil.",
+      "howToUse": "Use em temas de memória, cultura afro-brasileira e permanências históricas do racismo.",
+      "applicationExample": "Um Defeito de Cor permite relacionar a memória da escravidão à construção da identidade e ao apagamento de experiências negras, mostrando como disputas de memória também são disputas por reconhecimento.",
+      "commonMisuse": "Não tratar o romance como documento histórico literal; é obra literária de base histórica.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": {
+        "versatility": 4,
+        "authority": 4,
+        "comprehension": 4,
+        "applicability": 4,
+        "specificity": 5,
+        "originality": 5
+      },
+      "argumentativeFunctions": [
+        "HISTORICAL_CONTEXT",
+        "EXAMPLE",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [
+        "apagamento histórico",
+        "racismo",
+        "memória coletiva"
+      ],
+      "socialProblems": [
+        "racismo",
+        "identidade"
+      ],
+      "tags": [
+        "racismo",
+        "memória",
+        "escravidão",
+        "identidade",
+        "apagamento histórico"
+      ],
+      "conceptRelationsRaw": null,
+      "sources": [
+        {
+          "kind": "GENERAL",
+          "url": "https://academia.org.br/noticias/abl-na-midia-folha-de-sao-paulo-venho-falando-pretugues-afirma-escritora-ana-maria",
+          "description": "Academia Brasileira de Letras — Ana Maria Gonçalves e Um Defeito de Cor"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-048",
+      "name": "Bruno Bioni",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "JURISTA / PESQUISADOR",
+      "country": "Brasil",
+      "field": "Privacidade, proteção de dados e regulação digital",
+      "gapResolved": "Tecnologia: especialista brasileiro em proteção de dados e concentração/uso de dados.",
+      "centralIdea": "Sua produção permite discutir proteção de dados para além do consentimento individual, incluindo responsabilização, governança e limites do tratamento de dados em ecossistemas digitais.",
+      "rememberForExam": "Especialista brasileiro em proteção de dados: ajuda a explicar por que consentimento isolado nem sempre basta em ambientes marcados por assimetria de informação e tratamento massivo de dados.",
+      "howToUse": "Use quando o problema envolver coleta, circulação ou uso de dados e a responsabilidade de organizações e plataformas.",
+      "applicationExample": "A produção de Bruno Bioni ajuda a compreender que a proteção de dados não pode depender apenas de decisões individuais de consentimento, pois sistemas digitais envolvem assimetrias de informação e responsabilidades institucionais.",
+      "commonMisuse": "Não usar proteção de dados como sinônimo de sigilo absoluto ou proibição de qualquer tratamento de dados.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": null,
+      "argumentativeFunctions": [
+        "DEFINE_CONCEPT",
+        "LEGAL_GAP",
+        "SUPPORT_INTERVENTION"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "dados-privacidade",
+        "plataformas-digitais",
+        "algoritmos"
+      ],
+      "tags": [
+        "privacidade",
+        "proteção de dados",
+        "plataformas",
+        "IA",
+        "assimetria informacional"
+      ],
+      "conceptRelationsRaw": "PERSON Bruno Bioni → WORKS_WITH → CONCEPT proteção de dados / accountability",
+      "sources": [
+        {
+          "kind": "PROFILE",
+          "url": "https://www.iea.usp.br/pessoas/pasta-pessoab/bruno-bioni",
+          "description": "IEA-USP — Bruno Bioni"
+        },
+        {
+          "kind": "CONCEPT",
+          "url": null,
+          "description": "Bruno Bioni — Proteção de Dados Pessoais: a função e os limites do consentimento; Regulação e Proteção de Dados: o princípio da accountability."
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-049",
+      "name": "Fernanda Bruno",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "PESQUISADORA",
+      "country": "Brasil",
+      "field": "Vigilância, tecnologia, subjetividade e visibilidade",
+      "gapResolved": "Tecnologia: especialista brasileira em vigilância e efeitos sociais da infraestrutura digital.",
+      "centralIdea": "Pesquisa como tecnologias de vigilância e visibilidade reorganizam relações de poder, comportamentos e subjetividades em ambientes digitais.",
+      "rememberForExam": "Fernanda Bruno ajuda a entender vigilância digital como processo social: tecnologias coletam, observam e classificam comportamentos, afetando visibilidade, poder e autonomia.",
+      "howToUse": "Use quando o argumento precisa explicar como monitoramento e coleta de rastros digitais produzem relações de poder, e não apenas riscos abstratos de privacidade.",
+      "applicationExample": "Os estudos de Fernanda Bruno permitem compreender que a vigilância digital não se limita a câmeras ou espionagem direta, pois também ocorre pela coleta e classificação cotidiana de rastros produzidos nas plataformas.",
+      "commonMisuse": "Não equiparar toda coleta de dados a uma mesma forma de vigilância; explique o mecanismo e a finalidade.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": null,
+      "argumentativeFunctions": [
+        "DEFINE_CONCEPT",
+        "SOCIAL_CRITIQUE",
+        "EXPLAIN_CAUSE"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "dados-privacidade",
+        "plataformas-digitais",
+        "identidade"
+      ],
+      "tags": [
+        "vigilância digital",
+        "rastreamento",
+        "plataformas",
+        "visibilidade",
+        "dados"
+      ],
+      "conceptRelationsRaw": "PERSON Fernanda Bruno → WORKS_WITH → CONCEPT vigilância digital / visibilidade",
+      "sources": [
+        {
+          "kind": "PROFILE",
+          "url": "https://www.iea.usp.br/pessoas/pasta-pessoaf/fernanda-bruno",
+          "description": "IEA-USP — Fernanda Bruno"
+        },
+        {
+          "kind": "CONCEPT",
+          "url": "https://lavits.org/a_rede/fernanda-bruno/",
+          "description": "LAVITS / obras Máquinas de ver, modos de ser e Tecnopolíticas da Vigilância"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-050",
+      "name": "Sérgio Amadeu da Silveira",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "PESQUISADOR / CIENTISTA POLÍTICO",
+      "country": "Brasil",
+      "field": "Sistemas algorítmicos, IA, soberania digital e tecnopolítica",
+      "gapResolved": "Tecnologia: mecanismos específicos de algoritmos, IA e modulação de comportamento.",
+      "centralIdea": "Pesquisa implicações tecnopolíticas de sistemas algorítmicos e IA, incluindo classificação, modulação, privacidade, soberania de dados e efeitos políticos.",
+      "rememberForExam": "Sistemas algorítmicos não são apenas ferramentas neutras: classificam, ordenam e modulam informações e escolhas conforme dados, objetivos e critérios definidos em seu desenho.",
+      "howToUse": "Use para mostrar mecanismos concretos da IA e dos algoritmos, evitando frases vagas como “a tecnologia muda tudo”.",
+      "applicationExample": "As pesquisas de Sérgio Amadeu ajudam a compreender que sistemas algorítmicos não apenas exibem conteúdos, mas classificam e ordenam informações segundo critérios capazes de influenciar visibilidade e decisão.",
+      "commonMisuse": "Não afirmar que todo algoritmo é necessariamente discriminatório; o risco depende de dados, objetivos, desenho e contexto.",
+      "misuseRisk": "HIGH",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": null,
+      "argumentativeFunctions": [
+        "DEFINE_CONCEPT",
+        "EXPLAIN_CAUSE",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "algoritmos",
+        "discriminacao",
+        "dados-privacidade"
+      ],
+      "tags": [
+        "algoritmos",
+        "IA",
+        "discriminação algorítmica",
+        "desinformação",
+        "soberania de dados"
+      ],
+      "conceptRelationsRaw": "PERSON Sérgio Amadeu → WORKS_WITH → CONCEPT governança algorítmica / modulação / soberania de dados",
+      "sources": [
+        {
+          "kind": "PROFILE",
+          "url": "https://www.ufabc.edu.br/ensino/docentes/sergio-amadeu-da-silveira",
+          "description": "UFABC — Sérgio Amadeu da Silveira"
+        },
+        {
+          "kind": "CONCEPT",
+          "url": "https://cientometria.pesquisa.ufabc.edu.br/UFABC-professores/membro-6800442072685268.html",
+          "description": "UFABC/Cientometria — pesquisa sobre implicações tecnopolíticas de algoritmos e IA"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-051",
+      "name": "Rodolfo Rorato Londero",
+      "headingSubtitle": "publicidade infantil e atenção no YouTube",
+      "entityType": "PERSON",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "PESQUISADOR / ESTUDO",
+      "country": "Brasil",
+      "field": "Comunicação, publicidade infantil e atenção",
+      "gapResolved": "Infância digital: pesquisador e estudo científico sobre atenção, publicidade e conteúdo infantil em plataforma.",
+      "centralIdea": "Estudo de conteúdo no YouTube mostrou como product placement pode integrar publicidade à narrativa infantil, dificultando que crianças reconheçam a mensagem comercial como publicidade.",
+      "rememberForExam": "Na publicidade infantil digital, anúncios podem aparecer dentro da própria narrativa; isso dificulta a identificação da intenção comercial e explora a atenção infantil.",
+      "howToUse": "Use para explicar mecanismos específicos de persuasão no ambiente digital infantil.",
+      "applicationExample": "O estudo de Rodolfo Londero e Meire Sebastião sobre publicidade infantil no YouTube mostra que o product placement pode tornar a intenção comercial menos identificável para a criança ao ser inserido na própria narrativa do vídeo.",
+      "commonMisuse": "Não generalizar os resultados do recorte analisado para todo conteúdo infantil de todas as plataformas.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "BASIC",
+      "saturation": "LOW",
+      "scores": null,
+      "argumentativeFunctions": [
+        "EXPLAIN_CAUSE",
+        "PROVE_PROBLEM",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "infancia-digital",
+        "plataformas-digitais",
+        "trabalho-infantil"
+      ],
+      "tags": [
+        "publicidade infantil",
+        "economia da atenção",
+        "YouTube",
+        "consumo",
+        "influenciadores mirins"
+      ],
+      "conceptRelationsRaw": "PERSON Rodolfo Londero → AUTHORS → STUDY publicidade infantil/atenção",
+      "sources": [
+        {
+          "kind": "PROFILE",
+          "url": "https://revistas.usp.br/anagrama/pt_BR/article/view/202125",
+          "description": "Revista Anagrama/USP — biografia dos autores"
+        },
+        {
+          "kind": "CONCEPT",
+          "url": "https://doi.org/10.11606/issn.1982-1689.anagrama.2022.202125",
+          "description": "Sebastião & Londero (2022), Atenção e publicidade infantil no YouTube"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-052",
+      "name": "Nise da Silveira",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "PSIQUIATRA / PESQUISADORA",
+      "country": "Brasil",
+      "field": "Saúde mental, terapêutica ocupacional e cuidado humanizado",
+      "gapResolved": "Saúde mental: repertório histórico brasileiro específico sobre cuidado não violento e alternativas ao confinamento.",
+      "centralIdea": "Nise se opôs a práticas psiquiátricas agressivas e desenvolveu formas de cuidado baseadas em atividades expressivas, convivência e portas abertas, criando a Seção de Terapêutica Ocupacional, o Museu de Imagens do Inconsciente e a Casa das Palmeiras.",
+      "rememberForExam": "Nise da Silveira é referência brasileira de cuidado psiquiátrico humanizado: combateu práticas agressivas e valorizou expressão, vínculo e reabilitação em liberdade.",
+      "howToUse": "Use para contextualizar historicamente alternativas ao modelo asilar e mostrar que cuidado em saúde mental pode preservar expressão e autonomia.",
+      "applicationExample": "A trajetória de Nise da Silveira mostra que o tratamento psiquiátrico pode ser reorganizado a partir de vínculo, expressão e respeito à pessoa, em oposição a práticas institucionalizantes e violentas.",
+      "commonMisuse": "Não atribuir a Nise toda a Reforma Psiquiátrica brasileira nem dizer que arte, isoladamente, substitui qualquer tratamento clínico.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "BASIC",
+      "saturation": "LOW",
+      "scores": null,
+      "argumentativeFunctions": [
+        "HISTORICAL_CONTEXT",
+        "EXAMPLE",
+        "SUPPORT_INTERVENTION"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "saude-mental",
+        "violencia-institucional",
+        "discriminacao"
+      ],
+      "tags": [
+        "institucionalização",
+        "estigma",
+        "cuidado em liberdade",
+        "tratamento desumanizado"
+      ],
+      "conceptRelationsRaw": "PERSON Nise da Silveira → WORKS_WITH → CONCEPT cuidado humanizado / atividades expressivas",
+      "sources": [
+        {
+          "kind": "PROFILE",
+          "url": "https://museuimagensdoinconsciente.org.br/nise-da-silveira/",
+          "description": "Museu de Imagens do Inconsciente — Nise da Silveira"
+        },
+        {
+          "kind": "CONCEPT",
+          "url": "https://www.scielo.br/j/ea/a/DXNtq8VnSpjxsh5YvgYX8qM/",
+          "description": "Estudos Avançados/SciELO — Nise da Silveira: imagens do inconsciente entre psicologia, arte e política"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-053",
+      "name": "Paulo Amarante",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "PSIQUIATRA / PESQUISADOR",
+      "country": "Brasil",
+      "field": "Reforma psiquiátrica, saúde mental e atenção psicossocial",
+      "gapResolved": "Saúde mental: especialista brasileiro contemporâneo em desinstitucionalização e cuidado em liberdade.",
+      "centralIdea": "Pioneiro da Reforma Psiquiátrica brasileira, diferencia desinstitucionalização de mera desospitalização e enfatiza direitos, território, participação social e cuidado em liberdade.",
+      "rememberForExam": "Paulo Amarante: reforma psiquiátrica não é só fechar hospitais; envolve criar outro modelo de cuidado, com direitos, território, serviços comunitários e participação social.",
+      "howToUse": "Use para explicar a transformação do modelo de cuidado e seus desafios atuais.",
+      "applicationExample": "A noção de desinstitucionalização trabalhada por Paulo Amarante mostra que reformar a assistência psiquiátrica exige mais do que reduzir internações: é preciso construir redes territoriais de cuidado e reconhecimento de direitos.",
+      "commonMisuse": "Não confundir desinstitucionalização com abandono de pessoas ou ausência de cuidado intensivo quando necessário.",
+      "misuseRisk": "HIGH",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": null,
+      "argumentativeFunctions": [
+        "DEFINE_CONCEPT",
+        "HISTORICAL_CONTEXT",
+        "SUPPORT_INTERVENTION"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "saude-mental",
+        "violencia-institucional",
+        "discriminacao"
+      ],
+      "tags": [
+        "RAPS",
+        "institucionalização",
+        "estigma",
+        "cuidado em liberdade",
+        "políticas de saúde mental"
+      ],
+      "conceptRelationsRaw": "PERSON Paulo Amarante → EXPLAINS → CONCEPT desinstitucionalização",
+      "sources": [
+        {
+          "kind": "PROFILE",
+          "url": "https://cee.fiocruz.br/pesquisador-do-cee-fiocruz-e-convidado-a-integrar-grupo-de-trabalho-da-18a-conferencia-nacional-de-saude/",
+          "description": "CEE-Fiocruz — perfil de Paulo Amarante"
+        },
+        {
+          "kind": "CONCEPT",
+          "url": "https://cadernos.ensp.fiocruz.br/ojs/index.php/csp/article/view/677",
+          "description": "Cadernos de Saúde Pública — Novos sujeitos, novos direitos"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-054",
+      "name": "André Luiz Freitas Dias",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "PESQUISADOR / EXTENSIONISTA",
+      "country": "Brasil",
+      "field": "Políticas públicas e população em situação de rua",
+      "gapResolved": "População em situação de rua: especialista brasileiro e fonte de dados nacionais específicos.",
+      "centralIdea": "Coordena o Observatório Brasileiro de Políticas Públicas com a População em Situação de Rua (OBPopRua/POLOS-UFMG), produzindo pesquisas e monitoramento sobre perfil, violência e políticas públicas.",
+      "rememberForExam": "Pesquisador da UFMG especializado em população em situação de rua; ajuda a conectar invisibilidade social a dados, violência, saúde, documentação e desenho de políticas públicas.",
+      "howToUse": "Use para sair de uma abordagem abstrata da invisibilidade e trabalhar condições concretas e políticas voltadas à população em situação de rua.",
+      "applicationExample": "O trabalho do OBPopRua, coordenado por André Dias, mostra que a população em situação de rua precisa ser tratada como público específico de políticas intersetoriais, com dados próprios sobre moradia, saúde, documentação e violência.",
+      "commonMisuse": "Não tratar estimativas baseadas em CadÚnico como censo completo da população em situação de rua.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "BASIC",
+      "saturation": "LOW",
+      "scores": null,
+      "argumentativeFunctions": [
+        "PROVE_PROBLEM",
+        "SHOW_INVISIBILITY",
+        "SUPPORT_INTERVENTION"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "populacao-rua",
+        "moradia"
+      ],
+      "tags": [
+        "população em situação de rua",
+        "violência",
+        "documentação",
+        "saúde",
+        "moradia",
+        "políticas públicas"
+      ],
+      "conceptRelationsRaw": "PERSON André Dias → COORDINATES → INSTITUTION OBPopRua",
+      "sources": [
+        {
+          "kind": "PROFILE",
+          "url": "https://pos.direito.ufmg.br/andredias/",
+          "description": "PPGD/UFMG — André Luiz Freitas Dias"
+        },
+        {
+          "kind": "CONCEPT",
+          "url": "https://polos.direito.ufmg.br/bibliotecaobservatorio/",
+          "description": "Polos de Cidadania/UFMG — biblioteca e relatórios do OBPopRua"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-055",
+      "name": "Ailton Krenak",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "INTELECTUAL / ESCRITOR INDÍGENA",
+      "country": "Brasil",
+      "field": "Direitos indígenas, cultura, território e pensamento socioambiental",
+      "gapResolved": "Povos indígenas: voz indígena brasileira sobre direitos, cultura, ambiente e relação sociedade-natureza.",
+      "centralIdea": "Intelectual Krenak e liderança histórica do movimento indígena, articulou direitos constitucionais e produz reflexão sobre modos de vida, natureza, desenvolvimento e diversidade cultural.",
+      "rememberForExam": "Krenak ajuda a questionar a ideia de natureza como mero recurso e a relacionar território, cultura e continuidade da vida dos povos originários.",
+      "howToUse": "Use em temas que envolvam território e ambiente quando for importante incorporar perspectiva indígena, e não apenas falar sobre indígenas a partir de fora.",
+      "applicationExample": "A reflexão de Ailton Krenak permite questionar modelos de desenvolvimento que separam sociedade e natureza, especialmente quando a exploração territorial ameaça modos de vida e continuidade cultural de povos originários.",
+      "commonMisuse": "Não transformar Krenak em “ambientalista genérico”; preserve a dimensão indígena, territorial, histórica e cultural de sua obra.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "MEDIUM",
+      "scores": null,
+      "argumentativeFunctions": [
+        "SOCIAL_CRITIQUE",
+        "DEFINE_CONCEPT",
+        "HISTORICAL_CONTEXT"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "territorio-indigena",
+        "cultura-memoria-indigena",
+        "direitos-indigenas",
+        "meio-ambiente"
+      ],
+      "tags": [
+        "direitos indígenas",
+        "território",
+        "cultura",
+        "meio ambiente",
+        "desenvolvimento",
+        "memória"
+      ],
+      "conceptRelationsRaw": "PERSON Ailton Krenak → WORKS_WITH → CONCEPT território / ancestralidade / crítica ao desenvolvimento",
+      "sources": [
+        {
+          "kind": "PROFILE",
+          "url": "https://www2.academia.org.br/academicos/ailton-krenak/biografia",
+          "description": "Academia Brasileira de Letras — Ailton Krenak"
+        },
+        {
+          "kind": "CONCEPT",
+          "url": null,
+          "description": "Obras Ideias para adiar o fim do mundo, A vida não é útil e Futuro ancestral; consultar edições originais para conceito específico."
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-056",
+      "name": "Davi Kopenawa Yanomami",
+      "headingSubtitle": null,
+      "entityType": "PERSON",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "LIDERANÇA / INTELECTUAL INDÍGENA",
+      "country": "Brasil",
+      "field": "Território Yanomami, floresta, cosmologia e direitos indígenas",
+      "gapResolved": "Povos indígenas: voz Yanomami diretamente ligada a território, garimpo, floresta e violência contra povos originários.",
+      "centralIdea": "Xamã e presidente da Hutukara Associação Yanomami, autor com Bruce Albert de A Queda do Céu. Sua produção articula cosmologia Yanomami, crítica à destruição ambiental e defesa territorial.",
+      "rememberForExam": "Kopenawa fala a partir do pensamento Yanomami: território e floresta não são apenas recursos econômicos, mas condições de existência cultural, espiritual e coletiva.",
+      "howToUse": "Use para incorporar uma voz indígena diretamente afetada por invasões territoriais e destruição ambiental.",
+      "applicationExample": "O pensamento de Davi Kopenawa evidencia que a destruição da floresta não é apenas perda ambiental: para povos como os Yanomami, ela ameaça simultaneamente território, saúde, memória e continuidade cultural.",
+      "commonMisuse": "Não reduzir a cosmologia Yanomami a metáfora ambiental ocidental nem usar Kopenawa como representante de todos os povos indígenas.",
+      "misuseRisk": "HIGH",
+      "difficulty": "INTERMEDIATE",
+      "saturation": "LOW",
+      "scores": null,
+      "argumentativeFunctions": [
+        "SOCIAL_CRITIQUE",
+        "HISTORICAL_CONTEXT",
+        "EXAMPLE"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "territorio-indigena",
+        "direitos-indigenas",
+        "justica-climatica",
+        "saude-indigena"
+      ],
+      "tags": [
+        "garimpo",
+        "território",
+        "floresta",
+        "saúde indígena",
+        "violência",
+        "memória"
+      ],
+      "conceptRelationsRaw": "PERSON Davi Kopenawa → COAUTHOR_OF → CULTURAL_WORK A Queda do Céu",
+      "sources": [
+        {
+          "kind": "PROFILE",
+          "url": "https://hutukarayanomami.org/davi-kopenawa/",
+          "description": "Hutukara Associação Yanomami — Davi Kopenawa"
+        },
+        {
+          "kind": "CONCEPT",
+          "url": "https://www.companhiadasletras.com.br/9788535926200-a-queda-do-ceu-3640/p",
+          "description": "A Queda do Céu — Companhia das Letras / Museu Nacional dos Povos Indígenas"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-057",
+      "name": "A Queda do Céu",
+      "headingSubtitle": "Davi Kopenawa e Bruce Albert",
+      "entityType": "CULTURAL_WORK",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "OBRA LITERÁRIA / AUTOETNOGRAFIA",
+      "country": "Brasil",
+      "field": "Cosmologia Yanomami, ambiente, território e contato interétnico",
+      "gapResolved": "Povos indígenas: obra cultural diretamente ancorada em voz e pensamento Yanomami.",
+      "centralIdea": "Relato de vida, autoetnografia e manifesto cosmopolítico que apresenta pensamento Yanomami e critica processos de destruição territorial e ambiental associados ao contato e à exploração.",
+      "rememberForExam": "A Queda do Céu permite discutir território e ambiente a partir da visão Yanomami, evitando tratar povos indígenas apenas como objeto externo de estudo.",
+      "howToUse": "Use para dar base cultural e indígena a argumentos sobre território, destruição ambiental e modelos de desenvolvimento.",
+      "applicationExample": "Em A Queda do Céu, a crítica de Davi Kopenawa ao “povo da mercadoria” permite confrontar modelos de exploração que tratam a floresta somente como recurso, ignorando vínculos territoriais e cosmológicos indígenas.",
+      "commonMisuse": "Não apresentar a obra como descrição de todos os povos indígenas; ela é situada no universo Yanomami.",
+      "misuseRisk": "HIGH",
+      "difficulty": "ADVANCED",
+      "saturation": "LOW",
+      "scores": null,
+      "argumentativeFunctions": [
+        "EXAMPLE",
+        "SOCIAL_CRITIQUE",
+        "HISTORICAL_CONTEXT"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "territorio-indigena",
+        "cultura-memoria-indigena",
+        "meio-ambiente"
+      ],
+      "tags": [
+        "território",
+        "garimpo",
+        "meio ambiente",
+        "cultura",
+        "memória",
+        "colonialismo"
+      ],
+      "conceptRelationsRaw": "CULTURAL_WORK A Queda do Céu → AUTHORED_BY → PERSON Davi Kopenawa / Bruce Albert",
+      "sources": [
+        {
+          "kind": "CONCEPT",
+          "url": "https://pesquisa.museudoindio.gov.br/index.php/a-queda-do-ceu-palavras-de-um-xama-yanomami",
+          "description": "Museu Nacional dos Povos Indígenas — A Queda do Céu"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-058",
+      "name": "Chuva é Cantoria na Aldeia dos Mortos",
+      "headingSubtitle": null,
+      "entityType": "CULTURAL_WORK",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "FILME",
+      "country": "Brasil",
+      "field": "Identidade indígena, cidade, cultura e pertencimento",
+      "gapResolved": "Povos indígenas: repertório audiovisual sobre experiência Krahô contemporânea.",
+      "centralIdea": "O filme acompanha Ihjãc, jovem Krahô que se afasta da aldeia e enfrenta na cidade dificuldades ligadas à identidade, pertencimento e vida indígena contemporânea.",
+      "rememberForExam": "Filme sobre um jovem Krahô entre aldeia, ritual, cidade e identidade; útil para evitar a representação de povos indígenas como figuras apenas do passado.",
+      "howToUse": "Use para discutir indígenas no Brasil contemporâneo, tensões entre cidade e território e preservação cultural sem congelar identidades.",
+      "applicationExample": "Chuva é Cantoria na Aldeia dos Mortos apresenta um jovem Krahô vivendo dilemas contemporâneos entre cidade, ritual e pertencimento, o que ajuda a romper a imagem de povos indígenas como grupos presos ao passado.",
+      "commonMisuse": "Não usar o filme como retrato de todos os povos indígenas nem como documentário estatístico.",
+      "misuseRisk": "LOW",
+      "difficulty": "BASIC",
+      "saturation": "LOW",
+      "scores": null,
+      "argumentativeFunctions": [
+        "EXAMPLE",
+        "COMPARE_REALITY",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "cultura-memoria-indigena",
+        "identidade",
+        "segregacao-urbana",
+        "direitos-indigenas"
+      ],
+      "tags": [
+        "identidade",
+        "pertencimento",
+        "cultura",
+        "cidade",
+        "direitos indígenas"
+      ],
+      "conceptRelationsRaw": "CULTURAL_WORK → ABOUT → SOCIAL_PROBLEM identidade indígena contemporânea",
+      "sources": [
+        {
+          "kind": "CONCEPT",
+          "url": "https://ims.com.br/filme/chuva-e-cantoria-na-aldeia-dos-mortos/",
+          "description": "Instituto Moreira Salles — Chuva é Cantoria na Aldeia dos Mortos"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-059",
+      "name": "O Menino e o Mundo",
+      "headingSubtitle": "Alê Abreu",
+      "entityType": "CULTURAL_WORK",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "FILME / ANIMAÇÃO",
+      "country": "Brasil",
+      "field": "Trabalho, globalização, desigualdade e tecnologia",
+      "gapResolved": "Tecnologia/trabalho: repertório cultural para transformação produtiva e desigualdades sem adicionar outro sociólogo.",
+      "centralIdea": "A animação acompanha um menino em uma sociedade marcada por urbanização, industrialização, trabalho e desigualdades, permitindo discutir impactos humanos de transformações econômicas e tecnológicas.",
+      "rememberForExam": "A animação mostra transformações do trabalho e da vida social pelo olhar de uma criança, conectando industrialização, globalização, desigualdade e perda de vínculos.",
+      "howToUse": "Use como referência cultural para humanizar debates sobre mudanças produtivas e desigualdades; não como prova empírica sobre IA.",
+      "applicationExample": "O Menino e o Mundo permite ilustrar como transformações produtivas e tecnológicas podem reorganizar trabalho, território e vínculos sociais, produzindo impactos que não se distribuem igualmente.",
+      "commonMisuse": "Não dizer que o filme é especificamente “sobre inteligência artificial”; sua relação é com transformações tecnológicas e produtivas em sentido mais amplo.",
+      "misuseRisk": "LOW",
+      "difficulty": "BASIC",
+      "saturation": "LOW",
+      "scores": null,
+      "argumentativeFunctions": [
+        "EXAMPLE",
+        "SOCIAL_CRITIQUE",
+        "EXPLAIN_CONSEQUENCE"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "precarizacao-trabalho",
+        "segregacao-urbana"
+      ],
+      "tags": [
+        "transformações do trabalho",
+        "desigualdade",
+        "tecnologia",
+        "urbanização",
+        "globalização"
+      ],
+      "conceptRelationsRaw": "CULTURAL_WORK → ILLUSTRATES → PROBLEM transformação tecnológica / trabalho",
+      "sources": [
+        {
+          "kind": "CONCEPT",
+          "url": "https://periodicos.grupotiradentes.com.br/educacao/article/view/13514",
+          "description": "Artigo 2026 sobre tecnologia, desigualdade e O Menino e o Mundo"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-060",
+      "name": "Era o Hotel Cambridge",
+      "headingSubtitle": "Eliane Caffé",
+      "entityType": "CULTURAL_WORK",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "FILME",
+      "country": "Brasil",
+      "field": "Moradia, ocupação urbana, sem-teto e migração",
+      "gapResolved": "População em situação de rua/moradia: repertório cultural ligado a direito à moradia e ocupação urbana.",
+      "centralIdea": "Ficção documental sobre refugiados e pessoas sem-teto que dividem uma ocupação em prédio abandonado no centro de São Paulo sob ameaça de despejo.",
+      "rememberForExam": "Mostra moradia como questão de direito, território e pertencimento; permite discutir ocupações, déficit habitacional e coexistência de grupos vulneráveis no espaço urbano.",
+      "howToUse": "Use para complementar Estatuto da Cidade e Raquel Rolnik em argumentos sobre direito à moradia e uso do espaço urbano.",
+      "applicationExample": "Era o Hotel Cambridge evidencia que a falta de moradia não é apenas ausência de teto, pois envolve acesso à cidade, estabilidade, pertencimento e disputa pelo uso social de imóveis urbanos.",
+      "commonMisuse": "Não usar “sem-teto” e “população em situação de rua” como categorias idênticas; o filme trata sobretudo de ocupação e moradia.",
+      "misuseRisk": "MEDIUM",
+      "difficulty": "BASIC",
+      "saturation": "LOW",
+      "scores": null,
+      "argumentativeFunctions": [
+        "EXAMPLE",
+        "SOCIAL_CRITIQUE",
+        "COMPARE_REALITY"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "moradia",
+        "seca",
+        "segregacao-urbana"
+      ],
+      "tags": [
+        "moradia",
+        "sem-teto",
+        "ocupações",
+        "migração",
+        "desigualdade urbana"
+      ],
+      "conceptRelationsRaw": "CULTURAL_WORK → ILLUSTRATES → PROBLEM moradia / ocupação urbana",
+      "sources": [
+        {
+          "kind": "CONCEPT",
+          "url": "https://www.aurorafilmes.com.br/era-o-hotel-cambridge",
+          "description": "Aurora Filmes — Era o Hotel Cambridge"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-061",
+      "name": "Aquarius",
+      "headingSubtitle": "Kleber Mendonça Filho",
+      "entityType": "CULTURAL_WORK",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "FILME",
+      "country": "Brasil",
+      "field": "Envelhecimento, autonomia, memória e cidade",
+      "gapResolved": "Envelhecimento: repertório cultural para autonomia, memória e direito de permanecer no território.",
+      "centralIdea": "Clara, mulher de 65 anos, resiste à pressão de uma construtora para deixar o apartamento onde construiu parte de sua história, articulando envelhecimento, memória, autonomia e especulação imobiliária.",
+      "rememberForExam": "Aquarius combina envelhecimento e cidade: uma mulher idosa é sujeito autônomo de desejo, memória e decisão, e resiste à pressão econômica sobre seu espaço de vida.",
+      "howToUse": "Use para discutir envelhecimento sem reduzir idosos a dependência e para conectar autonomia pessoal a território e memória.",
+      "applicationExample": "Em Aquarius, a resistência de Clara à pressão imobiliária evidencia que envelhecimento não elimina autonomia, desejo ou vínculo territorial, além de mostrar como o espaço urbano também guarda memória e identidade.",
+      "commonMisuse": "Não transformar o filme em retrato geral da velhice brasileira; é um exemplo cultural situado.",
+      "misuseRisk": "LOW",
+      "difficulty": "BASIC",
+      "saturation": "LOW",
+      "scores": null,
+      "argumentativeFunctions": [
+        "EXAMPLE",
+        "SOCIAL_CRITIQUE",
+        "SHOW_INEQUALITY"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "etarismo",
+        "autonomia-pessoa-idosa",
+        "moradia",
+        "segregacao-urbana"
+      ],
+      "tags": [
+        "etarismo",
+        "autonomia",
+        "memória",
+        "especulação imobiliária",
+        "direito à cidade"
+      ],
+      "conceptRelationsRaw": "CULTURAL_WORK → ILLUSTRATES → PROBLEM envelhecimento / autonomia / cidade",
+      "sources": [
+        {
+          "kind": "CONCEPT",
+          "url": "https://new.scielo.br/j/pusp/a/v6fhT4Fk6Nyb8GgQtfJkx5L/",
+          "description": "Psicologia USP/SciELO — análise de Aquarius"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    },
+    {
+      "code": "REP-062",
+      "name": "Central do Brasil",
+      "headingSubtitle": "Walter Salles",
+      "entityType": "CULTURAL_WORK",
+      "entityTypeInferred": false,
+      "role": "REPERTOIRE",
+      "evidenceTypes": [],
+      "typeLabel": "FILME",
+      "country": "Brasil",
+      "field": "Analfabetismo, letramento e cidadania",
+      "gapResolved": "Educação: repertório cultural forte para alfabetização/letramento, preenchendo lacuna sem novo autor teórico.",
+      "centralIdea": "Dora escreve cartas para pessoas analfabetas na estação Central do Brasil, tornando visível como a ausência de domínio da escrita pode criar dependência de intermediários para comunicação e exercício cotidiano da cidadania.",
+      "rememberForExam": "A cena das cartas permite relacionar analfabetismo a autonomia e cidadania: quem não domina a escrita pode depender de terceiros para registrar voz, vínculos e direitos.",
+      "howToUse": "Use junto a Magda Soares para transformar alfabetização em questão de participação social, não apenas decodificação.",
+      "applicationExample": "Em Central do Brasil, a dependência de pessoas analfabetas de uma intermediária para escrever cartas evidencia como a exclusão da cultura escrita pode restringir autonomia e participação social.",
+      "commonMisuse": "Não usar o filme como dado sobre a taxa atual de analfabetismo; ele é repertório cultural.",
+      "misuseRisk": "LOW",
+      "difficulty": "BASIC",
+      "saturation": "MEDIUM",
+      "scores": null,
+      "argumentativeFunctions": [
+        "EXAMPLE",
+        "SHOW_INEQUALITY",
+        "SOCIAL_CRITIQUE"
+      ],
+      "argumentTypes": [],
+      "socialProblems": [
+        "alfabetizacao",
+        "eja"
+      ],
+      "tags": [
+        "analfabetismo",
+        "letramento",
+        "cidadania",
+        "desigualdade regional"
+      ],
+      "conceptRelationsRaw": "CULTURAL_WORK → PAIRS_WITH → PERSON Magda Soares / CONCEPT letramento",
+      "sources": [
+        {
+          "kind": "CONCEPT",
+          "url": "https://ims.com.br/filme/central-do-brasil/",
+          "description": "Instituto Moreira Salles — Central do Brasil"
+        }
+      ],
+      "evidenceYear": null,
+      "verificationStatus": "VERIFIED",
+      "verificationDate": "2026-10-07",
+      "changeStatus": "NEW",
+      "summaryOnly": false,
+      "active": true
+    }
+  ],
+  "packages": [
+    {
+      "code": "PAC-01",
+      "title": "Desigualdade digital infantil",
+      "socialProblems": [
+        "infancia-digital",
+        "inclusao-digital"
+      ],
+      "cause": "infraestrutura e renda",
+      "consequence": "participação educacional desigual",
+      "intervention": "poder público + escolas + plataformas; conectividade qualificada e educação digital",
+      "slots": {
+        "SPECIALIST": {
+          "text": "Rodolfo Rorato Londero / estudos de publicidade e atenção infantil",
+          "patchedInV3": true,
+          "justification": "Antes: especialista insuficiente",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-051"
+          ]
+        },
+        "CONCEPT": {
+          "text": "desigualdade de acesso qualificado",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": []
+        },
+        "EVIDENCE": {
+          "text": "TIC Kids Online",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-010"
+          ]
+        },
+        "LEGAL": {
+          "text": "Marco Civil + CF art. 227",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-008",
+            "CF-010"
+          ]
+        },
+        "CULTURAL": {
+          "text": "Mantido como lacuna parcial: não foi incluída obra fraca apenas para preencher campo.",
+          "patchedInV3": true,
+          "justification": "Qualidade > completude",
+          "status": "GAP",
+          "repertoireCodes": []
+        }
+      }
+    },
+    {
+      "code": "PAC-02",
+      "title": "Trabalho por plataformas",
+      "socialProblems": [
+        "plataformizacao-trabalho"
+      ],
+      "cause": "gestão algorítmica e transferência de riscos",
+      "consequence": "insegurança e desproteção",
+      "intervention": "regulação, transparência algorítmica e proteção social",
+      "slots": {
+        "SPECIALIST": {
+          "text": "Ludmila Abílio / Ricardo Antunes",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-030",
+            "REP-031"
+          ]
+        },
+        "CONCEPT": {
+          "text": "uberização / autonomia subordinada",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-031"
+          ]
+        },
+        "EVIDENCE": {
+          "text": "pesquisas sobre jornadas e condições de entregadores",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": []
+        },
+        "LEGAL": {
+          "text": "CF art. 7º + legislação trabalhista conforme vínculo",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "CF-005"
+          ]
+        },
+        "CULTURAL": {
+          "text": "O Menino e o Mundo — relação indireta com transformação produtiva; usar somente quando o argumento for amplo sobre trabalho/tecnologia.",
+          "patchedInV3": true,
+          "justification": "Antes: lacuna",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-059"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PAC-03",
+      "title": "Alfabetização e letramento",
+      "socialProblems": [
+        "alfabetizacao"
+      ],
+      "cause": "desigualdades educacionais e práticas pouco articuladas",
+      "consequence": "participação limitada na cultura escrita",
+      "intervention": "formação docente + políticas de alfabetização contextualizada",
+      "slots": {
+        "SPECIALIST": {
+          "text": "Magda Soares",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-027"
+          ]
+        },
+        "CONCEPT": {
+          "text": "alfabetização + letramento",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-027"
+          ]
+        },
+        "EVIDENCE": {
+          "text": "PNAD Educação",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "EVD-001"
+          ]
+        },
+        "LEGAL": {
+          "text": "CF art. 205",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "CF-007"
+          ]
+        },
+        "CULTURAL": {
+          "text": "Central do Brasil",
+          "patchedInV3": true,
+          "justification": "Antes: relação cultural apenas cautelar",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-062"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PAC-04",
+      "title": "Educação inclusiva",
+      "socialProblems": [
+        "inclusao-escolar-pcd"
+      ],
+      "cause": "desenho escolar excludente",
+      "consequence": "participação e aprendizagem desiguais",
+      "intervention": "acessibilidade, AEE, formação docente e desenho universal",
+      "slots": {
+        "SPECIALIST": {
+          "text": "Maria Teresa Mantoan / Izabel Maior",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-037",
+            "REP-029"
+          ]
+        },
+        "CONCEPT": {
+          "text": "barreiras sociais e educacionais",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": []
+        },
+        "EVIDENCE": {
+          "text": "dados educacionais específicos a pesquisar na V3",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": []
+        },
+        "LEGAL": {
+          "text": "LBI + CF art. 205",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-002",
+            "CF-007"
+          ]
+        },
+        "CULTURAL": {
+          "text": "lacuna",
+          "patchedInV3": false,
+          "status": "GAP",
+          "repertoireCodes": []
+        }
+      }
+    },
+    {
+      "code": "PAC-05",
+      "title": "Invisibilidade social",
+      "socialProblems": [
+        "populacao-rua",
+        "trabalhos-invisibilizados"
+      ],
+      "cause": "estigma e hierarquização social",
+      "consequence": "desrespeito e barreiras de acesso",
+      "intervention": "políticas de reconhecimento + serviços e proteção social",
+      "slots": {
+        "SPECIALIST": {
+          "text": "André Luiz Freitas Dias / OBPopRua-UFMG",
+          "patchedInV3": true,
+          "justification": "Antes: conceito forte, especialista específico de rua ausente",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-054"
+          ]
+        },
+        "CONCEPT": {
+          "text": "invisibilidade pública + reconhecimento (Honneth)",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-041"
+          ]
+        },
+        "EVIDENCE": {
+          "text": "OBPopRua 2025 + dados de saúde/violência UFMG",
+          "patchedInV3": true,
+          "justification": "Antes: dados a ampliar",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "EVD-008"
+          ]
+        },
+        "LEGAL": {
+          "text": "CF arts. 1º e 6º",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "CF-001",
+            "CF-004"
+          ]
+        },
+        "CULTURAL": {
+          "text": "Era o Hotel Cambridge — para moradia/ocupação; não substituir categoria rua por sem-teto.",
+          "patchedInV3": true,
+          "justification": "Antes: lacuna",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-060"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PAC-06",
+      "title": "Trabalho doméstico e cuidado",
+      "socialProblems": [
+        "trabalho-domestico",
+        "trabalho-cuidado"
+      ],
+      "cause": "naturalização do cuidado feminino e desigualdade racial",
+      "consequence": "informalidade e sobrecarga",
+      "intervention": "formalização, serviços de cuidado e proteção social",
+      "slots": {
+        "SPECIALIST": {
+          "text": "Helena Hirata",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-032"
+          ]
+        },
+        "CONCEPT": {
+          "text": "divisão sexual do trabalho de cuidado",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": []
+        },
+        "EVIDENCE": {
+          "text": "MDS/OIT",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-023"
+          ]
+        },
+        "LEGAL": {
+          "text": "CF art. 7º e legislação do trabalho doméstico",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "CF-005"
+          ]
+        },
+        "CULTURAL": {
+          "text": "Que Horas Ela Volta?",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-045"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PAC-07",
+      "title": "Saúde e desigualdade racial",
+      "socialProblems": [
+        "desigualdade-saude",
+        "racismo"
+      ],
+      "cause": "racismo e desigualdades socioeconômicas/institucionais",
+      "consequence": "pior acesso e desfechos desiguais",
+      "intervention": "equidade no SUS, dados por raça/cor e enfrentamento institucional",
+      "slots": {
+        "SPECIALIST": {
+          "text": "Rita Barata / pesquisadores de saúde da população negra",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-025"
+          ]
+        },
+        "CONCEPT": {
+          "text": "determinantes sociais da saúde",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": []
+        },
+        "EVIDENCE": {
+          "text": "revisão de escopo 2026 + estudos de acesso",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "EVD-002"
+          ]
+        },
+        "LEGAL": {
+          "text": "CF art. 196 + Estatuto da Igualdade Racial",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-013",
+            "CF-006"
+          ]
+        },
+        "CULTURAL": {
+          "text": "lacuna",
+          "patchedInV3": false,
+          "status": "GAP",
+          "repertoireCodes": []
+        }
+      }
+    },
+    {
+      "code": "PAC-08",
+      "title": "Violência e segurança",
+      "socialProblems": [
+        "violencia-racial",
+        "violencia-urbana"
+      ],
+      "cause": "desigualdade, seletividade e políticas insuficientes",
+      "consequence": "vitimização e desconfiança institucional",
+      "intervention": "prevenção, controle externo, dados e políticas territoriais",
+      "slots": {
+        "SPECIALIST": {
+          "text": "Jacqueline Sinhoretto",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-040"
+          ]
+        },
+        "CONCEPT": {
+          "text": "administração institucional de conflitos",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": []
+        },
+        "EVIDENCE": {
+          "text": "Atlas da Violência 2025",
+          "patchedInV3": true,
+          "justification": "Antes: “Atlas a incorporar”",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "EVD-007"
+          ]
+        },
+        "LEGAL": {
+          "text": "CF art. 5º",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "CF-003"
+          ]
+        },
+        "CULTURAL": {
+          "text": "lacuna",
+          "patchedInV3": false,
+          "status": "GAP",
+          "repertoireCodes": []
+        }
+      }
+    },
+    {
+      "code": "PAC-09",
+      "title": "Envelhecimento",
+      "socialProblems": [
+        "etarismo",
+        "cuidado-pessoa-idosa"
+      ],
+      "cause": "mudança demográfica acelerada e serviços pouco adaptados",
+      "consequence": "sobrecarga de cuidado e exclusão",
+      "intervention": "cidades amigáveis, atenção à saúde e políticas de cuidado",
+      "slots": {
+        "SPECIALIST": {
+          "text": "Alexandre Kalache",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-038"
+          ]
+        },
+        "CONCEPT": {
+          "text": "transição demográfica e envelhecimento ativo",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": []
+        },
+        "EVIDENCE": {
+          "text": "Censo/IBGE a atualizar por recorte",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": []
+        },
+        "LEGAL": {
+          "text": "Estatuto da Pessoa Idosa + CF art. 6º",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-021",
+            "CF-004"
+          ]
+        },
+        "CULTURAL": {
+          "text": "Aquarius",
+          "patchedInV3": true,
+          "justification": "Antes: lacuna",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-061"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PAC-10",
+      "title": "Justiça climática",
+      "socialProblems": [
+        "justica-climatica",
+        "calor-extremo"
+      ],
+      "cause": "exposição + baixa capacidade de adaptação",
+      "consequence": "deslocamento, perdas e agravos à saúde",
+      "intervention": "adaptação territorial, alertas, habitação e infraestrutura resiliente",
+      "slots": {
+        "SPECIALIST": {
+          "text": "Carlos Nobre",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-039"
+          ]
+        },
+        "CONCEPT": {
+          "text": "risco climático + vulnerabilidade social",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": []
+        },
+        "EVIDENCE": {
+          "text": "Ondas de calor 2026 + desastres hidrológicos 2000-2023",
+          "patchedInV3": true,
+          "justification": "Antes: evidência genérica",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "EVD-009",
+            "EVD-010"
+          ]
+        },
+        "LEGAL": {
+          "text": "CF art. 225",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "CF-009"
+          ]
+        },
+        "CULTURAL": {
+          "text": "Vidas Secas",
+          "patchedInV3": false,
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-017"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PAC-11",
+      "codeProposed": true,
+      "title": "Saúde mental e cuidado em liberdade",
+      "socialProblems": [
+        "saude-mental"
+      ],
+      "cause": null,
+      "consequence": null,
+      "intervention": null,
+      "slots": {
+        "SPECIALIST": {
+          "text": "Nise da Silveira + Paulo Amarante",
+          "patchedInV3": true,
+          "justification": "Lacuna obrigatória da V3",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-052",
+            "REP-053"
+          ]
+        },
+        "CONCEPT": {
+          "text": null,
+          "patchedInV3": false,
+          "status": "UNDEFINED",
+          "repertoireCodes": []
+        },
+        "EVIDENCE": {
+          "text": "PeNSE 2024 para juventude; usar dados específicos do módulo conforme recorte",
+          "patchedInV3": true,
+          "justification": "Lacuna obrigatória da V3",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "EVD-006"
+          ]
+        },
+        "LEGAL": {
+          "text": null,
+          "patchedInV3": false,
+          "status": "UNDEFINED",
+          "repertoireCodes": []
+        },
+        "CULTURAL": {
+          "text": "Bicho de Sete Cabeças (já existente)",
+          "patchedInV3": true,
+          "justification": "Reutilizado; não duplicado",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-020"
+          ]
+        }
+      }
+    },
+    {
+      "code": "PAC-12",
+      "codeProposed": true,
+      "title": "Povos indígenas, território e cultura",
+      "socialProblems": [
+        "territorio-indigena",
+        "direitos-indigenas"
+      ],
+      "cause": null,
+      "consequence": null,
+      "intervention": null,
+      "slots": {
+        "SPECIALIST": {
+          "text": "Ailton Krenak + Davi Kopenawa",
+          "patchedInV3": true,
+          "justification": "Nova lacuna específica",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-055",
+            "REP-056"
+          ]
+        },
+        "CONCEPT": {
+          "text": null,
+          "patchedInV3": false,
+          "status": "UNDEFINED",
+          "repertoireCodes": []
+        },
+        "EVIDENCE": {
+          "text": null,
+          "patchedInV3": false,
+          "status": "UNDEFINED",
+          "repertoireCodes": []
+        },
+        "LEGAL": {
+          "text": "CF arts. 231 e 232",
+          "patchedInV3": true,
+          "justification": "Nova lacuna específica",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "CF-011",
+            "CF-012"
+          ]
+        },
+        "CULTURAL": {
+          "text": "A Queda do Céu + Chuva é Cantoria na Aldeia dos Mortos",
+          "patchedInV3": true,
+          "justification": "Nova lacuna específica",
+          "status": "FILLED",
+          "repertoireCodes": [
+            "REP-058",
+            "REP-057"
+          ]
+        }
+      }
+    }
+  ]
+}
