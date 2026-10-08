@@ -40,8 +40,8 @@ class GeminiAvaliacaoAdapterTest {
         servidor.createContext("/", this::responder);
         servidor.start();
         String baseUrl = "http://127.0.0.1:" + servidor.getAddress().getPort() + "/v1beta";
-        adapter = new GeminiAvaliacaoAdapter(new PromptAvaliacaoBuilder(), baseUrl, "gemini-teste", "chave-de-teste", 0.3, 5);
-    }
+        var client = new GeminiClient(baseUrl, "chave-de-teste", 5);
+        adapter = new GeminiAvaliacaoAdapter(new PromptAvaliacaoBuilder(), client, "gemini-teste", 0.3);    }
 
     @AfterEach
     void derrubarServidor() {
@@ -111,7 +111,7 @@ class GeminiAvaliacaoAdapterTest {
         assertThatThrownBy(() -> adapter.avaliar(solicitacao))
                 .isInstanceOf(AvaliacaoIAException.class)
                 .hasMessageContaining("não é JSON");
-        assertThat(recebidas).hasSize(GeminiAvaliacaoAdapter.MAX_TENTATIVAS);
+        assertThat(recebidas).hasSize(GeminiClient.MAX_TENTATIVAS);
     }
 
     @Test

@@ -1,6 +1,5 @@
 package eduar.studymindredacao.adapter.out.ia;
 
-import eduar.studymindredacao.domain.exception.AvaliacaoIAException;
 import eduar.studymindredacao.domain.model.CompetenciaAvaliada;
 import eduar.studymindredacao.domain.model.ResultadoAvaliacaoIA;
 import tools.jackson.core.JacksonException;
@@ -15,42 +14,21 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Converte a resposta HTTP do Gemini (generateContent) em {@link ResultadoAvaliacaoIA}.
- * Qualquer resposta fora do formato esperado vira {@link AvaliacaoIAException}.
+ * Converte o texto gerado pelo Gemini numa correção ({@link ResultadoAvaliacaoIA}).
+ * O envelope HTTP já foi lido pelo {@link GeminiEnvelopeParser}; aqui só se interpreta o JSON da avaliação.
+ * Conteúdo fora do formato vira {@link GeminiException} repetível.
  */
-public class GeminiRespostaParser {
-    private static final Pattern BLOCO_MARKDOWN = Pattern.compile("^```(?:json)?\\s*(.*?)\\s*```$", Pattern.DOTALL);
+class GeminiRespostaParser {
     private static final Pattern NUMERO_COMPETENCIA = Pattern.compile("(?i)^\\s*c?\\s*([1-5])\\s*$");
-    private static final int TAMANHO_MAXIMO_MODELO = 50;
 
     private final JsonMapper json;
 
-    public GeminiRespostaParser(JsonMapper json) {
+    GeminiRespostaParser(JsonMapper json) {
         this.json = json;
     }
 
-    public ResultadoAvaliacaoIA interpretar(String respostaHttp, String modeloConfigurado) {
-        JsonNode raiz = lerJson(respostaHttp, "resposta do Gemini não é JSON válido");
-
-        String bloqueio = texto(raiz.path("promptFeedback").path("blockReason"));
-        if (bloqueio != null) {
-            throw new AvaliacaoIAException("Gemini bloqueou o prompt: " + bloqueio);
-        }
-
-        JsonNode candidato = raiz.path("candidates").path(0);
-        if (candidato.isMissingNode()) {
-            throw new AvaliacaoIAException("resposta do Gemini sem candidatos");
-        }
-
-        String textoGerado = extrairTexto(candidato);
-        if (textoGerado.isBlank()) {
-            throw new AvaliacaoIAException(
-                    "Gemini não gerou texto (finishReason=" + texto(candidato.path("finishReason")) + ")"
-            );
-        }
-
-        JsonNode avaliacao = lerJson(removerBlocoMarkdown(textoGerado), "avaliação gerada não é JSON válido");
-        JsonNode uso = raiz.path("usageMetadata");
+    ResultadoAvaliacaoIA interpretar(GeminiResposta resposta) {
+        JsonNode avaliacao = lerJson(resposta.textoGerado());
 
         try {
             return new ResultadoAvaliacaoIA(
@@ -60,14 +38,13 @@ public class GeminiRespostaParser {
                     listaDeTexto(avaliacao.path("pontos_fortes")),
                     listaDeTexto(avaliacao.path("pontos_desenvolvimento")),
                     texto(avaliacao.path("diagnostico")),
-                    modelo(raiz, modeloConfigurado),
-                    uso.path("promptTokenCount").asInt(0),
-                    // tokens de raciocínio são cobrados como saída, então entram na conta
-                    uso.path("candidatesTokenCount").asInt(0) + uso.path("thoughtsTokenCount").asInt(0),
+                    resposta.modelo(),
+                    resposta.tokensEntrada(),
+                    resposta.tokensSaida(),
                     json.writeValueAsString(avaliacao)
             );
         } catch (IllegalArgumentException e) {
-            throw new AvaliacaoIAException("avaliação gerada é inconsistente: " + e.getMessage(), e);
+            throw GeminiException.repetivel("avaliação gerada é inconsistente: " + e.getMessage(), e);
         }
     }
 
@@ -114,31 +91,6 @@ public class GeminiRespostaParser {
         return matcher.matches() ? Integer.parseInt(matcher.group(1)) : null;
     }
 
-    private static String extrairTexto(JsonNode candidato) {
-        StringBuilder texto = new StringBuilder();
-        for (JsonNode parte : candidato.path("content").path("parts")) {
-            if (!parte.path("thought").asBoolean(false)) {
-                texto.append(parte.path("text").asString(""));
-            }
-        }
-        return texto.toString().trim();
-    }
-
-    static String removerBlocoMarkdown(String texto) {
-        Matcher matcher = BLOCO_MARKDOWN.matcher(texto.trim());
-        return matcher.matches() ? matcher.group(1) : texto.trim();
-    }
-
-    private static String modelo(JsonNode raiz, String modeloConfigurado) {
-        String modelo = texto(raiz.path("modelVersion"));
-        if (modelo == null) {
-            modelo = modeloConfigurado;
-        }
-        return modelo != null && modelo.length() > TAMANHO_MAXIMO_MODELO
-                ? modelo.substring(0, TAMANHO_MAXIMO_MODELO)
-                : modelo;
-    }
-
     private static List<String> listaDeTexto(JsonNode no) {
         List<String> itens = new ArrayList<>();
         for (JsonNode item : no) {
@@ -159,14 +111,11 @@ public class GeminiRespostaParser {
         return valor.isEmpty() ? null : valor;
     }
 
-    private JsonNode lerJson(String conteudo, String mensagemErro) {
-        if (conteudo == null || conteudo.isBlank()) {
-            throw new AvaliacaoIAException(mensagemErro + " (vazio)");
-        }
+    private JsonNode lerJson(String conteudo) {
         try {
             return json.readTree(conteudo);
         } catch (JacksonException e) {
-            throw new AvaliacaoIAException(mensagemErro, e);
+            throw GeminiException.repetivel("avaliação gerada não é JSON válido", e);
         }
     }
 }
