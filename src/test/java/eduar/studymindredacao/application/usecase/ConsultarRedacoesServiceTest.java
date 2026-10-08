@@ -4,6 +4,7 @@ import eduar.studymindredacao.domain.exception.RedacaoNaoEncontradaException;
 import eduar.studymindredacao.domain.model.Avaliacao;
 import eduar.studymindredacao.domain.model.Redacao;
 import eduar.studymindredacao.domain.model.Tema;
+import eduar.studymindredacao.domain.model.enums.OrigemRedacao;
 import eduar.studymindredacao.domain.model.enums.OrigemTema;
 import eduar.studymindredacao.domain.model.enums.StatusRedacao;
 import eduar.studymindredacao.domain.model.enums.TipoRedacao;
@@ -35,7 +36,7 @@ class ConsultarRedacoesServiceTest {
 
     private Redacao redacao(UUID usuarioId, Tema tema, StatusRedacao status, int diasAtras) {
         return redacoes.salvar(new Redacao(null, usuarioId, tema.id(), TipoRedacao.PRATICA, "texto", status,
-                OffsetDateTime.now().minusDays(diasAtras)));
+                OffsetDateTime.now().minusDays(diasAtras), OrigemRedacao.DIGITADO));
     }
 
     private void avaliar(Redacao redacao, int notaPorCompetencia) {

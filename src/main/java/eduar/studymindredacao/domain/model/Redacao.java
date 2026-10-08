@@ -1,5 +1,6 @@
 package eduar.studymindredacao.domain.model;
 
+import eduar.studymindredacao.domain.model.enums.OrigemRedacao;
 import eduar.studymindredacao.domain.model.enums.StatusRedacao;
 import eduar.studymindredacao.domain.model.enums.TipoRedacao;
 
@@ -14,7 +15,8 @@ public record Redacao(
         TipoRedacao tipo,
         String texto,
         StatusRedacao status,
-        OffsetDateTime enviadaEm
+        OffsetDateTime enviadaEm,
+        OrigemRedacao origem
 ) {
     public Redacao {
         Validacoes.requererNaoNulo(usuarioId, "usuarioId");
@@ -24,9 +26,13 @@ public record Redacao(
         if (status == null) {
             status = StatusRedacao.ENVIADA;
         }
+        // sem origem informada, o texto veio do editor (todas as redações antigas, inclusive)
+        if (origem == null) {
+            origem = OrigemRedacao.DIGITADO;
+        }
     }
 
     public Redacao comStatus(StatusRedacao novoStatus) {
-        return new Redacao(id, usuarioId, temaId, tipo, texto, novoStatus, enviadaEm);
+        return new Redacao(id, usuarioId, temaId, tipo, texto, novoStatus, enviadaEm, origem);
     }
 }

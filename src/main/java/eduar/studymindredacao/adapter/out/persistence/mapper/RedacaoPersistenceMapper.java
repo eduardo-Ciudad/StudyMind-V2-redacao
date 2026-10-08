@@ -17,7 +17,8 @@ public final class RedacaoPersistenceMapper {
                 entity.getTipo(),
                 entity.getTexto(),
                 entity.getStatus(),
-                entity.getEnviadaEm()
+                entity.getEnviadaEm(),
+                entity.getOrigem()
         );
     }
 
@@ -30,6 +31,7 @@ public final class RedacaoPersistenceMapper {
         entity.setTexto(domain.texto());
         entity.setStatus(domain.status());
         entity.setEnviadaEm(domain.enviadaEm());
+        entity.setOrigem(domain.origem());
         return entity;
     }
 }

@@ -1,6 +1,7 @@
 package eduar.studymindredacao.adapter.out.persistence.entity;
 
 import jakarta.persistence.Column;
+import eduar.studymindredacao.domain.model.enums.OrigemRedacao;
 import eduar.studymindredacao.domain.model.enums.StatusRedacao;
 import eduar.studymindredacao.domain.model.enums.TipoRedacao;
 import jakarta.persistence.Entity;
@@ -56,6 +57,10 @@ public class RedacaoEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private StatusRedacao status;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private OrigemRedacao origem;
 
     @CreationTimestamp
     @Column(name = "enviada_em", nullable = false, updatable = false)

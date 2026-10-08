@@ -19,7 +19,7 @@ class RedacaoRepositoryEmMemoria implements RedacaoRepositoryPort {
     public Redacao salvar(Redacao redacao) {
         UUID id = redacao.id() != null ? redacao.id() : UUID.randomUUID();
         OffsetDateTime enviadaEm = redacao.enviadaEm() != null ? redacao.enviadaEm() : OffsetDateTime.now();
-        var salva = new Redacao(id, redacao.usuarioId(), redacao.temaId(), redacao.tipo(), redacao.texto(), redacao.status(), enviadaEm);
+        var salva = new Redacao(id, redacao.usuarioId(), redacao.temaId(), redacao.tipo(), redacao.texto(), redacao.status(), enviadaEm, redacao.origem());
         redacoes.put(id, salva);
         return salva;
     }

@@ -1,6 +1,7 @@
 package eduar.studymindredacao.adapter.in.web.dto;
 
 import eduar.studymindredacao.application.usecase.RedacaoResumo;
+import eduar.studymindredacao.domain.model.enums.OrigemRedacao;
 import eduar.studymindredacao.domain.model.enums.StatusRedacao;
 import eduar.studymindredacao.domain.model.enums.TipoRedacao;
 
@@ -12,6 +13,7 @@ public record RedacaoResumoResponse(
         UUID temaId,
         String temaTitulo,
         TipoRedacao tipo,
+        OrigemRedacao origem,
         StatusRedacao status,
         OffsetDateTime enviadaEm,
         Short notaTotal
@@ -23,6 +25,7 @@ public record RedacaoResumoResponse(
                 redacao.temaId(),
                 resumo.temaTitulo(),
                 redacao.tipo(),
+                redacao.origem(),
                 redacao.status(),
                 redacao.enviadaEm(),
                 resumo.notaTotal()

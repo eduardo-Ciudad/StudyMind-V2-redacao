@@ -4,6 +4,7 @@ import eduar.studymindredacao.domain.model.Avaliacao;
 import eduar.studymindredacao.domain.model.CompetenciaAvaliada;
 import eduar.studymindredacao.domain.model.Redacao;
 import eduar.studymindredacao.domain.model.Tema;
+import eduar.studymindredacao.domain.model.enums.OrigemRedacao;
 import eduar.studymindredacao.domain.model.enums.OrigemTema;
 import eduar.studymindredacao.domain.model.enums.StatusRedacao;
 import eduar.studymindredacao.domain.model.enums.TipoRedacao;
@@ -34,7 +35,7 @@ class ConsultarEvolucaoServiceTest {
 
     private Redacao redacao(StatusRedacao status, int diasAtras) {
         return redacoes.salvar(new Redacao(null, alunoId, tema.id(), TipoRedacao.PRATICA, "texto", status,
-                OffsetDateTime.now().minusDays(diasAtras)));
+                OffsetDateTime.now().minusDays(diasAtras), OrigemRedacao.DIGITADO));
     }
 
     private void avaliar(Redacao redacao, int c1, int c2, int c3, int c4, int c5) {

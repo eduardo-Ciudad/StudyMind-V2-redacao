@@ -5,6 +5,7 @@ import eduar.studymindredacao.domain.exception.LimiteGlobalAtingidoException;
 import eduar.studymindredacao.domain.exception.TemaNaoEncontradoException;
 import eduar.studymindredacao.domain.model.Redacao;
 import eduar.studymindredacao.domain.model.SolicitacaoAvaliacao;
+import eduar.studymindredacao.domain.model.enums.OrigemRedacao;
 import eduar.studymindredacao.domain.model.enums.RecursoIA;
 import eduar.studymindredacao.domain.model.enums.StatusRedacao;
 import eduar.studymindredacao.domain.model.enums.TipoRedacao;
@@ -61,7 +62,7 @@ public class EnviarRedacaoService {
         this.limiteGlobal = limiteGlobal;
     }
 
-    public RedacaoDetalhada enviar(UUID usuarioId, UUID temaId, TipoRedacao tipo, String texto) {
+    public RedacaoDetalhada enviar(UUID usuarioId, UUID temaId, TipoRedacao tipo, String texto, OrigemRedacao origem) {
         validarTexto(texto);
         var tema = temaRepository.buscarPorId(temaId)
                 .filter(t -> Boolean.TRUE.equals(t.ativo()))
@@ -80,7 +81,7 @@ public class EnviarRedacaoService {
         Redacao redacao;
         try {
             redacao = redacaoRepository.salvar(
-                    new Redacao(null, usuarioId, temaId, tipo, texto, StatusRedacao.EM_AVALIACAO, null)
+                    new Redacao(null, usuarioId, temaId, tipo, texto, StatusRedacao.EM_AVALIACAO, null, origem)
             );
         } catch (RuntimeException e) {
             usoRepository.liberarCorrecao(usuarioId, hoje);

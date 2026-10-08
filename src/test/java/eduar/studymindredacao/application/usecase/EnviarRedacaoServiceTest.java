@@ -8,6 +8,7 @@ import eduar.studymindredacao.domain.model.CompetenciaAvaliada;
 import eduar.studymindredacao.domain.model.ResultadoAvaliacaoIA;
 import eduar.studymindredacao.domain.model.SolicitacaoAvaliacao;
 import eduar.studymindredacao.domain.model.Tema;
+import eduar.studymindredacao.domain.model.enums.OrigemRedacao;
 import eduar.studymindredacao.domain.model.enums.OrigemTema;
 import eduar.studymindredacao.domain.model.enums.StatusRedacao;
 import eduar.studymindredacao.domain.model.enums.TipoRedacao;
@@ -73,7 +74,7 @@ class EnviarRedacaoServiceTest {
 
     @Test
     void corrigeRedacaoESalvaTudo() {
-        var detalhada = service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO);
+        var detalhada = service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO, OrigemRedacao.DIGITADO);
 
         assertThat(detalhada.redacao().status()).isEqualTo(StatusRedacao.AVALIADA);
         assertThat(detalhada.avaliacao().notaTotal()).isEqualTo((short) 640);
@@ -90,8 +91,24 @@ class EnviarRedacaoServiceTest {
     }
 
     @Test
+    void guardaAOrigemManuscrita() {
+        var detalhada = service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO, OrigemRedacao.MANUSCRITO);
+
+        assertThat(detalhada.redacao().origem()).isEqualTo(OrigemRedacao.MANUSCRITO);
+        assertThat(redacoes.todas()).singleElement()
+                .satisfies(r -> assertThat(r.origem()).isEqualTo(OrigemRedacao.MANUSCRITO));
+    }
+
+    @Test
+    void semOrigemInformadaContaComoDigitada() {
+        var detalhada = service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO, null);
+
+        assertThat(detalhada.redacao().origem()).isEqualTo(OrigemRedacao.DIGITADO);
+    }
+
+    @Test
     void contaOLimiteNoDiaDeSaoPauloENaoEmUtc() {
-        service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO);
+        service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO, OrigemRedacao.DIGITADO);
 
         assertThat(uso.buscarPorUsuarioIdEData(alunoId, HOJE_EM_SP)).isPresent();
         assertThat(uso.buscarPorUsuarioIdEData(alunoId, HOJE_EM_SP.plusDays(1))).isEmpty();
@@ -100,10 +117,10 @@ class EnviarRedacaoServiceTest {
     @Test
     void bloqueiaQuartaCorrecaoDoDiaSemChamarAIA() {
         for (int i = 0; i < LIMITE; i++) {
-            service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO);
+            service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO, OrigemRedacao.DIGITADO);
         }
 
-        assertThatThrownBy(() -> service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO))
+        assertThatThrownBy(() -> service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO, OrigemRedacao.DIGITADO))
                 .isInstanceOf(LimiteDiarioAtingidoException.class);
         assertThat(chamadasIA).hasSize(LIMITE);
         assertThat(redacoes.todas()).hasSize(LIMITE);
@@ -113,7 +130,7 @@ class EnviarRedacaoServiceTest {
     void falhaDaIAMarcaErroEDevolveAVaga() {
         falhaDaIA = new AvaliacaoIAException("Gemini indisponível");
 
-        assertThatThrownBy(() -> service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO))
+        assertThatThrownBy(() -> service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO, OrigemRedacao.DIGITADO))
                 .isInstanceOf(AvaliacaoIAException.class);
 
         assertThat(redacoes.todas()).singleElement()
@@ -125,18 +142,18 @@ class EnviarRedacaoServiceTest {
     @Test
     void depoisDeUmaFalhaOAlunoAindaTemAsTresVagas() {
         falhaDaIA = new AvaliacaoIAException("timeout");
-        assertThatThrownBy(() -> service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO));
+        assertThatThrownBy(() -> service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO, OrigemRedacao.DIGITADO));
         falhaDaIA = null;
 
         for (int i = 0; i < LIMITE; i++) {
-            service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO);
+            service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO, OrigemRedacao.DIGITADO);
         }
         assertThat(uso.usoDoDia(alunoId, HOJE_EM_SP).qtdCorrecoes()).isEqualTo(LIMITE);
     }
 
     @Test
     void rejeitaTemaInexistenteSemGastarVaga() {
-        assertThatThrownBy(() -> service.enviar(alunoId, UUID.randomUUID(), TipoRedacao.PRATICA, TEXTO))
+        assertThatThrownBy(() -> service.enviar(alunoId, UUID.randomUUID(), TipoRedacao.PRATICA, TEXTO, OrigemRedacao.DIGITADO))
                 .isInstanceOf(TemaNaoEncontradoException.class);
         assertThat(uso.buscarPorUsuarioIdEData(alunoId, HOJE_EM_SP)).isEmpty();
     }
@@ -145,7 +162,7 @@ class EnviarRedacaoServiceTest {
     void rejeitaTemaInativo() {
         var inativo = temas.salvar(new Tema(null, "Tema antigo", null, OrigemTema.AUTORAL, null, false, null));
 
-        assertThatThrownBy(() -> service.enviar(alunoId, inativo.id(), TipoRedacao.PRATICA, TEXTO))
+        assertThatThrownBy(() -> service.enviar(alunoId, inativo.id(), TipoRedacao.PRATICA, TEXTO, OrigemRedacao.DIGITADO))
                 .isInstanceOf(TemaNaoEncontradoException.class);
     }
 
@@ -153,7 +170,7 @@ class EnviarRedacaoServiceTest {
     void rejeitaTextoAcimaDoLimiteSemGastarVaga() {
         String longo = "a".repeat(EnviarRedacaoService.TAMANHO_MAXIMO_TEXTO + 1);
 
-        assertThatThrownBy(() -> service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, longo))
+        assertThatThrownBy(() -> service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, longo, OrigemRedacao.DIGITADO))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("5000");
         assertThat(uso.buscarPorUsuarioIdEData(alunoId, HOJE_EM_SP)).isEmpty();
@@ -162,7 +179,7 @@ class EnviarRedacaoServiceTest {
 
     @Test
     void rejeitaTextoVazio() {
-        assertThatThrownBy(() -> service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, "   "))
+        assertThatThrownBy(() -> service.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, "   ", OrigemRedacao.DIGITADO))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -171,11 +188,11 @@ class EnviarRedacaoServiceTest {
         var concluir = new ConcluirAvaliacaoService(avaliacoes, redacoes, uso);
         var comTetoDeDois = new EnviarRedacaoService(temas, redacoes, uso, iaFake, concluir, RELOGIO, LIMITE, 2);
         UUID outroAluno = UUID.randomUUID();
-        comTetoDeDois.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO);
-        comTetoDeDois.enviar(outroAluno, tema.id(), TipoRedacao.PRATICA, TEXTO);
+        comTetoDeDois.enviar(alunoId, tema.id(), TipoRedacao.PRATICA, TEXTO, OrigemRedacao.DIGITADO);
+        comTetoDeDois.enviar(outroAluno, tema.id(), TipoRedacao.PRATICA, TEXTO, OrigemRedacao.DIGITADO);
 
         UUID terceiro = UUID.randomUUID();
-        assertThatThrownBy(() -> comTetoDeDois.enviar(terceiro, tema.id(), TipoRedacao.PRATICA, TEXTO))
+        assertThatThrownBy(() -> comTetoDeDois.enviar(terceiro, tema.id(), TipoRedacao.PRATICA, TEXTO, OrigemRedacao.DIGITADO))
                 .isInstanceOf(LimiteGlobalAtingidoException.class);
 
         assertThat(chamadasIA).hasSize(2);

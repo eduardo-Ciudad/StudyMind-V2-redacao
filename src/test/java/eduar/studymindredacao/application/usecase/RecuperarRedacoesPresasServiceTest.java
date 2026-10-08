@@ -1,6 +1,7 @@
 package eduar.studymindredacao.application.usecase;
 
 import eduar.studymindredacao.domain.model.Redacao;
+import eduar.studymindredacao.domain.model.enums.OrigemRedacao;
 import eduar.studymindredacao.domain.model.enums.StatusRedacao;
 import eduar.studymindredacao.domain.model.enums.TipoRedacao;
 import org.junit.jupiter.api.Test;
@@ -28,7 +29,7 @@ class RecuperarRedacoesPresasServiceTest {
     private final RecuperarRedacoesPresasService service = new RecuperarRedacoesPresasService(redacoes, RELOGIO, uso);
 
     private Redacao redacao(StatusRedacao status, OffsetDateTime enviadaEm) {
-        return redacoes.salvar(new Redacao(null, alunoId, UUID.randomUUID(), TipoRedacao.PRATICA, "texto", status, enviadaEm));
+        return redacoes.salvar(new Redacao(null, alunoId, UUID.randomUUID(), TipoRedacao.PRATICA, "texto", status, enviadaEm, OrigemRedacao.DIGITADO));
     }
 
     private StatusRedacao statusDe(Redacao redacao) {

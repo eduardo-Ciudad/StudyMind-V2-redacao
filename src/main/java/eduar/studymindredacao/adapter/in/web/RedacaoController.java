@@ -38,7 +38,7 @@ public class RedacaoController {
             @AuthenticationPrincipal UsuarioAutenticado usuario,
             @RequestBody @Valid EnviarRedacaoRequest request
     ) {
-        var detalhada = enviarRedacao.enviar(usuario.id(), request.temaId(), request.tipo(), request.texto());
+        var detalhada = enviarRedacao.enviar(usuario.id(), request.temaId(), request.tipo(), request.texto(), request.origem());
         return RedacaoResponse.de(detalhada);
     }
 

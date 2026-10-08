@@ -7,6 +7,7 @@ import eduar.studymindredacao.domain.model.CompetenciaAvaliada;
 import eduar.studymindredacao.domain.model.Redacao;
 import eduar.studymindredacao.domain.model.ResultadoAvaliacaoIA;
 import eduar.studymindredacao.domain.model.Tema;
+import eduar.studymindredacao.domain.model.enums.OrigemRedacao;
 import eduar.studymindredacao.domain.model.enums.OrigemTema;
 import eduar.studymindredacao.domain.model.enums.StatusRedacao;
 import eduar.studymindredacao.domain.model.enums.TipoRedacao;
@@ -22,7 +23,14 @@ class RedacaoResponseTest {
     private final Tema tema = new Tema(UUID.randomUUID(), "Democratização do acesso ao cinema no Brasil", null,
             OrigemTema.ENEM_OFICIAL, (short) 2019, true, null);
     private final Redacao redacao = new Redacao(UUID.randomUUID(), UUID.randomUUID(), tema.id(),
-            TipoRedacao.PRATICA, "texto", StatusRedacao.AVALIADA, OffsetDateTime.now());
+            TipoRedacao.PRATICA, "texto", StatusRedacao.AVALIADA, OffsetDateTime.now(), OrigemRedacao.MANUSCRITO);
+
+    @Test
+    void levaAOrigemDaRedacao() {
+        var resposta = RedacaoResponse.de(new RedacaoDetalhada(redacao.comStatus(StatusRedacao.ERRO), null, null));
+
+        assertThat(resposta.origem()).isEqualTo(OrigemRedacao.MANUSCRITO);
+    }
 
     @Test
     void mapeiaRedacaoAvaliadaComCompetencias() {
