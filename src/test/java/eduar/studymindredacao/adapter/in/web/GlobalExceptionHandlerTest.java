@@ -3,15 +3,19 @@ package eduar.studymindredacao.adapter.in.web;
 import eduar.studymindredacao.adapter.in.web.security.TentativasExcedidasException;
 import eduar.studymindredacao.domain.exception.AvaliacaoIAException;
 import eduar.studymindredacao.domain.exception.CadastroFechadoException;
+import eduar.studymindredacao.domain.exception.ImagemInvalidaException;
+import eduar.studymindredacao.domain.exception.ImagemNaoReconhecidaException;
 import eduar.studymindredacao.domain.exception.LimiteGlobalAtingidoException;
 import eduar.studymindredacao.domain.exception.LimiteDiarioAtingidoException;
 import eduar.studymindredacao.domain.exception.RedacaoNaoEncontradaException;
 import eduar.studymindredacao.domain.exception.TemaNaoAdicionavelException;
 import eduar.studymindredacao.domain.exception.TemaNaoEncontradoException;
+import eduar.studymindredacao.domain.exception.TranscricaoIAException;
 import eduar.studymindredacao.domain.model.enums.RecursoIA;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import java.time.Clock;
 import java.time.Instant;
@@ -49,6 +53,39 @@ class GlobalExceptionHandlerTest {
 
         assertThat(problema.getStatus()).isEqualTo(502);
         assertThat(problema.getDetail()).doesNotContain("Gemini").doesNotContain("403").doesNotContain("xyz");
+    }
+
+    @Test
+    void imagemInvalidaResponde400ComOMotivo() {
+        var problema = handler.imagemInvalida(new ImagemInvalidaException(
+                ImagemInvalidaException.Motivo.TIPO_INVALIDO, "Formato de imagem não suportado."));
+
+        assertThat(problema.getStatus()).isEqualTo(400);
+        assertThat(problema.getProperties()).containsEntry("motivo", "TIPO_INVALIDO");
+    }
+
+    @Test
+    void uploadAcimaDoLimiteResponde413ComMotivoGrandeDemais() {
+        var problema = handler.uploadGrandeDemais(new MaxUploadSizeExceededException(5 * 1024 * 1024));
+
+        assertThat(problema.getStatus()).isEqualTo(413);
+        assertThat(problema.getProperties()).containsEntry("motivo", "GRANDE_DEMAIS");
+    }
+
+    @Test
+    void fotoSemRedacaoResponde422ComOrientacao() {
+        var problema = handler.imagemNaoReconhecida(new ImagemNaoReconhecidaException());
+
+        assertThat(problema.getStatus()).isEqualTo(422);
+        assertThat(problema.getDetail()).isEqualTo(ImagemNaoReconhecidaException.MENSAGEM);
+    }
+
+    @Test
+    void falhaDaIANaTranscricaoResponde502SemVazarDetalheInterno() {
+        var problema = handler.falhaNaTranscricao(new TranscricaoIAException("Gemini recusou a requisição (HTTP 403) chave=xyz"));
+
+        assertThat(problema.getStatus()).isEqualTo(502);
+        assertThat(problema.getDetail()).contains("ler a foto").doesNotContain("Gemini").doesNotContain("xyz");
     }
 
     @Test

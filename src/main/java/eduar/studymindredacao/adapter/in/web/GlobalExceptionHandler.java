@@ -5,14 +5,18 @@ import eduar.studymindredacao.domain.exception.AvaliacaoIAException;
 import eduar.studymindredacao.domain.exception.CadastroFechadoException;
 import eduar.studymindredacao.domain.exception.CredenciaisInvalidasException;
 import eduar.studymindredacao.domain.exception.EmailJaCadastradoException;
+import eduar.studymindredacao.domain.exception.ImagemInvalidaException;
+import eduar.studymindredacao.domain.exception.ImagemNaoReconhecidaException;
 import eduar.studymindredacao.domain.exception.LimiteDiarioAtingidoException;
 import eduar.studymindredacao.domain.exception.LimiteGlobalAtingidoException;
 import eduar.studymindredacao.domain.exception.RedacaoNaoEncontradaException;
 import eduar.studymindredacao.domain.exception.TemaNaoAdicionavelException;
 import eduar.studymindredacao.domain.exception.TemaNaoEncontradoException;
+import eduar.studymindredacao.domain.exception.TranscricaoIAException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -20,6 +24,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import java.time.Clock;
 import java.time.Duration;
@@ -129,6 +134,37 @@ public class GlobalExceptionHandler {
         return ProblemDetail.forStatusAndDetail(
                 HttpStatus.BAD_GATEWAY,
                 "Não foi possível corrigir a redação agora. Tente novamente em alguns minutos; esta tentativa não foi descontada do seu limite."
+        );
+    }
+
+    // Foto vazia, grande demais, formato não suportado ou quantidade errada: o "motivo" orienta a mensagem do front
+    @ExceptionHandler(ImagemInvalidaException.class)
+    public ProblemDetail imagemInvalida(ImagemInvalidaException ex) {
+        var problema = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
+        problema.setProperty("motivo", ex.getMotivo().name());
+        return problema;
+    }
+
+    // Passou de spring.servlet.multipart.*: mesmo motivo do arquivo grande demais validado no domínio
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ProblemDetail uploadGrandeDemais(MaxUploadSizeExceededException ex) {
+        var problema = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(413), "Cada foto deve ter no máximo 5 MB.");
+        problema.setProperty("motivo", ImagemInvalidaException.Motivo.GRANDE_DEMAIS.name());
+        return problema;
+    }
+
+    // A IA leu a foto e não achou redação: o aluno precisa tirar outra (a vaga do dia já foi devolvida)
+    @ExceptionHandler(ImagemNaoReconhecidaException.class)
+    public ProblemDetail imagemNaoReconhecida(ImagemNaoReconhecidaException ex) {
+        return ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(422), ex.getMessage());
+    }
+
+    // Mesma regra da correção: causa real no log, mensagem neutra para o aluno
+    @ExceptionHandler(TranscricaoIAException.class)
+    public ProblemDetail falhaNaTranscricao(TranscricaoIAException ex) {
+        return ProblemDetail.forStatusAndDetail(
+                HttpStatus.BAD_GATEWAY,
+                "Não foi possível ler a foto agora. Tente novamente em alguns minutos; esta tentativa não foi descontada do seu limite."
         );
     }
 

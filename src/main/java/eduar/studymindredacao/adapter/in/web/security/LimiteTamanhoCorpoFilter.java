@@ -15,17 +15,21 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * Recusa corpos grandes antes de qualquer leitura ou desserialização. Uma redação de 5.000 caracteres
- * fica muito abaixo de 64 KB. Requisições sem Content-Length (chunked) passam: o limite delas fica no proxy.
+ * fica muito abaixo de 64 KB. O upload de fotos da transcrição tem limite próprio, só no POST /transcricoes.
+ * Requisições sem Content-Length (chunked) passam: o limite delas fica no proxy.
  */
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class LimiteTamanhoCorpoFilter extends OncePerRequestFilter {
     static final long TAMANHO_MAXIMO_BYTES = 64 * 1024;
+    /** 2 fotos de 5 MB mais a margem do multipart. Igual a spring.servlet.multipart.max-request-size. */
+    static final long TAMANHO_MAXIMO_UPLOAD_BYTES = 11L * 1024 * 1024;
+    static final String ROTA_UPLOAD = "/transcricoes";
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
-        if (request.getContentLengthLong() > TAMANHO_MAXIMO_BYTES) {
+        if (request.getContentLengthLong() > limitePara(request)) {
             response.setStatus(413);
             response.setContentType(MediaType.APPLICATION_PROBLEM_JSON_VALUE);
             response.setCharacterEncoding(StandardCharsets.UTF_8.name());
@@ -36,5 +40,11 @@ public class LimiteTamanhoCorpoFilter extends OncePerRequestFilter {
             return;
         }
         chain.doFilter(request, response);
+    }
+
+    private static long limitePara(HttpServletRequest request) {
+        String caminho = request.getRequestURI().substring(request.getContextPath().length());
+        boolean upload = "POST".equalsIgnoreCase(request.getMethod()) && ROTA_UPLOAD.equals(caminho);
+        return upload ? TAMANHO_MAXIMO_UPLOAD_BYTES : TAMANHO_MAXIMO_BYTES;
     }
 }

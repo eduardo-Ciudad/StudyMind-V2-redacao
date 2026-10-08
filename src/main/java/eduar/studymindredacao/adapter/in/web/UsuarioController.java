@@ -46,6 +46,12 @@ public class UsuarioController {
         return UsoDiarioResponse.de(consultarUsoDiario.consultar(usuario.id()));
     }
 
+    /** Saldo de transcrições de foto de hoje, no mesmo formato do saldo de correções. */
+    @GetMapping("/me/transcricoes-hoje")
+    public UsoDiarioResponse transcricoesHoje(@AuthenticationPrincipal UsuarioAutenticado usuario) {
+        return UsoDiarioResponse.de(consultarUsoDiario.consultarTranscricoes(usuario.id()));
+    }
+
     /** Linha do tempo das notas, média recente por competência e a competência foco. */
     @GetMapping("/me/evolucao")
     public EvolucaoResponse evolucao(@AuthenticationPrincipal UsuarioAutenticado usuario) {

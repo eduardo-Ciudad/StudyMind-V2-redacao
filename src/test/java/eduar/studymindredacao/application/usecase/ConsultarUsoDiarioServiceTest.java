@@ -14,13 +14,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ConsultarUsoDiarioServiceTest {
     private static final int LIMITE = 3;
+    private static final int LIMITE_TRANSCRICOES = 2;
     // 01:30 UTC do dia 29 = 22:30 do dia 28 em São Paulo
     private static final Clock RELOGIO = Clock.fixed(Instant.parse("2026-09-29T01:30:00Z"), ZoneId.of("America/Sao_Paulo"));
     private static final LocalDate HOJE_EM_SP = LocalDate.of(2026, 9, 28);
 
     private final UUID alunoId = UUID.randomUUID();
     private final UsoIADiarioEmMemoria uso = new UsoIADiarioEmMemoria();
-    private final ConsultarUsoDiarioService service = new ConsultarUsoDiarioService(uso, RELOGIO, LIMITE);
+    private final ConsultarUsoDiarioService service = new ConsultarUsoDiarioService(uso, RELOGIO, LIMITE, LIMITE_TRANSCRICOES);
 
     @Test
     void semUsoNoDia_retornaLimiteInteiro() {
@@ -49,12 +50,27 @@ class ConsultarUsoDiarioServiceTest {
         for (int i = 0; i < LIMITE; i++) {
             uso.reservarCorrecao(alunoId, HOJE_EM_SP, LIMITE);
         }
-        var comLimiteMenor = new ConsultarUsoDiarioService(uso, RELOGIO, 1);
+        var comLimiteMenor = new ConsultarUsoDiarioService(uso, RELOGIO, 1, LIMITE_TRANSCRICOES);
 
         var resultado = comLimiteMenor.consultar(alunoId);
 
         assertThat(resultado.usadas()).isEqualTo(LIMITE);
         assertThat(resultado.restantes()).isZero();
+    }
+
+    @Test
+    void saldoDeTranscricoesUsaContadorELimitePropriosSemMisturarComCorrecoes() {
+        uso.reservarCorrecao(alunoId, HOJE_EM_SP, LIMITE);
+        uso.reservarTranscricao(alunoId, HOJE_EM_SP, LIMITE_TRANSCRICOES);
+
+        var transcricoes = service.consultarTranscricoes(alunoId);
+        var correcoes = service.consultar(alunoId);
+
+        assertThat(transcricoes.usadas()).isEqualTo(1);
+        assertThat(transcricoes.limite()).isEqualTo(LIMITE_TRANSCRICOES);
+        assertThat(transcricoes.restantes()).isEqualTo(1);
+        assertThat(correcoes.usadas()).isEqualTo(1);
+        assertThat(correcoes.restantes()).isEqualTo(LIMITE - 1);
     }
 
     @Test
