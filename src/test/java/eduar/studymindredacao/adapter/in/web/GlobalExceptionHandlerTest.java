@@ -8,6 +8,7 @@ import eduar.studymindredacao.domain.exception.LimiteDiarioAtingidoException;
 import eduar.studymindredacao.domain.exception.RedacaoNaoEncontradaException;
 import eduar.studymindredacao.domain.exception.TemaNaoAdicionavelException;
 import eduar.studymindredacao.domain.exception.TemaNaoEncontradoException;
+import eduar.studymindredacao.domain.model.enums.RecursoIA;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,11 +27,20 @@ class GlobalExceptionHandlerTest {
 
     @Test
     void limiteDiarioResponde429ComLimiteERetryAfterAteMeiaNoiteLocal() {
-        var resposta = handler.limiteDiario(new LimiteDiarioAtingidoException(3));
+        var resposta = handler.limiteDiario(new LimiteDiarioAtingidoException(RecursoIA.CORRECAO, 3));
 
         assertThat(resposta.getStatusCode()).isEqualTo(HttpStatus.TOO_MANY_REQUESTS);
         assertThat(resposta.getHeaders().getFirst(HttpHeaders.RETRY_AFTER)).isEqualTo("5400");
-        assertThat(resposta.getBody().getProperties()).containsEntry("limite", 3);
+        assertThat(resposta.getBody().getProperties()).containsEntry("limite", 3).containsEntry("recurso", "CORRECAO");
+        assertThat(resposta.getBody().getDetail()).isEqualTo("Limite diário de 3 correções atingido. Tente novamente amanhã.");
+    }
+
+    @Test
+    void limiteDiarioDaTranscricaoIdentificaORecurso() {
+        var resposta = handler.limiteDiario(new LimiteDiarioAtingidoException(RecursoIA.TRANSCRICAO, 3));
+
+        assertThat(resposta.getBody().getProperties()).containsEntry("recurso", "TRANSCRICAO");
+        assertThat(resposta.getBody().getDetail()).contains("3 transcrições");
     }
 
     @Test
@@ -54,10 +64,11 @@ class GlobalExceptionHandlerTest {
 
     @Test
     void tetoGlobalResponde503ComRetryAfter() {
-        var resposta = handler.limiteGlobal(new LimiteGlobalAtingidoException());
+        var resposta = handler.limiteGlobal(new LimiteGlobalAtingidoException(RecursoIA.TRANSCRICAO));
 
         assertThat(resposta.getStatusCode().value()).isEqualTo(503);
         assertThat(resposta.getHeaders().getFirst("Retry-After")).isNotBlank();
+        assertThat(resposta.getBody().getProperties()).containsEntry("recurso", "TRANSCRICAO");
     }
 
     @Test

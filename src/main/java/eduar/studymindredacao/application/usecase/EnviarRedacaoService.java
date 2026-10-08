@@ -5,6 +5,7 @@ import eduar.studymindredacao.domain.exception.LimiteGlobalAtingidoException;
 import eduar.studymindredacao.domain.exception.TemaNaoEncontradoException;
 import eduar.studymindredacao.domain.model.Redacao;
 import eduar.studymindredacao.domain.model.SolicitacaoAvaliacao;
+import eduar.studymindredacao.domain.model.enums.RecursoIA;
 import eduar.studymindredacao.domain.model.enums.StatusRedacao;
 import eduar.studymindredacao.domain.model.enums.TipoRedacao;
 import eduar.studymindredacao.domain.port.AvaliacaoIAPort;
@@ -70,10 +71,10 @@ public class EnviarRedacaoService {
         // Teto de custo do sistema: checado antes da reserva do aluno. Aproximado sob concorrência
         // (dois envios simultâneos podem passar do teto em 1), o que basta para limitar o gasto.
         if (usoRepository.somarCorrecoesDoDia(hoje) >= limiteGlobal) {
-            throw new LimiteGlobalAtingidoException();
+            throw new LimiteGlobalAtingidoException(RecursoIA.CORRECAO);
         }
         if (!usoRepository.reservarCorrecao(usuarioId, hoje, limiteDiario)) {
-            throw new LimiteDiarioAtingidoException(limiteDiario);
+            throw new LimiteDiarioAtingidoException(RecursoIA.CORRECAO, limiteDiario);
         }
 
         Redacao redacao;

@@ -48,4 +48,7 @@ public class UsoIADiarioEntity {
 
     @Column(name = "qtd_roadmaps", nullable = false)
     private Integer qtdRoadmaps;
+
+    @Column(name = "qtd_transcricoes", nullable = false)
+    private Integer qtdTranscricoes;
 }

@@ -10,7 +10,8 @@ public record UsoIADiario(
         Integer tokensEntrada,
         Integer tokensSaida,
         Integer qtdCorrecoes,
-        Integer qtdRoadmaps
+        Integer qtdRoadmaps,
+        Integer qtdTranscricoes
 ) {
     public UsoIADiario {
         Validacoes.requererNaoNulo(usuarioId, "usuarioId");
@@ -19,5 +20,6 @@ public record UsoIADiario(
         Validacoes.requererNaoNulo(tokensSaida, "tokensSaida");
         Validacoes.requererNaoNulo(qtdCorrecoes, "qtdCorrecoes");
         Validacoes.requererNaoNulo(qtdRoadmaps, "qtdRoadmaps");
+        Validacoes.requererNaoNulo(qtdTranscricoes, "qtdTranscricoes");
     }
 }

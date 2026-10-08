@@ -44,7 +44,7 @@ class UsoIADiarioEmMemoria implements UsoIADiarioRepositoryPort {
             return false;
         }
         salvar(new UsoIADiario(atual.id(), usuarioId, data, atual.tokensEntrada(), atual.tokensSaida(),
-                atual.qtdCorrecoes() + 1, atual.qtdRoadmaps()));
+                atual.qtdCorrecoes() + 1, atual.qtdRoadmaps(), atual.qtdTranscricoes()));
         return true;
     }
 
@@ -52,7 +52,7 @@ class UsoIADiarioEmMemoria implements UsoIADiarioRepositoryPort {
     public void liberarCorrecao(UUID usuarioId, LocalDate data) {
         var atual = usoDoDia(usuarioId, data);
         salvar(new UsoIADiario(atual.id(), usuarioId, data, atual.tokensEntrada(), atual.tokensSaida(),
-                Math.max(atual.qtdCorrecoes() - 1, 0), atual.qtdRoadmaps()));
+                Math.max(atual.qtdCorrecoes() - 1, 0), atual.qtdRoadmaps(), atual.qtdTranscricoes()));
     }
 
     @Override
@@ -61,14 +61,37 @@ class UsoIADiarioEmMemoria implements UsoIADiarioRepositoryPort {
     }
 
     @Override
+    public boolean reservarTranscricao(UUID usuarioId, LocalDate data, int limite) {
+        var atual = usoDoDia(usuarioId, data);
+        if (limite <= 0 || atual.qtdTranscricoes() >= limite) {
+            return false;
+        }
+        salvar(new UsoIADiario(atual.id(), usuarioId, data, atual.tokensEntrada(), atual.tokensSaida(),
+                atual.qtdCorrecoes(), atual.qtdRoadmaps(), atual.qtdTranscricoes() + 1));
+        return true;
+    }
+
+    @Override
+    public void liberarTranscricao(UUID usuarioId, LocalDate data) {
+        var atual = usoDoDia(usuarioId, data);
+        salvar(new UsoIADiario(atual.id(), usuarioId, data, atual.tokensEntrada(), atual.tokensSaida(),
+                atual.qtdCorrecoes(), atual.qtdRoadmaps(), Math.max(atual.qtdTranscricoes() - 1, 0)));
+    }
+
+    @Override
+    public int somarTranscricoesDoDia(LocalDate data) {
+        return usos.values().stream().filter(u -> data.equals(u.data())).mapToInt(UsoIADiario::qtdTranscricoes).sum();
+    }
+
+    @Override
     public void registrarTokens(UUID usuarioId, LocalDate data, int tokensEntrada, int tokensSaida) {
         var atual = usoDoDia(usuarioId, data);
         salvar(new UsoIADiario(atual.id(), usuarioId, data, atual.tokensEntrada() + tokensEntrada,
-                atual.tokensSaida() + tokensSaida, atual.qtdCorrecoes(), atual.qtdRoadmaps()));
+                atual.tokensSaida() + tokensSaida, atual.qtdCorrecoes(), atual.qtdRoadmaps(), atual.qtdTranscricoes()));
     }
 
     UsoIADiario usoDoDia(UUID usuarioId, LocalDate data) {
         return buscarPorUsuarioIdEData(usuarioId, data)
-                .orElse(new UsoIADiario(UUID.randomUUID(), usuarioId, data, 0, 0, 0, 0));
+                .orElse(new UsoIADiario(UUID.randomUUID(), usuarioId, data, 0, 0, 0, 0, 0));
     }
 }

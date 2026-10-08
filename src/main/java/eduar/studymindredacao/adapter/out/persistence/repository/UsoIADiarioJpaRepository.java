@@ -48,4 +48,25 @@ interface UsoIADiarioJpaRepository extends JpaRepository<UsoIADiarioEntity, UUID
             @Param("tokensEntrada") int tokensEntrada,
             @Param("tokensSaida") int tokensSaida
     );
+
+    @Modifying
+    @Query(value = """
+            INSERT INTO uso_ia_diario (usuario_id, data, qtd_transcricoes)
+            VALUES (:usuarioId, :data, 1)
+            ON CONFLICT (usuario_id, data) DO UPDATE
+                SET qtd_transcricoes = uso_ia_diario.qtd_transcricoes + 1
+                WHERE uso_ia_diario.qtd_transcricoes < :limite
+            """, nativeQuery = true)
+    int reservarTranscricao(@Param("usuarioId") UUID usuarioId, @Param("data") LocalDate data, @Param("limite") int limite);
+
+    @Modifying
+    @Query(value = """
+            UPDATE uso_ia_diario
+               SET qtd_transcricoes = GREATEST(qtd_transcricoes - 1, 0)
+             WHERE usuario_id = :usuarioId AND data = :data
+            """, nativeQuery = true)
+    int liberarTranscricao(@Param("usuarioId") UUID usuarioId, @Param("data") LocalDate data);
+
+    @Query(value = "SELECT COALESCE(SUM(qtd_transcricoes), 0) FROM uso_ia_diario WHERE data = :data", nativeQuery = true)
+    int somarTranscricoesDoDia(@Param("data") LocalDate data);
 }

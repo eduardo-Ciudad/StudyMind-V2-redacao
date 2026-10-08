@@ -16,7 +16,8 @@ public final class UsoIADiarioPersistenceMapper {
                 entity.getTokensEntrada(),
                 entity.getTokensSaida(),
                 entity.getQtdCorrecoes(),
-                entity.getQtdRoadmaps()
+                entity.getQtdRoadmaps(),
+                entity.getQtdTranscricoes()
         );
     }
 
@@ -29,6 +30,7 @@ public final class UsoIADiarioPersistenceMapper {
         entity.setTokensSaida(domain.tokensSaida());
         entity.setQtdCorrecoes(domain.qtdCorrecoes());
         entity.setQtdRoadmaps(domain.qtdRoadmaps());
+        entity.setQtdTranscricoes(domain.qtdTranscricoes());
         return entity;
     }
 }

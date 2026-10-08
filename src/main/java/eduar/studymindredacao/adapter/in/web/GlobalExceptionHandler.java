@@ -95,6 +95,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ProblemDetail> limiteDiario(LimiteDiarioAtingidoException ex) {
         var problema = ProblemDetail.forStatusAndDetail(HttpStatus.TOO_MANY_REQUESTS, ex.getMessage());
         problema.setProperty("limite", ex.getLimite());
+        problema.setProperty("recurso", ex.getRecurso().name());
         return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
                 .header(HttpHeaders.RETRY_AFTER, String.valueOf(segundosAteAmanha()))
                 .body(problema);
@@ -103,9 +104,11 @@ public class GlobalExceptionHandler {
     // Teto do sistema: 503 (indisponível hoje para todos), não 429, que o front trata como limite do aluno
     @ExceptionHandler(LimiteGlobalAtingidoException.class)
     public ResponseEntity<ProblemDetail> limiteGlobal(LimiteGlobalAtingidoException ex) {
+        var problema = ProblemDetail.forStatusAndDetail(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage());
+        problema.setProperty("recurso", ex.getRecurso().name());
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
                 .header(HttpHeaders.RETRY_AFTER, String.valueOf(segundosAteAmanha()))
-                .body(ProblemDetail.forStatusAndDetail(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage()));
+                .body(problema);
     }
 
     @ExceptionHandler(TentativasExcedidasException.class)
