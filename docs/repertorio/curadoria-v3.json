@@ -2935,7 +2935,7 @@
       "entityTypeInferred": true,
       "role": "REPERTOIRE",
       "evidenceTypes": [],
-      "typeLabel": "SOCIOLOGA / PESQUISADORA",
+      "typeLabel": "SOCIÓLOGA / PESQUISADORA",
       "country": "Brasil",
       "field": "Trabalho por plataformas e uberização",
       "gapResolved": null,
@@ -3000,7 +3000,7 @@
       "role": "REPERTOIRE",
       "evidenceTypes": [],
       "typeLabel": "SOCIÓLOGA / PESQUISADORA",
-      "country": "Brasil/França",
+      "country": "Brasil / França",
       "field": "Trabalho, gênero e cuidado",
       "gapResolved": null,
       "centralIdea": "Analisa divisão sexual do trabalho e relações de cuidado, mostrando como gênero, raça e classe se articulam nas trajetórias de cuidadoras.",
@@ -4489,7 +4489,7 @@
         {
           "kind": "CONCEPT",
           "url": null,
-          "description": "Obras Ideias para adiar o fim do mundo, A vida não é útil e Futuro ancestral; consultar edições originais para conceito específico."
+          "description": "Obras Ideias para adiar o fim do mundo, A vida não é útil e Futuro ancestral."
         }
       ],
       "evidenceYear": null,
@@ -4618,7 +4618,7 @@
     {
       "code": "REP-058",
       "name": "Chuva é Cantoria na Aldeia dos Mortos",
-      "headingSubtitle": null,
+      "headingSubtitle": "Renée Nader Messora e João Salaviza",
       "entityType": "CULTURAL_WORK",
       "entityTypeInferred": false,
       "role": "REPERTOIRE",
