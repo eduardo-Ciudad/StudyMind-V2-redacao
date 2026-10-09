@@ -1025,15 +1025,15 @@
         "OFFICIAL_STATISTICS",
         "NATIONAL_SURVEY"
       ],
-      "typeLabel": "OFFICIAL_STATISTICS / NATIONAL_SURVEY",
+      "typeLabel": "ESTATÍSTICA OFICIAL / PESQUISA NACIONAL",
       "country": "Brasil",
       "field": null,
       "gapResolved": null,
       "centralIdea": "A taxa de analfabetismo das pessoas de 15 anos ou mais foi 4,9% em 2025, ante 5,3% em 2024.",
       "rememberForExam": null,
-      "howToUse": null,
+      "howToUse": "Use como evidência temporal.",
       "applicationExample": null,
-      "commonMisuse": "Use como evidência temporal; atualizar anualmente.",
+      "commonMisuse": null,
       "misuseRisk": null,
       "difficulty": null,
       "saturation": null,
@@ -1079,7 +1079,7 @@
       "evidenceTypes": [
         "SCOPING_REVIEW"
       ],
-      "typeLabel": "SYSTEMATIC/SCOPING_REVIEW",
+      "typeLabel": "REVISÃO DE ESCOPO",
       "country": "Brasil",
       "field": null,
       "gapResolved": null,
@@ -1135,15 +1135,15 @@
         "NATIONAL_SURVEY",
         "OFFICIAL_HEALTH_SURVEILLANCE"
       ],
-      "typeLabel": "NATIONAL_SURVEY / OFFICIAL_HEALTH_SURVEILLANCE",
+      "typeLabel": "PESQUISA NACIONAL / VIGILÂNCIA EM SAÚDE",
       "country": "Brasil",
       "field": null,
       "gapResolved": null,
       "centralIdea": "Monitora fatores de risco e proteção para DCNT, incluindo tabagismo, alimentação, atividade física, excesso de peso, sono e outros indicadores.",
       "rememberForExam": null,
-      "howToUse": null,
+      "howToUse": "Sempre indicar ano/edição do dado específico usado.",
       "applicationExample": null,
-      "commonMisuse": "Sempre indicar ano/edição do dado específico usado.",
+      "commonMisuse": null,
       "misuseRisk": null,
       "difficulty": null,
       "saturation": null,
@@ -1189,7 +1189,7 @@
         "OFFICIAL_STATISTICS",
         "NATIONAL_SURVEY"
       ],
-      "typeLabel": "OFFICIAL_STATISTICS / NATIONAL_SURVEY",
+      "typeLabel": "ESTATÍSTICA OFICIAL / PESQUISA NACIONAL",
       "country": "Brasil",
       "field": null,
       "gapResolved": null,
@@ -1244,7 +1244,7 @@
       "evidenceTypes": [
         "ACADEMIC_RESEARCH"
       ],
-      "typeLabel": "ACADEMIC_RESEARCH",
+      "typeLabel": "PESQUISA ACADÊMICA",
       "country": "Brasil",
       "field": null,
       "gapResolved": null,
@@ -1298,7 +1298,7 @@
         "NATIONAL_SURVEY",
         "OFFICIAL_STATISTICS"
       ],
-      "typeLabel": "NATIONAL_SURVEY / OFFICIAL_STATISTICS",
+      "typeLabel": "PESQUISA NACIONAL / ESTATÍSTICA OFICIAL",
       "country": "Brasil",
       "field": null,
       "gapResolved": null,
@@ -1350,7 +1350,7 @@
         "INSTITUTIONAL_REPORT",
         "OFFICIAL_STATISTICS"
       ],
-      "typeLabel": "INSTITUTIONAL_REPORT / OFFICIAL_STATISTICS",
+      "typeLabel": "RELATÓRIO INSTITUCIONAL / ESTATÍSTICA OFICIAL",
       "country": "Brasil",
       "field": null,
       "gapResolved": null,
@@ -1405,7 +1405,7 @@
         "INSTITUTIONAL_REPORT",
         "ADMINISTRATIVE_DATA"
       ],
-      "typeLabel": "INSTITUTIONAL_REPORT / ADMINISTRATIVE_DATA",
+      "typeLabel": "RELATÓRIO INSTITUCIONAL / DADOS ADMINISTRATIVOS",
       "country": "Brasil",
       "field": null,
       "gapResolved": null,
@@ -1460,7 +1460,7 @@
         "SCIENTIFIC_STUDY",
         "TIME_SERIES"
       ],
-      "typeLabel": "SCIENTIFIC_STUDY / TIME_SERIES",
+      "typeLabel": "ESTUDO CIENTÍFICO / SÉRIE HISTÓRICA",
       "country": "Brasil",
       "field": null,
       "gapResolved": null,
@@ -1515,7 +1515,7 @@
         "SCIENTIFIC_STUDY",
         "INSTITUTIONAL_SUMMARY"
       ],
-      "typeLabel": "SCIENTIFIC_STUDY / INSTITUTIONAL_SUMMARY",
+      "typeLabel": "ESTUDO CIENTÍFICO / SÍNTESE INSTITUCIONAL",
       "country": "Brasil",
       "field": null,
       "gapResolved": null,
@@ -1569,7 +1569,7 @@
       "evidenceTypes": [
         "INTEGRATIVE_REVIEW"
       ],
-      "typeLabel": "INTEGRATIVE_REVIEW",
+      "typeLabel": "REVISÃO INTEGRATIVA",
       "country": "Brasil",
       "field": null,
       "gapResolved": null,
@@ -1623,7 +1623,7 @@
         "SCIENTIFIC_STUDY",
         "CONTENT_ANALYSIS"
       ],
-      "typeLabel": "SCIENTIFIC_STUDY / CONTENT_ANALYSIS",
+      "typeLabel": "ESTUDO CIENTÍFICO / ANÁLISE DE CONTEÚDO",
       "country": "Brasil",
       "field": null,
       "gapResolved": null,
@@ -1679,7 +1679,7 @@
         "SCIENTIFIC_STUDY",
         "CROSS_SECTIONAL"
       ],
-      "typeLabel": "SCIENTIFIC_STUDY / CROSS_SECTIONAL",
+      "typeLabel": "ESTUDO CIENTÍFICO / ESTUDO TRANSVERSAL",
       "country": "Brasil",
       "field": null,
       "gapResolved": null,
